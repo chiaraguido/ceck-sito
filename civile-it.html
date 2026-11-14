@@ -24,7 +24,7 @@ p{margin:.4em 0;max-width:60ch}
 a{color:inherit}
 .griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;max-width:1240px;margin:0 auto}
 .t{border-radius:4px;padding:24px;position:relative;min-width:0}
-.video-lingua{padding:10px!important;display:flex;align-items:center;justify-content:center;background:#16181d!important}.video-lingua video{width:100%;height:auto;border-radius:14px;display:block}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.yt-video{padding:10px!important;background:#16181d!important;display:flex;align-items:center}.yt-play{all:unset;cursor:pointer;position:relative;display:block;width:100%;border-radius:14px;overflow:hidden}.yt-play img{width:100%;height:auto;display:block}.yt-tasto{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:68px;border-radius:18px;background:#ff0033;color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.35)}.yt-play:hover .yt-tasto{transform:translate(-50%,-50%) scale(1.08)}.yt-video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block}.rosso-yt{background:#ffd9d9!important}.video-lingua{padding:10px!important;display:flex;align-items:center;justify-content:center;background:#16181d!important}.video-lingua video{width:100%;height:auto;border-radius:14px;display:block}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
 .etichetta{display:inline-block;background:var(--inchiostro);color:var(--crema);font-weight:700;font-size:13px;border-radius:7px;padding:3px 9px;margin-bottom:12px}
 .giallo{background:var(--giallo)}.menta{background:var(--menta)}.rosa{background:var(--rosa)}.lilla{background:var(--lilla)}.azzurro{background:var(--azzurro)}.carta{background:var(--carta)}.arancio{background:var(--arancio)}.scuro{background:#22242a;color:var(--crema)}
 .grande{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.05}
@@ -147,6 +147,18 @@ svg.disegno{width:100%;height:auto;display:block}
   </section>
 
   <div class="t c12 titolo-sez"><h2>Guarda come funziona.</h2><p>Tre schermate che usi ogni giorno.</p></div>
+
+  <section class="t c7 carta yt-video" aria-label="Video su YouTube: disegni e locali in ceck">
+    <button type="button" class="yt-play" data-id="4j3VLcl6NaU" aria-label="Guarda il video: disegni e locali in ceck">
+      <img src="yt-2.3.jpg" alt="Video: disegni e locali in ceck" width="960" height="540" loading="lazy"><span class="yt-tasto">▶</span>
+    </button>
+  </section>
+  <section class="t c5 funz rosso-yt">
+    <span class="etichetta">I video</span>
+    <h3>Impara ceck in 30 secondi alla volta</h3>
+    <p>Video brevi, su un cantiere vero: crea il cantiere, registra le ore, segna un difetto sulla piantina. Uno alla volta, senza fretta.</p>
+    <a class="cta" href="https://www.youtube.com/@ceckme" target="_blank" rel="noopener">Guarda i video su YouTube →</a>
+  </section>
 
   <section class="t c7 carta" aria-label="Grafico delle ore per settimana">
     <span class="etichetta">Ore della squadra · ultime 6 settimane</span>
@@ -393,5 +405,6 @@ document.getElementById('ck-scegli').onclick=()=>{const p=document.getElementByI
 document.getElementById('ck-salva').onclick=()=>salva(document.getElementById('ck-stat').checked,document.getElementById('ck-pub').checked);
 document.getElementById('ck-apri').onclick=e=>{e.preventDefault();if(c){document.getElementById('ck-stat').checked=!!c.stat;document.getElementById('ck-pub').checked=!!c.pub}B.hidden=false}})();</script>
 <!-- cookie:fine -->
+<script>document.querySelectorAll(".yt-play").forEach(b=>b.onclick=()=>{const f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.id+"?autoplay=1&rel=0&cc_load_policy=1&hl=it";f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;f.referrerPolicy="strict-origin-when-cross-origin";f.title="Video ceck";b.replaceWith(f)})</script>
 </body>
 </html>
