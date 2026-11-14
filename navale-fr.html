@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ceck pour artisans à bord</title>
+<meta name="description" content="ceck : réserves de l'armateur sur le plan du pont, heures de l'équipe, travaux en régie signés, matériel du magasin. Pour artisans du refit et de l'aménagement naval de 1 à 10 ouvriers.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Un solo mondo, scuro: tessere di colore pieno come nell'app, telefoni e disegni al posto dei paragrafi. */
+:root{
+  --fondo:#141518; --navy:#0F2A44; --arancio:#F28C28; --carta:#fbfaf6; --inchiostro:#16181d; --crema:#fdffc9;
+  --giallo:#f4f99c; --azzurro:#a8cdfb; --menta:#86e0c6; --rosa:#f6cfe9; --lilla:#cdbcff; --rosso:#ff6b5b; --verde:#2f7d5b;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --testo:"Figtree","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fondo);color:var(--inchiostro);font-family:var(--testo);font-size:17px;line-height:1.5}
+body{padding:14px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:.4em 0;max-width:60ch}
+a{color:inherit}
+.griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;max-width:1240px;margin:0 auto}
+.t{border-radius:4px;padding:24px;position:relative;min-width:0}
+.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.etichetta{display:inline-block;background:var(--inchiostro);color:var(--crema);font-weight:700;font-size:13px;border-radius:7px;padding:3px 9px;margin-bottom:12px}
+.giallo{background:var(--giallo)}.menta{background:var(--menta)}.rosa{background:var(--rosa)}.lilla{background:var(--lilla)}.azzurro{background:var(--azzurro)}.carta{background:var(--carta)}.arancio{background:var(--arancio)}.scuro{background:#22242a;color:var(--crema)}
+.grande{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.05}
+/* testata */
+.marca{background:var(--navy);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:26px}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.03em}
+.logo svg{width:52px;height:52px}
+.marca .per{font-size:15px;color:#cfe0f5}
+.marca .per b{display:block;color:#fff;font-family:var(--display);font-size:22px;line-height:1.15;margin-bottom:4px}
+.eroe h1{font-size:clamp(36px,5.4vw,70px);line-height:.98;font-weight:900}
+.eroe h1 em{font-style:normal;background:var(--inchiostro);color:var(--giallo);padding:0 .15em;border-radius:4px}
+.eroe .sotto{font-size:19px;margin-top:16px}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--inchiostro);color:var(--crema);font-weight:800;text-decoration:none;border-radius:10px;padding:14px 22px;font-size:18px}
+.cta:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--arancio);outline-offset:2px}
+.nota{font-size:14px;opacity:.75;margin-top:10px}
+/* telefono */
+.tel{width:min(300px,100%);margin:0 auto;background:#0b0c0e;border-radius:34px;padding:12px;box-shadow:0 0 0 2px #2c2f36,0 18px 40px #0008}
+.schermo{background:#141518;border-radius:24px;overflow:hidden;padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px}
+.schermo .x{border-radius:3px;padding:9px 10px;font-weight:800;color:var(--inchiostro);min-height:58px;display:flex;flex-direction:column;justify-content:space-between}
+.schermo .x small{font-weight:600;opacity:.7;font-size:10px}
+.schermo .x .n{font-family:var(--display);font-size:28px;line-height:1}
+.schermo .lungo{grid-column:span 2}
+.schermo .testa{grid-column:span 2;background:var(--navy);color:#fff;display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:16px;min-height:44px}
+.schermo .testa svg{width:24px;height:24px}
+.palla{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.fila-tel{display:flex;align-items:center;justify-content:center;background:#1c1e23}
+/* numeri grandi */
+.tre{display:grid;gap:10px;align-content:center}
+.tre div{background:#ffffffb8;border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.tre .num{font-family:var(--display);font-weight:900;font-size:44px;line-height:1;grid-row:span 2;font-variant-numeric:tabular-nums}
+.tre b{font-size:18px}.tre span{font-size:14px;opacity:.75}
+/* grafici */
+svg.disegno{width:100%;height:auto;display:block}
+.operai{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.operai li{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;padding:7px 10px;display:flex;justify-content:space-between;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.operai li::before{content:"";width:16px;height:16px;border-radius:3px;background:var(--verde);margin-right:8px;flex:none;align-self:center}
+.operai li span{margin-right:auto}
+.leggenda{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;font-weight:700;margin-top:10px}
+.leggenda span{display:inline-flex;align-items:center;gap:6px}
+.leggenda i{width:14px;height:14px;border-radius:50%;display:inline-block;border:2px solid var(--inchiostro)}
+@media (prefers-reduced-motion:no-preference){.batte{animation:batte 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}}
+@keyframes batte{50%{transform:scale(1.22)}}
+.titolo-sez{background:var(--inchiostro);color:#fff;padding:28px 24px 20px}
+.titolo-sez h2{font-size:clamp(28px,3.6vw,46px);font-weight:900}
+.titolo-sez p{color:#c9cbd3;font-size:18px}
+/* tessere piccole */
+.funz h3{font-size:24px;margin-bottom:8px;line-height:1.1}
+.buono{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;margin-top:12px;font-size:14px;font-variant-numeric:tabular-nums}
+.buono div{display:flex;justify-content:space-between;padding:7px 12px;border-top:1px solid #16181d22}
+.buono div:first-child{border-top:0;background:var(--inchiostro);color:var(--crema);font-weight:800}
+.coppia{background:#fff;border-radius:6px;padding:10px 14px;margin-top:8px;font-weight:700}
+.coppia small{display:block;font-weight:600;opacity:.6;font-size:.8em}
+/* prezzi */
+.prezzo .chi{font-family:var(--display);font-weight:900;font-size:24px}
+.prezzo table{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums}
+.prezzo td{padding:9px 0;border-top:1px solid #16181d22}
+.prezzo td:last-child{text-align:right;font-family:var(--display);font-weight:900;font-size:24px}
+.prezzo .evid td{background:var(--giallo)}
+.prezzo .evid td:first-child{padding-left:8px;font-weight:800}.prezzo .evid td:last-child{padding-right:8px}
+/* modulo */
+.modulo form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.modulo label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:14px}
+.modulo input,.modulo select{font:inherit;font-size:16px;border:2px solid var(--inchiostro);border-radius:8px;padding:11px 12px;background:#fff;color:var(--inchiostro);min-height:48px}
+.modulo button{grid-column:1/-1;font:inherit;font-weight:800;font-size:19px;border:0;border-radius:10px;padding:16px;background:var(--inchiostro);color:var(--crema);cursor:pointer}
+.consenso{grid-column:1/-1;display:flex!important;flex-direction:row!important;gap:10px;align-items:flex-start;font-weight:600}.consenso input{width:22px;height:22px;flex:none;margin-top:2px}.consenso a{color:inherit}.errore{background:#ff6b5b!important;color:#16181d!important}
+.grazie{grid-column:1/-1;background:var(--inchiostro);color:var(--crema);border-radius:10px;padding:16px;font-weight:700;margin:0;max-width:none}
+.piede{background:var(--navy);color:#cfe0f5;font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:900px){.c4,.c5{grid-column:span 6}.c6,.c7,.c8{grid-column:span 12}.modulo form{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){body{padding:8px}.griglia{gap:8px}.c4,.c5,.c6,.c7,.c8,.c12{grid-column:span 12}.modulo form{grid-template-columns:1fr}.t{padding:18px}.operai{grid-template-columns:1fr}}
+/* scheda ore extra e firme */
+.ts{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;overflow:hidden}
+.ts-testa{display:flex;justify-content:space-between;gap:10px;align-items:center;background:var(--inchiostro);color:var(--crema);padding:10px 14px;font-size:17px}
+.ts-ok{background:#3fbf7f;color:var(--inchiostro);font-weight:800;border-radius:6px;padding:2px 9px;font-size:14px;white-space:nowrap}
+.ts-foto{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:12px 14px 0}
+.ts-foto svg{width:100%;height:auto;border-radius:4px;display:block}
+.ts-righe{padding:8px 14px 12px;font-variant-numeric:tabular-nums}
+.ts-righe div{display:flex;justify-content:space-between;gap:12px;padding:7px 0;border-top:1px solid #16181d22;font-size:15px}
+.ts-righe div:first-child{border-top:0}.ts-righe span{opacity:.7}
+.firme{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.firme div{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;padding:6px 8px;font-size:13px;font-weight:700;text-align:center}
+.firme svg{width:100%;height:40px;display:block}
+</style>
+</head>
+<body>
+<main class="griglia">
+
+  <header class="t c4 marca">
+    <div class="logo"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck.me</div>
+    <p class="per"><b>Pour les artisans qui travaillent à bord</b>Refit et aménagement de yachts et de navires. De 1 à 10 ouvriers : menuisiers, plaquistes, peintres, calorifugeurs, électriciens, plombiers.</p>
+  </header>
+
+  <section class="t c8 eroe giallo">
+    <span class="etichetta">Bientôt disponible</span>
+    <h1>Votre équipe à bord. <em>Chaque réserve levée.</em></h1>
+    <p class="sotto">Les heures par pont et par local, les réserves de l'armateur sur le plan, les travaux en régie signés, le matériel du magasin. Chacun lit dans sa langue.</p>
+    <a class="cta" href="#prova">Prévenez-moi à l’ouverture →</a>
+    <p class="nota">Créé par un chef de chantier d'aménagement naval, après 43 ans de chantier.</p>
+  </section>
+
+  <section class="t c5 fila-tel" aria-label="Écran de ceck sur le téléphone">
+    <div class="tel"><div class="schermo">
+      <div class="x testa"><svg viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>M/Y Aurora · Pont 3</div>
+      <div class="x lungo" style="background:var(--verde);color:var(--crema)">Saisir les heures<small style="color:var(--crema)">aujourd'hui · 5 ouvriers · 40 h</small></div>
+      <div class="x rosa"><small>Réserves armateur</small><span class="n">7</span><span><span class="palla" style="background:#e5352b"></span>3 urgentes</span></div>
+      <div class="x" style="background:var(--arancio)"><small>Régie</small><span class="n">12</span>à signer</div>
+      <div class="x menta"><small>Travail fait</small><span class="n">58%</span>
+        <svg viewBox="0 0 100 8" aria-hidden="true"><rect width="100" height="8" rx="4" fill="#ffffff99"/><rect width="58" height="8" rx="4" fill="#16181d"/></svg></div>
+      <div class="x lilla"><small>Livraison</small><span class="n" style="font-size:22px">20/03</span>dans les temps</div>
+      <div class="x lungo" style="background:#e9d9b8">Matériel du magasin<small>Mastic MS60 blanc · 12 cartouches</small></div>
+      <div class="x lungo azzurro">Tour avec l'armateur<small>vendredi · cabines invités</small></div>
+    </div></div>
+  </section>
+
+  <section class="t c7 menta tre" aria-label="En chiffres">
+    <div><span class="num">30″</span><b>pour saisir les heures de toute l'équipe</b><span>Par pont, par local, par travail.</span></div>
+    <div><span class="num">1</span><b>point sur le plan pour chaque réserve</b><span>Avec la photo, le couple et qui doit la lever.</span></div>
+    <div><span class="num">0</span><b>heure de régie perdue</b><span>Chaque heure en régie a sa photo et sa signature.</span></div>
+  </section>
+
+  <div class="t c12 titolo-sez"><h2>Voyez comment ça marche.</h2><p>Trois écrans que vous utilisez chaque jour à bord.</p></div>
+
+  <section class="t c7 carta" aria-label="Plan du pont avec les réserves">
+    <span class="etichetta">Pont 3 · cabines invités · couples 40–72</span>
+    <svg class="disegno" viewBox="0 0 640 370" role="img" aria-label="Plan du pont avec sept réserves : rouges à lever tout de suite, jaunes en cours, vertes levées">
+      <path d="M40 40 H470 C560 40 620 100 630 150 C620 200 560 260 470 260 H40 Z" fill="#fff" stroke="#16181d" stroke-width="4"/>
+      <path d="M150 40 V130 M260 40 V130 M370 40 V130 M150 170 V260 M260 170 V260 M370 170 V260 M470 40 V260" fill="none" stroke="#16181d" stroke-width="2.5"/>
+      <path d="M40 130 H470 M40 170 H470" fill="none" stroke="#16181d" stroke-width="2.5"/>
+      <g font-family="Figtree,Arial" font-size="14" font-weight="700" fill="#16181d77">
+        <text x="52" y="62">Cabine 1</text><text x="162" y="62">Cabine 2</text><text x="272" y="62">Cabine 3</text><text x="382" y="62">Cabine 4</text>
+        <text x="52" y="252">Cabine 5</text><text x="162" y="252">Cabine 6</text><text x="272" y="252">Cabine 7</text><text x="382" y="252">Cabine 8</text>
+        <text x="490" y="155">Salon</text><text x="52" y="155" font-size="12">Coursive</text>
+      </g>
+      <g font-family="Figtree,Arial" font-size="11" fill="#16181d88" text-anchor="middle">
+        <text x="40" y="285">couple 40</text><text x="150" y="285">48</text><text x="260" y="285">56</text><text x="370" y="285">64</text><text x="470" y="285">72</text>
+      </g>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="12" text-anchor="middle" dominant-baseline="central">
+        <circle class="batte" cx="320" cy="100" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="320" y="100">R12</text>
+        <circle class="batte" cx="210" cy="210" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="210" y="210">R14</text>
+        <circle class="batte" cx="540" cy="110" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="540" y="110">R15</text>
+        <circle cx="100" cy="100" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="100" y="100">R7</text>
+        <circle cx="420" cy="215" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="420" y="215">R9</text>
+        <circle cx="300" cy="215" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="300" y="215">R3</text>
+        <circle cx="200" cy="95" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="200" y="95">R5</text>
+      </g>
+      <path d="M557 112 C600 170 600 250 560 292" fill="none" stroke="#16181d" stroke-width="2"/>
+      <g transform="translate(400 292)">
+        <rect x="0" y="0" width="230" height="72" rx="6" fill="#16181d"/>
+        <rect x="8" y="8" width="56" height="56" rx="3" fill="#b9a586"/>
+        <path d="M12 28 H60 M12 44 H60" stroke="#7a5f3d" stroke-width="3"/>
+        <text x="74" y="24" font-family="Archivo,Arial" font-weight="900" font-size="14" fill="#fdffc9">R15 · Panneau</text>
+        <text x="74" y="43" font-family="Figtree,Arial" font-size="12" fill="#fdffc9cc">joint pas aligné</text>
+        <text x="74" y="61" font-family="Figtree,Arial" font-size="12" font-weight="700" fill="#ff8a7e">● Urgent · Ionuț</text>
+      </g>
+    </svg>
+    <div class="leggenda">
+      <span><i style="background:#ff5a4a"></i>À lever</span>
+      <span><i style="background:#ffd43b"></i>En cours</span>
+      <span><i style="background:#3fbf7f"></i>Vérifiée, prête pour l'armateur</span>
+    </div>
+  </section>
+  <section class="t c5 funz rosa">
+    <span class="etichetta">Les réserves</span>
+    <h3 class="grande">Le tour avec l'armateur, sur le plan du pont.</h3>
+    <p>Le capitaine ou l'inspecteur montre un panneau, un joint, une vis apparente. Touchez l'endroit, prenez la photo, confiez-la à votre ouvrier. Le point rouge veut dire tout de suite.</p>
+    <p>Une fois reprise, vous la vérifiez et elle passe au vert. Au tour suivant, vous ouvrez la liste à jour et vous levez tout, avec le PDF à envoyer au chantier.</p>
+  </section>
+
+  <section class="t c7 carta" aria-label="Fiche de travaux en régie">
+    <span class="etichetta">Régie · TS 014</span>
+    <div class="ts">
+      <div class="ts-testa"><b>Cabine 3 · refaire la tête de lit</b><span class="ts-ok">✓ Signé</span></div>
+      <div class="ts-foto" aria-hidden="true">
+        <svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#c9b9a0"/><rect x="18" y="16" width="84" height="40" fill="#e9dcc6" stroke="#7a5f3d" stroke-width="3"/><path d="M18 56 L102 16" stroke="#e5352b" stroke-width="4"/></svg>
+        <svg viewBox="0 0 120 80"><rect width="120" height="80" fill="#c9b9a0"/><rect x="18" y="16" width="84" height="40" fill="#f2ead9" stroke="#2f7d5b" stroke-width="3"/><path d="M40 36 l12 12 l26 -26" stroke="#2f7d5b" stroke-width="5" fill="none"/></svg>
+      </div>
+      <div class="ts-righe">
+        <div><span>Demandé par</span><b>Armateur · changement de tissu</b></div>
+        <div><span>Quand</span><b>14/03 · 07:30–13:30</b></div>
+        <div><span>Ouvriers</span><b>Ionuț, Paweł · 2 × 6 h</b></div>
+        <div><span>Total</span><b>12 h en régie</b></div>
+        <div><span>Signature du chantier</span><b>M. Ferrari · 14/03</b></div>
+      </div>
+    </div>
+  </section>
+  <section class="t c5 funz arancio">
+    <span class="etichetta">La régie</span>
+    <h3 class="grande">Les heures en régie qu’on vous paie vraiment.</h3>
+    <p>Chaque travail hors contrat a sa fiche : qui l'a demandé, la photo avant et après, les ouvriers et les heures. Le responsable signe sur le téléphone.</p>
+    <p>En fin de mois, vous envoyez le rapport au chantier. Fini les heures de régie oubliées ou contestées.</p>
+  </section>
+
+  <section class="t c7 carta" aria-label="Heures prévues et réelles par local">
+    <span class="etichetta">Heures du contrat et heures réelles · par local</span>
+    <svg class="disegno" viewBox="0 0 640 250" role="img" aria-label="Cabine armateur 120 prévues 104 réelles ; Salon 160 prévues 190 réelles ; Cabines invités 200 prévues 196 réelles ; Coursives 60 prévues 78 réelles">
+      <g font-family="Figtree,Arial" font-size="15" font-weight="700" fill="#16181d">
+        <text x="0" y="40">Cabine armateur</text><text x="0" y="98">Salon</text><text x="0" y="156">Cabines invités</text><text x="0" y="214">Coursives</text>
+      </g>
+      <g fill="#16181d1f">
+        <rect x="150" y="22" width="144" height="26"/><rect x="150" y="80" width="192" height="26"/><rect x="150" y="138" width="240" height="26"/><rect x="150" y="196" width="72" height="26"/>
+      </g>
+      <g>
+        <rect x="150" y="28" width="125" height="14" fill="#2f7d5b"/><rect x="150" y="86" width="228" height="14" fill="#ff5a4a"/>
+        <rect x="150" y="144" width="235" height="14" fill="#2f7d5b"/><rect x="150" y="202" width="94" height="14" fill="#ff5a4a"/>
+      </g>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="15" fill="#16181d">
+        <text x="306" y="41">104 / 120 h</text><text x="390" y="99">190 / 160 h · +19%</text><text x="402" y="157">196 / 200 h</text><text x="256" y="215">78 / 60 h · +30%</text>
+      </g>
+    </svg>
+    <div class="leggenda"><span><i style="background:#16181d1f;border-radius:2px"></i>Selon contrat</span><span><i style="background:#2f7d5b;border-radius:2px"></i>Réelles, dans les temps</span><span><i style="background:#ff5a4a;border-radius:2px"></i>Réelles, au-delà du contrat</span></div>
+  </section>
+  <section class="t c5 funz lilla">
+    <span class="etichetta">La marge</span>
+    <h3 class="grande">Vous savez dans quel local vous perdez de l'argent.</h3>
+    <p>Entrez les heures du contrat pour chaque local. ceck les compare aux heures réelles, reprises de réserves et travaux refaits compris.</p>
+    <p>Vous le voyez quand le navire est encore au chantier. Et au prochain refit, vous savez combien demander.</p>
+  </section>
+
+  <section class="t c4 funz azzurro">
+    <span class="etichetta">Le matériel</span>
+    <h3>Le bon au magasin en une minute</h3>
+    <p>Tapez les quantités, ceck envoie le PDF au magasin, même traduit, et vous en garde une copie.</p>
+    <div class="buono" aria-label="Exemple de bon au magasin">
+      <div><span>Bon · M/Y Aurora</span><span>Qté</span></div>
+      <div><span>Mastic MS60 blanc 600 ml</span><span>12</span></div>
+      <div><span>Vis autoperceuses 3,9 × 25</span><span>2 boîtes</span></div>
+      <div><span>Ruban de masquage 50 mm</span><span>10 rouleaux</span></div>
+    </div>
+  </section>
+  <section class="t c4 funz carta">
+    <span class="etichetta">Les échantillons</span>
+    <h3>L’échantillon validé, signé sur le téléphone</h3>
+    <p>Produits, lots, photos des étapes. Le contrôle qualité et l'armateur signent du doigt : ensuite, personne ne le modifie.</p>
+    <div class="firme" aria-label="Deux signatures sur l'échantillon">
+      <div><svg viewBox="0 0 120 40" aria-hidden="true"><path d="M6 30 C20 4 30 36 44 18 S70 6 80 26 S104 30 114 10" fill="none" stroke="#16181d" stroke-width="2.5"/></svg><span>Contrôle qualité</span></div>
+      <div><svg viewBox="0 0 120 40" aria-hidden="true"><path d="M8 24 C22 30 26 6 40 14 S58 34 70 20 S96 8 112 22" fill="none" stroke="#16181d" stroke-width="2.5"/></svg><span>Armateur</span></div>
+    </div>
+  </section>
+  <section class="t c4 funz giallo">
+    <span class="etichetta">Les langues</span>
+    <h3>Chaque ouvrier lit dans sa langue</h3>
+    <p>Français, italien, roumain, polonais, espagnol, anglais, allemand. Sous chaque texte, la deuxième langue.</p>
+    <div class="coppia">Refaire le joint du panneau en cabine 3<small>Refaceți rostul panoului din cabina 3</small></div>
+    <div class="coppia">Tour avec l'armateur vendredi<small>Turul cu armatorul vineri</small></div>
+  </section>
+
+  <section class="t c12 scuro" style="display:flex;flex-direction:column;justify-content:center;gap:12px">
+    <span class="etichetta" style="background:var(--giallo);color:var(--inchiostro);align-self:flex-start">Pourquoi ça marche</span>
+    <h2 style="font-size:clamp(26px,3vw,40px);font-weight:900;line-height:1.05">Ce n'est pas un logiciel de bureau. C'est fait pour ceux qui sont à bord.</h2>
+    <p style="color:#c9cbd3">Gros boutons, peu de texte, le pont et le local toujours en vue. Si vous ne savez pas faire, demandez à l'aide : elle répond dans votre langue.</p>
+  </section>
+
+  <section class="t c12 modulo arancio" id="prova">
+    <span class="etichetta">Essayez ceck</span>
+    <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Ça vous intéresse ?</h2>
+    <p>Nous vous envoyons le lien et un chantier naval d'exemple déjà prêt, pour voir tout de suite comment ça marche.</p>
+    <form id="form-prova" novalidate>
+      <label for="f-nome">Nom et prénom<input id="f-nome" name="nome" required autocomplete="name"></label>
+      <label for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
+      <label for="f-ditta">Nom de l'entreprise<input id="f-ditta" name="ditta" autocomplete="organization"></label>
+      <label for="f-citta">Ville<input id="f-citta" name="citta" required autocomplete="address-level2"></label>
+      <label for="f-persone">Combien êtes-vous<select id="f-persone" name="persone"><option>Moi seul</option><option selected>2–5</option><option>6–10</option><option>Plus de 10</option></select></label>
+      <label for="f-lavoro">Quels travaux faites-vous à bord<select id="f-lavoro" name="lavoro"><option>Menuiserie et agencement</option><option>Plâtrerie et panneaux</option><option>Peinture et vernissage</option><option>Isolation</option><option>Électricité</option><option>Plomberie et climatisation</option><option>Autre</option></select></label>
+      <input type="hidden" name="lingua" value="fr"><input type="hidden" name="tipo" value="navale">
+      <label class="consenso"><input type="checkbox" name="consenso" required> <span>Je veux recevoir un e-mail quand ceck ouvre. J’ai lu la <a href="privacy-fr.html">politique de confidentialité</a>.</span></label>
+      <button type="submit">Prévenez-moi à l’ouverture</button>
+      <p class="grazie" id="grazie" hidden>Merci ! Nous vous avons envoyé un e-mail : confirmez l’inscription et nous vous prévenons dès que ceck ouvre.</p>
+      <p class="grazie errore" id="errore" hidden>Échec de l’envoi : vérifiez la connexion et réessayez.</p>
+    </form>
+  </section>
+
+  <footer class="t c12 piede">
+    <span><a href="privacy-fr.html" class="ck-link">Confidentialité et mentions légales</a></span>
+    <span>ceck.me · l'appli de chantier pour ceux qui travaillent à bord</span>
+    <span>100 tak · SIRET 921 049 946 00038 · TVA non applicable, art. 293 B du CGI</span>
+                                                                  <span><a href="#" id="ck-apri" class="ck-link">Cookies</a></span>
+  </footer>
+</main>
+<script>
+document.getElementById('form-prova').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity&&f.reportValidity();return}
+const C=window.CECK_STRUMENTI||{},M=C.CAMPI||{},b=f.querySelector('button[type=submit]');b.disabled=true;
+try{if(!C.ISCRIZIONE)throw Error('modulo non collegato');{const d=new FormData();for(const [k,v] of new FormData(f)){if(M[k])d.append(M[k],v)}if(M.consenso)d.set(M.consenso,'1');
+d.append('email_address_check','');d.append('locale',f.lingua.value);await fetch(C.ISCRIZIONE,{method:'POST',mode:'no-cors',body:d})}
+document.getElementById('grazie').hidden=false;document.getElementById('errore').hidden=true;if(window.gtag)gtag('event','generate_lead',{lead_source:'ceck.me',tipo:f.tipo.value,lingua:f.lingua.value});if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD});f.querySelectorAll('input,select').forEach(x=>x.disabled=true)}
+catch(err){document.getElementById('errore').hidden=false;b.disabled=false}});
+</script>
+<!-- cookie:inizio -->
+<style>
+#ck{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:720px;margin:0 auto;background:#16181d;color:#fdffc9;padding:18px 20px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35);font:15px/1.45 system-ui,sans-serif}
+#ck[hidden],#ck-pref[hidden]{display:none}#ck b{display:block;font-size:17px;margin-bottom:4px}#ck p{margin:0 0 12px}
+#ck .ck-tasti{display:flex;flex-wrap:wrap;gap:8px}#ck button{font:800 15px system-ui,sans-serif;border:0;border-radius:9px;padding:11px 16px;cursor:pointer}
+#ck-si,#ck-no,#ck-salva{background:#f4f99c;color:#16181d}#ck-scegli{background:none;color:#fdffc9;text-decoration:underline}
+#ck-pref{margin:0 0 12px}#ck-pref label{display:flex;gap:8px;align-items:center;margin:6px 0}#ck-pref input{width:20px;height:20px}
+.ck-link{color:inherit;text-decoration:underline;cursor:pointer;background:none;border:0;font:inherit;padding:0}
+</style>
+<div id="ck" role="dialog" aria-live="polite" aria-label="Cookies" hidden><b>Cookies</b><p>Nous utilisons des cookies pour savoir quoi améliorer dans ceck et sur cette page, et pour mesurer la publicité. Ils ne sont activés que si vous acceptez. Vous pouvez changer d’avis à tout moment via « Cookies » en bas de page.</p><div id="ck-pref" hidden><label><input type="checkbox" checked disabled> <span>ceck (necessari)</span></label><label><input type="checkbox" id="ck-stat"> <span>Statistiques (Google Analytics, Microsoft Clarity)</span></label><label><input type="checkbox" id="ck-pub"> <span>Publicité (Google Ads)</span></label><button type="button" id="ck-salva">Enregistrer</button></div><div class="ck-tasti"><button type="button" id="ck-si">Tout accepter</button><button type="button" id="ck-no">Tout refuser</button><button type="button" id="ck-scegli">Personnaliser</button></div></div>
+<script>window.CECK_STRUMENTI={"GTM": "GTM-P9596T24", "GA": "", "ADS": "AW-18568911684", "CLARITY": "zc0w3xbqeo", "ISCRIZIONE": "https://8b6cb7dd.sibforms.com/serve/MUIFAMC5ZbaR1JMBwxaNW9eqUDl4E-7PiF0sJ2EMeZx-0ny4QEcK322Ls6FwqEb1a7sYpotYZI1GWwbp8TFUt3TzEcMc6Uh7tudpAABzewjDN7QimaiQCM2ushLLLx7kzof2Jsrfw29anw9p2kbRLH4xjoO_YGpq8uLy0MGsuVjj422LHsNIAendOdwGsoDDqvjGRS9ag5UzczcqQA==", "CAMPI": {"email": "EMAIL", "nome": "NOME", "citta": "CITTA", "ditta": "DITTA", "persone": "PERSONE", "lavoro": "LAVORO", "lingua": "LINGUA", "tipo": "TIPO"}, "ADS_LEAD": "AW-18568911684/cD00CNDMhrgdEMS2rJZF"};</script>
+<script>(()=>{const C=window.CECK_STRUMENTI||{},K='ceck_consenso',MAX=182*864e5,B=document.getElementById('ck');
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+let g=false;
+function applica(c){const s=v=>v?'granted':'denied';
+gtag('consent','update',{analytics_storage:s(c.stat),ad_storage:s(c.pub),ad_user_data:s(c.pub),ad_personalization:s(c.pub)});
+if((c.stat&&C.GA||c.pub&&C.ADS)&&!g){g=true;const t=document.createElement('script');t.async=true;t.src='https://www.googletagmanager.com/gtag/js?id='+(C.GA||C.ADS);document.head.appendChild(t);gtag('js',new Date());if(C.GA)gtag('config',C.GA);if(C.ADS)gtag('config',C.ADS)}
+if((c.stat||c.pub)&&C.GTM&&!window.ckGtm){window.ckGtm=1;dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});const t=document.createElement('script');t.async=true;t.src='https://www.googletagmanager.com/gtm.js?id='+C.GTM;document.head.appendChild(t)}
+if(c.stat&&C.CLARITY&&!window.clarity){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script',C.CLARITY)}
+if(window.clarity)window.clarity('consentv2',{ad_Storage:s(c.pub),analytics_Storage:s(c.stat)})}
+function salva(stat,pub){const c={stat,pub,t:Date.now()};try{localStorage.setItem(K,JSON.stringify(c))}catch(e){}applica(c);B.hidden=true}
+let c=null;try{c=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(c&&Date.now()-c.t<MAX)applica(c);else B.hidden=false;
+document.getElementById('ck-si').onclick=()=>salva(true,true);
+document.getElementById('ck-no').onclick=()=>salva(false,false);
+document.getElementById('ck-scegli').onclick=()=>{const p=document.getElementById('ck-pref');p.hidden=!p.hidden};
+document.getElementById('ck-salva').onclick=()=>salva(document.getElementById('ck-stat').checked,document.getElementById('ck-pub').checked);
+document.getElementById('ck-apri').onclick=e=>{e.preventDefault();if(c){document.getElementById('ck-stat').checked=!!c.stat;document.getElementById('ck-pub').checked=!!c.pub}B.hidden=false}})();</script>
+<!-- cookie:fine -->
+</body>
+</html>

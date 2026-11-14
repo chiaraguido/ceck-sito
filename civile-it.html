@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ceck per artigiani edili</title>
+<meta name="description" content="ceck: ore della squadra, foto dei lavori da sistemare, materiale e planning. Per artigiani e piccole imprese edili da 1 a 10 operai.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Un solo mondo, scuro: tessere di colore pieno come nell'app, telefoni e disegni al posto dei paragrafi. */
+:root{
+  --fondo:#141518; --navy:#0F2A44; --arancio:#F28C28; --carta:#fbfaf6; --inchiostro:#16181d; --crema:#fdffc9;
+  --giallo:#f4f99c; --azzurro:#a8cdfb; --menta:#86e0c6; --rosa:#f6cfe9; --lilla:#cdbcff; --rosso:#ff6b5b; --verde:#2f7d5b;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --testo:"Figtree","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fondo);color:var(--inchiostro);font-family:var(--testo);font-size:17px;line-height:1.5}
+body{padding:14px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:.4em 0;max-width:60ch}
+a{color:inherit}
+.griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;max-width:1240px;margin:0 auto}
+.t{border-radius:4px;padding:24px;position:relative;min-width:0}
+.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.etichetta{display:inline-block;background:var(--inchiostro);color:var(--crema);font-weight:700;font-size:13px;border-radius:7px;padding:3px 9px;margin-bottom:12px}
+.giallo{background:var(--giallo)}.menta{background:var(--menta)}.rosa{background:var(--rosa)}.lilla{background:var(--lilla)}.azzurro{background:var(--azzurro)}.carta{background:var(--carta)}.arancio{background:var(--arancio)}.scuro{background:#22242a;color:var(--crema)}
+.grande{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.05}
+/* testata */
+.marca{background:var(--navy);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:26px}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.03em}
+.logo svg{width:52px;height:52px}
+.marca .per{font-size:15px;color:#cfe0f5}
+.marca .per b{display:block;color:#fff;font-family:var(--display);font-size:22px;line-height:1.15;margin-bottom:4px}
+.eroe h1{font-size:clamp(36px,5.4vw,70px);line-height:.98;font-weight:900}
+.eroe h1 em{font-style:normal;background:var(--inchiostro);color:var(--giallo);padding:0 .15em;border-radius:4px}
+.eroe .sotto{font-size:19px;margin-top:16px}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--inchiostro);color:var(--crema);font-weight:800;text-decoration:none;border-radius:10px;padding:14px 22px;font-size:18px}
+.cta:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--arancio);outline-offset:2px}
+.nota{font-size:14px;opacity:.75;margin-top:10px}
+/* telefono */
+.tel{width:min(300px,100%);margin:0 auto;background:#0b0c0e;border-radius:34px;padding:12px;box-shadow:0 0 0 2px #2c2f36,0 18px 40px #0008}
+.schermo{background:#141518;border-radius:24px;overflow:hidden;padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px}
+.schermo .x{border-radius:3px;padding:9px 10px;font-weight:800;color:var(--inchiostro);min-height:58px;display:flex;flex-direction:column;justify-content:space-between}
+.schermo .x small{font-weight:600;opacity:.7;font-size:10px}
+.schermo .x .n{font-family:var(--display);font-size:28px;line-height:1}
+.schermo .lungo{grid-column:span 2}
+.schermo .testa{grid-column:span 2;background:var(--navy);color:#fff;display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:16px;min-height:44px}
+.schermo .testa svg{width:24px;height:24px}
+.palla{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.fila-tel{display:flex;align-items:center;justify-content:center;background:#1c1e23}
+/* numeri grandi */
+.tre{display:grid;gap:10px;align-content:center}
+.tre div{background:#ffffffb8;border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.tre .num{font-family:var(--display);font-weight:900;font-size:44px;line-height:1;grid-row:span 2;font-variant-numeric:tabular-nums}
+.tre b{font-size:18px}.tre span{font-size:14px;opacity:.75}
+/* grafici */
+svg.disegno{width:100%;height:auto;display:block}
+.operai{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.operai li{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;padding:7px 10px;display:flex;justify-content:space-between;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.operai li::before{content:"";width:16px;height:16px;border-radius:3px;background:var(--verde);margin-right:8px;flex:none;align-self:center}
+.operai li span{margin-right:auto}
+.leggenda{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;font-weight:700;margin-top:10px}
+.leggenda span{display:inline-flex;align-items:center;gap:6px}
+.leggenda i{width:14px;height:14px;border-radius:50%;display:inline-block;border:2px solid var(--inchiostro)}
+@media (prefers-reduced-motion:no-preference){.batte{animation:batte 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}}
+@keyframes batte{50%{transform:scale(1.22)}}
+.titolo-sez{background:var(--inchiostro);color:#fff;padding:28px 24px 20px}
+.titolo-sez h2{font-size:clamp(28px,3.6vw,46px);font-weight:900}
+.titolo-sez p{color:#c9cbd3;font-size:18px}
+/* tessere piccole */
+.funz h3{font-size:24px;margin-bottom:8px;line-height:1.1}
+.buono{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;margin-top:12px;font-size:14px;font-variant-numeric:tabular-nums}
+.buono div{display:flex;justify-content:space-between;padding:7px 12px;border-top:1px solid #16181d22}
+.buono div:first-child{border-top:0;background:var(--inchiostro);color:var(--crema);font-weight:800}
+.coppia{background:#fff;border-radius:6px;padding:10px 14px;margin-top:8px;font-weight:700}
+.coppia small{display:block;font-weight:600;opacity:.6;font-size:.8em}
+.scheda{background:rgba(255,255,255,.55);border-radius:10px;padding:10px 12px;line-height:1.5}.vai{font-weight:800;color:inherit}.fumetto img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #d8dee6}.fumetto-piede{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin:14px 4px 6px}.fumetto-piede b{font-size:clamp(18px,2.2vw,28px);font-weight:900;line-height:1.15}.fumetto-piede u{text-decoration-color:#2bb5a0;text-decoration-thickness:4px;text-underline-offset:6px}.fumetto-logo{display:flex;align-items:center;gap:10px;font-size:34px;font-weight:900;color:#0F2A44;padding-right:22px;border-right:2px solid #0F2A44}.fumetto-logo svg{width:46px;height:46px}.fumetto small{opacity:.7}@media (max-width:600px){.fumetto-logo{border:0;padding:0}}
+/* prezzi */
+.prezzo .chi{font-family:var(--display);font-weight:900;font-size:24px}
+.prezzo table{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums}
+.prezzo td{padding:9px 0;border-top:1px solid #16181d22}
+.prezzo td:last-child{text-align:right;font-family:var(--display);font-weight:900;font-size:24px}
+.prezzo .evid td{background:var(--giallo)}
+.prezzo .evid td:first-child{padding-left:8px;font-weight:800}.prezzo .evid td:last-child{padding-right:8px}
+/* modulo */
+.modulo form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.modulo label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:14px}
+.modulo input,.modulo select{font:inherit;font-size:16px;border:2px solid var(--inchiostro);border-radius:8px;padding:11px 12px;background:#fff;color:var(--inchiostro);min-height:48px}
+.modulo button{grid-column:1/-1;font:inherit;font-weight:800;font-size:19px;border:0;border-radius:10px;padding:16px;background:var(--inchiostro);color:var(--crema);cursor:pointer}
+.consenso{grid-column:1/-1;display:flex!important;flex-direction:row!important;gap:10px;align-items:flex-start;font-weight:600}.consenso input{width:22px;height:22px;flex:none;margin-top:2px}.consenso a{color:inherit}.errore{background:#ff6b5b!important;color:#16181d!important}
+.grazie{grid-column:1/-1;background:var(--inchiostro);color:var(--crema);border-radius:10px;padding:16px;font-weight:700;margin:0;max-width:none}
+.piede{background:var(--navy);color:#cfe0f5;font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:900px){.c4,.c5{grid-column:span 6}.c6,.c7,.c8{grid-column:span 12}.modulo form{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.marca{order:-2}.su-cel{order:-1}body{padding:8px}.griglia{gap:8px}.c4,.c5,.c6,.c7,.c8,.c12{grid-column:span 12}.modulo form{grid-template-columns:1fr}.t{padding:18px}.operai{grid-template-columns:1fr}}
+</style>
+<style>/* sfondi fantasma: grandi opere (foto Wikimedia Commons, crediti in fondo) */.titolo-sez{background:linear-gradient(90deg,rgba(22,24,29,.85) 0%,rgba(22,24,29,.35) 60%,rgba(22,24,29,.2) 100%),url(ghost-colosseo.jpg) center 45%/cover no-repeat,var(--inchiostro)}.scuro{background:linear-gradient(90deg,rgba(34,36,42,.85) 0%,rgba(34,36,42,.35) 65%,rgba(34,36,42,.15) 100%),url(ghost-firenze.jpg) center 55%/cover no-repeat,#22242a}.fila-tel{background:linear-gradient(rgba(20,21,24,.25),rgba(20,21,24,.45)),url(ghost-pisa.jpg) center/cover no-repeat,var(--fondo)}.marca{background:linear-gradient(180deg,rgba(15,42,68,.55) 0%,rgba(15,42,68,0) 25%,rgba(15,42,68,.1) 55%,rgba(15,42,68,.92) 82%),url(ghost-operai.jpg) 50% 30%/cover no-repeat,var(--navy)}@media(max-width:700px){.marca{background:linear-gradient(90deg,rgba(15,42,68,.95) 0%,rgba(15,42,68,.8) 50%,rgba(15,42,68,.1) 100%),url(ghost-operai.jpg) 100% 35%/60% auto no-repeat,var(--navy)}}.crediti-foto{font-size:11px;opacity:.55}.crediti-foto a{color:inherit}</style>
+</head>
+<body>
+<main class="griglia">
+
+  <header class="t c4 marca">
+    <div class="logo"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck.me</div>
+    <p class="per"><b>Per artigiani e piccole imprese edili</b>Da 1 a 10 operai. Muratori, cartongessisti, piastrellisti, pittori, impiantisti.</p>
+  </header>
+
+  <section class="t c8 eroe giallo">
+    <span class="etichetta">Presto disponibile</span>
+    <h1>La tua squadra e i tuoi cantieri. <em>Nel telefono.</em></h1>
+    <p class="sotto">Le ore di ogni operaio, le foto dei lavori da sistemare, il materiale da ordinare. Un minuto al giorno, direttamente dal cantiere. Niente più fogli e messaggi persi.</p>
+    <a class="cta" href="#prova">Avvisami quando apre →</a>
+    <p class="nota">Fatto da un capocantiere, dopo 43 anni di cantiere.</p>
+  </section>
+
+  <section class="t c5 fila-tel" aria-label="Schermata di ceck sul telefono">
+    <div class="tel"><div class="schermo">
+      <div class="x testa"><svg viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>Via Assarotti 14</div>
+      <div class="x lungo" style="background:var(--verde);color:var(--crema)">Registra le ore<small style="color:var(--crema)">oggi · 4 operai · 32 ore</small></div>
+      <div class="x rosa"><small>Da sistemare</small><span class="n">5</span><span><span class="palla" style="background:#e5352b"></span>2 subito</span></div>
+      <div class="x" style="background:var(--rosso)"><small>Bloccati</small><span class="n">1</span>manca il materiale</div>
+      <div class="x menta"><small>Lavoro fatto</small><span class="n">62%</span>
+        <svg viewBox="0 0 100 8" aria-hidden="true"><rect width="100" height="8" rx="4" fill="#ffffff99"/><rect width="62" height="8" rx="4" fill="#16181d"/></svg></div>
+      <div class="x lilla"><small>Fine lavori</small><span class="n" style="font-size:22px">12/12</span>in tempo</div>
+      <div class="x lungo" style="background:#e9d9b8">Materiale per domani<small>Colla piastrelle C2 · 6 sacchi</small></div>
+      <div class="x lungo azzurro">Planning del cliente<small>vede solo le date, non i tuoi conti</small></div>
+    </div></div>
+  </section>
+
+  <section class="t c7 menta tre" aria-label="In numeri">
+    <div><span class="num">30″</span><b>per segnare le ore di tutta la squadra</b><span>Spunti chi c'era, scrivi le ore, fatto.</span></div>
+    <div><span class="num">1</span><b>foto per ogni lavoro da sistemare</b><span>Sulla piantina, con il punto preciso.</span></div>
+    <div><span class="num">0</span><b>fogli da ricopiare la sera</b><span>A fine mese il rapporto è già pronto.</span></div>
+  </section>
+
+  <div class="t c12 titolo-sez"><h2>Guarda come funziona.</h2><p>Tre schermate che usi ogni giorno.</p></div>
+
+  <section class="t c7 carta" aria-label="Grafico delle ore per settimana">
+    <span class="etichetta">Ore della squadra · ultime 6 settimane</span>
+    <svg class="disegno" viewBox="0 0 640 260" role="img" aria-label="Ore per settimana: 152, 168, 160, 176, 144, 172. Ore previste 160 a settimana.">
+      <g font-family="Figtree,Arial" font-size="13" fill="#16181d99">
+        <line x1="50" x2="630" y1="220" y2="220" stroke="#16181d"/>
+        <line x1="50" x2="630" y1="170" y2="170" stroke="#16181d22"/><text x="40" y="174" text-anchor="end">50</text>
+        <line x1="50" x2="630" y1="120" y2="120" stroke="#16181d22"/><text x="40" y="124" text-anchor="end">100</text>
+        <line x1="50" x2="630" y1="70" y2="70" stroke="#16181d22"/><text x="40" y="74" text-anchor="end">150</text>
+        <line x1="50" x2="630" y1="20" y2="20" stroke="#16181d22"/><text x="40" y="24" text-anchor="end">200</text>
+        <text x="40" y="224" text-anchor="end">0</text>
+      </g>
+      <g fill="#2f7d5b">
+        <rect x="80" y="68" width="60" height="152"/><rect x="175" y="52" width="60" height="168"/><rect x="270" y="60" width="60" height="160"/>
+        <rect x="365" y="44" width="60" height="176"/><rect x="460" y="76" width="60" height="144" fill="#ff6b5b"/><rect x="555" y="48" width="60" height="172"/>
+      </g>
+      <line x1="50" x2="630" y1="60" y2="60" stroke="#16181d" stroke-width="2" stroke-dasharray="7 5"/>
+      <rect x="52" y="4" width="118" height="22" rx="4" fill="#16181d"/><text x="111" y="20" text-anchor="middle" font-family="Figtree,Arial" font-size="13" font-weight="700" fill="#fdffc9">- - previste 160</text>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="16" fill="#fff" text-anchor="middle">
+        <text x="110" y="96">152</text><text x="205" y="80">168</text><text x="300" y="88">160</text><text x="395" y="72">176</text><text x="490" y="104" fill="#16181d">144</text><text x="585" y="76">172</text>
+      </g>
+      <g font-family="Figtree,Arial" font-size="13" fill="#16181d99" text-anchor="middle">
+        <text x="110" y="242">sett. 41</text><text x="205" y="242">sett. 42</text><text x="300" y="242">sett. 43</text><text x="395" y="242">sett. 44</text><text x="490" y="242">sett. 45</text><text x="585" y="242">sett. 46</text>
+      </g>
+    </svg>
+    <ul class="operai" aria-label="Ore di oggi">
+      <li><span>Marco</span>8 h</li><li><span>Ionuț</span>8 h</li><li><span>Luca</span>8 h</li><li><span>Ardit</span>8 h</li>
+    </ul>
+  </section>
+  <section class="t c5 funz menta">
+    <span class="etichetta">Le ore</span>
+    <h3 class="grande">Sette operai. Nove ore ciascuno. Una sola registrazione.</h3>
+    <p class="scheda"><b>Cantiere dimostrativo:</b> Appartamento Via Assarotti<br><b>Locale:</b> Soggiorno<br><b>Lavorazione:</b> Posa della struttura primaria del soffitto<br><b>Tipo:</b> Prima esecuzione</p>
+    <p>Selezioni i sette operai, inserisci <b>9 ore per ciascuno</b> e confermi.</p>
+    <p>ceck registra <b>63 ore complessive</b>, associate al locale, alla lavorazione e ai singoli operai.</p>
+    <p><a class="vai" href="#prova">Lascia la tua email: ti avvisiamo quando ceck apre.</a></p>
+  </section>
+<!-- fumetto:inizio -->
+  <section class="t c12 carta fumetto" aria-label="Schermata di ceck: le ore della squadra registrate in una volta">
+    <img src="ore-squadra-it.jpg" width="1400" height="460" loading="lazy" alt="Schermata di ceck: quattro operai di Brenta Costruzioni spuntati, ognuno con il suo lavoro e 9 ore. 4 persone, 36 ore.">
+    <div class="fumetto-piede"><span class="fumetto-logo"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck</span><b>La squadra cambia lavoro. Le ore restano <u>in ordine</u>.</b></div>
+    <small>Schermata vera di ceck, cantiere di esempio con dati dimostrativi.</small>
+  </section>
+<!-- fumetto:fine -->
+
+  <section class="t c7 carta su-cel" aria-label="Piantina di un appartamento con i lavori da sistemare">
+    <span class="etichetta">Appartamento · Via Assarotti 14 · 3° piano</span>
+    <svg class="disegno" viewBox="0 0 640 330" role="img" aria-label="Piantina con sei punti: rossi da sistemare subito, gialli in corso, verdi sistemati">
+      <rect x="10" y="10" width="620" height="290" fill="#fff" stroke="#16181d" stroke-width="4"/>
+      <path d="M250 10 V180 M250 230 V300 M10 170 H120 M170 170 H250 M250 140 H400 M450 140 H630 M420 140 V300" fill="none" stroke="#16181d" stroke-width="3"/>
+      <g font-family="Figtree,Arial" font-size="15" font-weight="700" fill="#16181d77">
+        <text x="30" y="150">Soggiorno</text><text x="30" y="200">Cucina</text><text x="270" y="40">Camera</text><text x="270" y="170">Corridoio</text><text x="440" y="170">Bagno</text><text x="440" y="40">Camera 2</text>
+      </g>
+      <g fill="none" stroke="#16181d33" stroke-width="2"><rect x="40" y="220" width="160" height="30"/><rect x="460" y="230" width="60" height="50" rx="10"/><rect x="560" y="200" width="50" height="80"/><rect x="300" y="50" width="90" height="70"/></g>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="12" text-anchor="middle" dominant-baseline="central">
+        <circle class="batte" cx="215" cy="140" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="215" y="140">R1</text>
+        <circle class="batte" cx="500" cy="210" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="500" y="210">R4</text>
+        <circle cx="200" cy="260" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="200" y="260">R2</text>
+        <circle cx="560" cy="80" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="560" y="80">R6</text>
+        <circle cx="330" cy="200" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="330" y="200">R3</text>
+        <circle cx="360" cy="90" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="360" y="90">R5</text>
+      </g>
+      <g transform="translate(24 22)">
+        <path d="M150 60 L176 106" stroke="#16181d" stroke-width="2"/>
+        <rect x="0" y="0" width="172" height="76" rx="6" fill="#16181d"/>
+        <rect x="8" y="8" width="60" height="60" rx="3" fill="#c9b9a0"/>
+        <path d="M14 58 L40 30 L50 44 L62 22" stroke="#7a5f3d" stroke-width="3" fill="none"/>
+        <text x="76" y="24" font-family="Archivo,Arial" font-weight="900" font-size="13" fill="#fdffc9">R1 · Crepa</text>
+        <text x="76" y="42" font-family="Figtree,Arial" font-size="11" fill="#fdffc9cc">angolo finestra</text>
+        <text x="76" y="60" font-family="Figtree,Arial" font-size="11" font-weight="700" fill="#ff8a7e">● Subito · Marco</text>
+      </g>
+    </svg>
+    <div class="leggenda">
+      <span><i style="background:#ff5a4a"></i>Da sistemare</span>
+      <span><i style="background:#ffd43b"></i>In corso</span>
+      <span><i style="background:#3fbf7f"></i>Sistemato, pronto per il cliente</span>
+    </div>
+  </section>
+  <section class="t c5 funz rosa">
+    <span class="etichetta">I lavori da sistemare</span>
+    <h3 class="grande">Il cliente indica, tu tocchi la piantina.</h3>
+    <p>Una crepa, un battiscopa storto, una presa da spostare. Tocchi il punto, scatti la foto, lo dai a un operaio. Il pallino rosso vuol dire subito.</p>
+    <p>Quando è sistemato diventa verde. Alla consegna fai il giro con il cliente e chiudi tutto, con il PDF firmato da mandare.</p>
+  </section>
+
+  <section class="t c7 carta" aria-label="Ore previste e ore reali per lavoro">
+    <span class="etichetta">Ore previste e ore vere · per lavoro</span>
+    <svg class="disegno" viewBox="0 0 640 250" role="img" aria-label="Massetto 40 previste 36 reali; Cartongesso 80 previste 92 reali; Pittura 60 previste 58 reali; Piastrelle bagno 48 previste 61 reali">
+      <g font-family="Figtree,Arial" font-size="15" font-weight="700" fill="#16181d">
+        <text x="0" y="40">Massetto</text><text x="0" y="98">Cartongesso</text><text x="0" y="156">Pittura</text><text x="0" y="214">Piastrelle bagno</text>
+      </g>
+      <g fill="#16181d1f">
+        <rect x="150" y="22" width="120" height="26"/><rect x="150" y="80" width="240" height="26"/><rect x="150" y="138" width="180" height="26"/><rect x="150" y="196" width="144" height="26"/>
+      </g>
+      <g>
+        <rect x="150" y="28" width="108" height="14" fill="#2f7d5b"/><rect x="150" y="86" width="276" height="14" fill="#ff5a4a"/>
+        <rect x="150" y="144" width="174" height="14" fill="#2f7d5b"/><rect x="150" y="202" width="183" height="14" fill="#ff5a4a"/>
+      </g>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="15" fill="#16181d">
+        <text x="282" y="41">36 / 40 h</text><text x="438" y="99">92 / 80 h · +15%</text><text x="342" y="157">58 / 60 h</text><text x="345" y="215">61 / 48 h · +27%</text>
+      </g>
+    </svg>
+    <div class="leggenda"><span><i style="background:#16181d1f;border-radius:2px"></i>Previste dal preventivo</span><span><i style="background:#2f7d5b;border-radius:2px"></i>Vere, nei tempi</span><span><i style="background:#ff5a4a;border-radius:2px"></i>Vere, fuori preventivo</span></div>
+  </section>
+  <section class="t c5 funz lilla">
+    <span class="etichetta">Il guadagno</span>
+    <h3 class="grande">Sai su quale lavoro ci stai rimettendo.</h3>
+    <p>Metti le ore del preventivo per ogni lavoro. ceck le confronta con quelle vere, anche le riprese e i lavori rifatti.</p>
+    <p>Lo vedi mentre lavori, non a cantiere chiuso. E al prossimo preventivo sai quanto chiedere.</p>
+  </section>
+  <section class="t c5 funz giallo">
+    <span class="etichetta">Il sopralluogo</span>
+    <h3 class="grande">Misuri una volta. La misura resta sulla foto.</h3>
+    <p>Fotografi il vano, tiri la linea col dito e scrivi la misura. Una lente ti aiuta a prendere il punto preciso.</p>
+    <p>Sulla piantina segni dove eri e da che parte guardavi. Il PDF con foto, misure e piantina parte al fornitore o al cliente.</p>
+  </section>
+  <section class="t c7 carta" aria-label="Rilievo misura: foto del vano con le quote e piantina con il punto di vista">
+    <span class="etichetta">📏 Rilievo misura · Soggiorno</span>
+    <svg class="disegno" viewBox="0 0 640 270" role="img" aria-label="Foto di un vano finestra con tre misure in giallo: larghezza 1200 mm, altezza 1450 mm, davanzale a 900 mm da terra. Accanto la piantina con il punto e il cono di vista verso la parete.">
+      <defs><clipPath id="sl-foto"><rect x="12" y="10" width="380" height="250" rx="10"/></clipPath></defs>
+      <g clip-path="url(#sl-foto)">
+        <rect x="12" y="10" width="380" height="250" fill="#c8735a"/>
+        <g fill="#d4836a"><rect x="12" y="20" width="42" height="16" rx="1"/><rect x="44" y="20" width="42" height="16" rx="1"/><rect x="88" y="20" width="42" height="16" rx="1"/><rect x="132" y="20" width="42" height="16" rx="1"/><rect x="176" y="20" width="42" height="16" rx="1"/><rect x="220" y="20" width="42" height="16" rx="1"/><rect x="264" y="20" width="42" height="16" rx="1"/><rect x="308" y="20" width="42" height="16" rx="1"/><rect x="352" y="20" width="40" height="16" rx="1"/><rect x="12" y="38" width="42" height="16" rx="1"/><rect x="22" y="38" width="42" height="16" rx="1"/><rect x="66" y="38" width="42" height="16" rx="1"/><rect x="110" y="38" width="42" height="16" rx="1"/><rect x="154" y="38" width="42" height="16" rx="1"/><rect x="198" y="38" width="42" height="16" rx="1"/><rect x="242" y="38" width="42" height="16" rx="1"/><rect x="286" y="38" width="42" height="16" rx="1"/><rect x="330" y="38" width="42" height="16" rx="1"/><rect x="374" y="38" width="18" height="16" rx="1"/><rect x="12" y="56" width="42" height="16" rx="1"/><rect x="44" y="56" width="42" height="16" rx="1"/><rect x="88" y="56" width="42" height="16" rx="1"/><rect x="132" y="56" width="42" height="16" rx="1"/><rect x="176" y="56" width="42" height="16" rx="1"/><rect x="220" y="56" width="42" height="16" rx="1"/><rect x="264" y="56" width="42" height="16" rx="1"/><rect x="308" y="56" width="42" height="16" rx="1"/><rect x="352" y="56" width="40" height="16" rx="1"/><rect x="12" y="74" width="42" height="16" rx="1"/><rect x="22" y="74" width="42" height="16" rx="1"/><rect x="66" y="74" width="42" height="16" rx="1"/><rect x="110" y="74" width="42" height="16" rx="1"/><rect x="154" y="74" width="42" height="16" rx="1"/><rect x="198" y="74" width="42" height="16" rx="1"/><rect x="242" y="74" width="42" height="16" rx="1"/><rect x="286" y="74" width="42" height="16" rx="1"/><rect x="330" y="74" width="42" height="16" rx="1"/><rect x="374" y="74" width="18" height="16" rx="1"/><rect x="12" y="92" width="42" height="16" rx="1"/><rect x="44" y="92" width="42" height="16" rx="1"/><rect x="88" y="92" width="42" height="16" rx="1"/><rect x="132" y="92" width="42" height="16" rx="1"/><rect x="176" y="92" width="42" height="16" rx="1"/><rect x="220" y="92" width="42" height="16" rx="1"/><rect x="264" y="92" width="42" height="16" rx="1"/><rect x="308" y="92" width="42" height="16" rx="1"/><rect x="352" y="92" width="40" height="16" rx="1"/><rect x="12" y="110" width="42" height="16" rx="1"/><rect x="22" y="110" width="42" height="16" rx="1"/><rect x="66" y="110" width="42" height="16" rx="1"/><rect x="110" y="110" width="42" height="16" rx="1"/><rect x="154" y="110" width="42" height="16" rx="1"/><rect x="198" y="110" width="42" height="16" rx="1"/><rect x="242" y="110" width="42" height="16" rx="1"/><rect x="286" y="110" width="42" height="16" rx="1"/><rect x="330" y="110" width="42" height="16" rx="1"/><rect x="374" y="110" width="18" height="16" rx="1"/><rect x="12" y="128" width="42" height="16" rx="1"/><rect x="44" y="128" width="42" height="16" rx="1"/><rect x="88" y="128" width="42" height="16" rx="1"/><rect x="132" y="128" width="42" height="16" rx="1"/><rect x="176" y="128" width="42" height="16" rx="1"/><rect x="220" y="128" width="42" height="16" rx="1"/><rect x="264" y="128" width="42" height="16" rx="1"/><rect x="308" y="128" width="42" height="16" rx="1"/><rect x="352" y="128" width="40" height="16" rx="1"/><rect x="12" y="146" width="42" height="16" rx="1"/><rect x="22" y="146" width="42" height="16" rx="1"/><rect x="66" y="146" width="42" height="16" rx="1"/><rect x="110" y="146" width="42" height="16" rx="1"/><rect x="154" y="146" width="42" height="16" rx="1"/><rect x="198" y="146" width="42" height="16" rx="1"/><rect x="242" y="146" width="42" height="16" rx="1"/><rect x="286" y="146" width="42" height="16" rx="1"/><rect x="330" y="146" width="42" height="16" rx="1"/><rect x="374" y="146" width="18" height="16" rx="1"/><rect x="12" y="164" width="42" height="16" rx="1"/><rect x="44" y="164" width="42" height="16" rx="1"/><rect x="88" y="164" width="42" height="16" rx="1"/><rect x="132" y="164" width="42" height="16" rx="1"/><rect x="176" y="164" width="42" height="16" rx="1"/><rect x="220" y="164" width="42" height="16" rx="1"/><rect x="264" y="164" width="42" height="16" rx="1"/><rect x="308" y="164" width="42" height="16" rx="1"/><rect x="352" y="164" width="40" height="16" rx="1"/><rect x="12" y="182" width="42" height="16" rx="1"/><rect x="22" y="182" width="42" height="16" rx="1"/><rect x="66" y="182" width="42" height="16" rx="1"/><rect x="110" y="182" width="42" height="16" rx="1"/><rect x="154" y="182" width="42" height="16" rx="1"/><rect x="198" y="182" width="42" height="16" rx="1"/><rect x="242" y="182" width="42" height="16" rx="1"/><rect x="286" y="182" width="42" height="16" rx="1"/><rect x="330" y="182" width="42" height="16" rx="1"/><rect x="374" y="182" width="18" height="16" rx="1"/><rect x="12" y="200" width="42" height="16" rx="1"/><rect x="44" y="200" width="42" height="16" rx="1"/><rect x="88" y="200" width="42" height="16" rx="1"/><rect x="132" y="200" width="42" height="16" rx="1"/><rect x="176" y="200" width="42" height="16" rx="1"/><rect x="220" y="200" width="42" height="16" rx="1"/><rect x="264" y="200" width="42" height="16" rx="1"/><rect x="308" y="200" width="42" height="16" rx="1"/><rect x="352" y="200" width="40" height="16" rx="1"/><rect x="12" y="218" width="42" height="16" rx="1"/><rect x="22" y="218" width="42" height="16" rx="1"/><rect x="66" y="218" width="42" height="16" rx="1"/><rect x="110" y="218" width="42" height="16" rx="1"/><rect x="154" y="218" width="42" height="16" rx="1"/><rect x="198" y="218" width="42" height="16" rx="1"/><rect x="242" y="218" width="42" height="16" rx="1"/><rect x="286" y="218" width="42" height="16" rx="1"/><rect x="330" y="218" width="42" height="16" rx="1"/><rect x="374" y="218" width="18" height="16" rx="1"/><rect x="12" y="236" width="42" height="16" rx="1"/><rect x="44" y="236" width="42" height="16" rx="1"/><rect x="88" y="236" width="42" height="16" rx="1"/><rect x="132" y="236" width="42" height="16" rx="1"/><rect x="176" y="236" width="42" height="16" rx="1"/><rect x="220" y="236" width="42" height="16" rx="1"/><rect x="264" y="236" width="42" height="16" rx="1"/><rect x="308" y="236" width="42" height="16" rx="1"/><rect x="352" y="236" width="40" height="16" rx="1"/></g>
+        <rect x="12" y="232" width="380" height="28" fill="#9b968e"/>
+        <rect x="120" y="44" width="170" height="142" fill="#2b3440"/>
+        <rect x="112" y="186" width="186" height="10" fill="#b9b4aa"/>
+      </g>
+      <rect x="12" y="10" width="380" height="250" rx="10" fill="none" stroke="#16181d" stroke-width="2"/>
+      <g stroke="#ffe600" stroke-width="4" fill="#ffe600">
+        <line x1="124" y1="62" x2="286" y2="62"/><path d="M124 62l12-7v14z M286 62l-12-7v14z" stroke="none"/>
+        <line x1="306" y1="46" x2="306" y2="184"/><path d="M306 46l-7 12h14z M306 184l-7-12h14z" stroke="none"/>
+        <line x1="90" y1="194" x2="90" y2="230"/><path d="M90 194l-7 12h14z M90 230l-7-12h14z" stroke="none"/>
+      </g>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="15" fill="#ffe600">
+        <rect x="168" y="51" width="76" height="22" fill="#111114"/><text x="175" y="68">1200 mm</text>
+        <rect x="316" y="104" width="76" height="22" fill="#111114"/><text x="323" y="121">1450 mm</text>
+        <rect x="22" y="201" width="64" height="22" fill="#111114"/><text x="28" y="218">900 mm</text>
+      </g>
+      <g transform="translate(418 30)">
+        <rect width="210" height="200" rx="8" fill="#fff" stroke="#16181d33"/>
+        <g fill="none" stroke="#16181d" stroke-width="5"><rect x="16" y="16" width="178" height="168"/><line x1="110" y1="16" x2="110" y2="110"/><line x1="16" y1="110" x2="150" y2="110"/></g>
+        <g stroke="#fff" stroke-width="7"><line x1="40" y1="16" x2="90" y2="16"/><line x1="130" y1="110" x2="150" y2="110"/></g>
+        <g stroke="#16181d" stroke-width="2"><line x1="40" y1="13" x2="90" y2="13"/><line x1="40" y1="19" x2="90" y2="19"/></g>
+        <path d="M65 78 L35 30 A58 58 0 0 1 95 30 Z" fill="#f28c2866" stroke="#f28c28" stroke-width="2"/>
+        <circle cx="65" cy="78" r="8" fill="#0F2A44" stroke="#fff" stroke-width="3"/>
+        <g font-family="Figtree,Arial" font-weight="700" font-size="13" fill="#16181d"><text x="30" y="98">Soggiorno</text><text x="122" y="150">Cucina</text></g>
+      </g>
+      <text x="418" y="256" font-family="Figtree,Arial" font-size="13" font-weight="700" fill="#16181d">Dove eri, da che parte guardavi</text>
+    </svg>
+  </section>
+
+  <section class="t c4 funz azzurro">
+    <span class="etichetta">Il materiale</span>
+    <h3>L'ordine al fornitore in un minuto</h3>
+    <p>Scrivi le quantità, ceck manda il PDF al fornitore e te ne tiene una copia.</p>
+    <div class="buono" aria-label="Esempio di buono d'ordine">
+      <div><span>Buono · Via Assarotti 14</span><span>Q.tà</span></div>
+      <div><span>Colla piastrelle C2</span><span>6 sacchi</span></div>
+      <div><span>Lastre cartongesso 13 mm</span><span>24</span></div>
+      <div><span>Viti fosfatate 25 mm</span><span>2 scatole</span></div>
+    </div>
+  </section>
+  <section class="t c4 funz carta">
+    <span class="etichetta">Il cliente</span>
+    <h3>Il cliente vede il planning, non i tuoi conti</h3>
+    <p>Lo inviti gratis: vede a che punto sei e quando finisci. Niente ore, niente prezzi. Meno telefonate.</p>
+    <svg class="disegno" viewBox="0 0 300 120" role="img" aria-label="Planning con quattro lavori">
+      <g font-family="Figtree,Arial" font-size="12" font-weight="700" fill="#16181d">
+        <text x="0" y="20">Demolizioni</text><text x="0" y="48">Impianti</text><text x="0" y="76">Cartongesso</text><text x="0" y="104">Pittura</text>
+      </g>
+      <rect x="90" y="9" width="50" height="16" rx="3" fill="#2f7d5b"/><rect x="125" y="37" width="80" height="16" rx="3" fill="#2f7d5b"/>
+      <rect x="180" y="65" width="70" height="16" rx="3" fill="#ffd43b" stroke="#16181d"/><rect x="240" y="93" width="58" height="16" rx="3" fill="#fff" stroke="#16181d"/>
+      <line x1="215" x2="215" y1="0" y2="120" stroke="#ff5a4a" stroke-width="2"/>
+    </svg>
+  </section>
+  <section class="t c4 funz giallo">
+    <span class="etichetta">Le lingue</span>
+    <h3>Ogni operaio legge nella sua lingua</h3>
+    <p>Italiano, rumeno, francese, spagnolo, inglese, tedesco, polacco. Sotto ogni testo, la seconda lingua.</p>
+    <div class="coppia">Stuccare la crepa sopra la finestra<small>Chituiți fisura de deasupra ferestrei</small></div>
+    <div class="coppia">Fine lavori venerdì<small>Sfârșitul lucrărilor vineri</small></div>
+  </section>
+
+  <section class="t c12 scuro" style="display:flex;flex-direction:column;justify-content:center;gap:12px">
+    <span class="etichetta" style="background:var(--giallo);color:var(--inchiostro);align-self:flex-start">Perché funziona</span>
+    <h2 style="font-size:clamp(26px,3vw,40px);font-weight:900;line-height:1.05">Non è un programma per l'ufficio. È fatto per chi sta in cantiere.</h2>
+    <p style="color:#c9cbd3">Tasti grandi, poche scritte, funziona anche con i guanti appena tolti. Se non sai come si fa, chiedi all'aiuto: ti risponde nella tua lingua.</p>
+  </section>
+
+  <section class="t c12 modulo arancio" id="prova">
+    <span class="etichetta">Prova ceck</span>
+    <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Ti interessa?</h2>
+    <p>Ti mandiamo il link e il cantiere di prova già pronto, così vedi subito come funziona.</p>
+    <form id="form-prova" novalidate>
+      <label for="f-nome">Nome e cognome<input id="f-nome" name="nome" required autocomplete="name"></label>
+      <label for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
+      <label for="f-ditta">Nome della ditta<input id="f-ditta" name="ditta" autocomplete="organization"></label>
+      <label for="f-citta">Città<input id="f-citta" name="citta" required autocomplete="address-level2"></label>
+      <label for="f-persone">Quanti siete<select id="f-persone" name="persone"><option>Solo io</option><option selected>2–5</option><option>6–10</option><option>Più di 10</option></select></label>
+      <label for="f-lavoro">Che lavori fate<select id="f-lavoro" name="lavoro"><option>Edilizia e ristrutturazioni</option><option>Cartongesso e controsoffitti</option><option>Piastrelle e pavimenti</option><option>Pittura</option><option>Impianti</option><option>Altro</option></select></label>
+      <input type="hidden" name="lingua" value="it"><input type="hidden" name="tipo" value="civile">
+      <label class="consenso"><input type="checkbox" name="consenso" required> <span>Voglio ricevere una mail quando ceck apre. Ho letto la <a href="privacy-it.html">privacy</a>.</span></label>
+      <button type="submit">Avvisami quando apre</button>
+      <p class="grazie" id="grazie" hidden>Grazie! Ti abbiamo mandato una mail: conferma l'iscrizione e ti avvisiamo appena ceck apre.</p>
+      <p class="grazie errore" id="errore" hidden>Non è partito: controlla la connessione e riprova.</p>
+    </form>
+  </section>
+
+  <footer class="t c12 piede">
+    <span><a href="privacy-it.html" class="ck-link">Privacy e note legali</a></span>
+    <span>ceck.me · l'app di cantiere per artigiani</span>
+    <span>100 tak · SIRET 921 049 946 00038 · TVA non applicable, art. 293 B du CGI</span>
+                                                                  <span><a href="#" id="ck-apri" class="ck-link">Cookie</a></span>
+    <span class="crediti-foto">Foto: <a href="https://commons.wikimedia.org/wiki/File:Rom_(IT),_Kolosseum_--_2024_--_0610.jpg" rel="noopener" target="_blank">Colosseo, Anil Öztas</a>, CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Florence_Cathedral_seen_from_Piazzale_Michelangelo_night_dllu.jpg" rel="noopener" target="_blank">Duomo di Firenze, Dllu</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:The_Duomo_and_Tower_of_Pisa_at_sunrise.jpg" rel="noopener" target="_blank">Piazza dei Miracoli, MHoser</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Ebing_Br%C3%BCcke_Arbeiter-20160907-RM-114411.jpg" rel="noopener" target="_blank">Operai al lavoro, Reinhold Möller</a>, CC BY-SA 4.0 · Wikimedia Commons, colori e sfumature modificati</span>
+  </footer>
+</main>
+<script>
+document.getElementById('form-prova').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity&&f.reportValidity();return}
+const C=window.CECK_STRUMENTI||{},M=C.CAMPI||{},b=f.querySelector('button[type=submit]');b.disabled=true;
+try{if(!C.ISCRIZIONE)throw Error('modulo non collegato');{const d=new FormData();for(const [k,v] of new FormData(f)){if(M[k])d.append(M[k],v)}if(M.consenso)d.set(M.consenso,'1');
+d.append('email_address_check','');d.append('locale',f.lingua.value);await fetch(C.ISCRIZIONE,{method:'POST',mode:'no-cors',body:d})}
+document.getElementById('grazie').hidden=false;document.getElementById('errore').hidden=true;if(window.gtag)gtag('event','generate_lead',{lead_source:'ceck.me',tipo:f.tipo.value,lingua:f.lingua.value});if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD});f.querySelectorAll('input,select').forEach(x=>x.disabled=true)}
+catch(err){document.getElementById('errore').hidden=false;b.disabled=false}});
+</script>
+<!-- cookie:inizio -->
+<style>
+#ck{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:720px;margin:0 auto;background:#16181d;color:#fdffc9;padding:18px 20px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35);font:15px/1.45 system-ui,sans-serif}
+#ck[hidden],#ck-pref[hidden]{display:none}#ck b{display:block;font-size:17px;margin-bottom:4px}#ck p{margin:0 0 12px}
+#ck .ck-tasti{display:flex;flex-wrap:wrap;gap:8px}#ck button{font:800 15px system-ui,sans-serif;border:0;border-radius:9px;padding:11px 16px;cursor:pointer}
+#ck-si,#ck-no,#ck-salva{background:#f4f99c;color:#16181d}#ck-scegli{background:none;color:#fdffc9;text-decoration:underline}
+#ck-pref{margin:0 0 12px}#ck-pref label{display:flex;gap:8px;align-items:center;margin:6px 0}#ck-pref input{width:20px;height:20px}
+.ck-link{color:inherit;text-decoration:underline;cursor:pointer;background:none;border:0;font:inherit;padding:0}
+</style>
+<div id="ck" role="dialog" aria-live="polite" aria-label="Cookie" hidden><b>Cookie</b><p>Usiamo i cookie per capire cosa migliorare in ceck e in questa pagina, e per misurare la pubblicità. Li attiviamo solo se accetti. Puoi cambiare idea quando vuoi da «Cookie» in fondo alla pagina.</p><div id="ck-pref" hidden><label><input type="checkbox" checked disabled> <span>ceck (necessari)</span></label><label><input type="checkbox" id="ck-stat"> <span>Statistiche (Google Analytics, Microsoft Clarity)</span></label><label><input type="checkbox" id="ck-pub"> <span>Pubblicità (Google Ads)</span></label><button type="button" id="ck-salva">Salva</button></div><div class="ck-tasti"><button type="button" id="ck-si">Accetta tutti</button><button type="button" id="ck-no">Rifiuta tutti</button><button type="button" id="ck-scegli">Scegli</button></div></div>
+<script>window.CECK_STRUMENTI={"GTM": "GTM-P9596T24", "GA": "", "ADS": "AW-18568911684", "CLARITY": "zc0w3xbqeo", "ISCRIZIONE": "https://8b6cb7dd.sibforms.com/serve/MUIFAMC5ZbaR1JMBwxaNW9eqUDl4E-7PiF0sJ2EMeZx-0ny4QEcK322Ls6FwqEb1a7sYpotYZI1GWwbp8TFUt3TzEcMc6Uh7tudpAABzewjDN7QimaiQCM2ushLLLx7kzof2Jsrfw29anw9p2kbRLH4xjoO_YGpq8uLy0MGsuVjj422LHsNIAendOdwGsoDDqvjGRS9ag5UzczcqQA==", "CAMPI": {"email": "EMAIL", "nome": "NOME", "citta": "CITTA", "ditta": "DITTA", "persone": "PERSONE", "lavoro": "LAVORO", "lingua": "LINGUA", "tipo": "TIPO"}, "ADS_LEAD": "AW-18568911684/cD00CNDMhrgdEMS2rJZF"};</script>
+<script>(()=>{const C=window.CECK_STRUMENTI||{},K='ceck_consenso',MAX=182*864e5,B=document.getElementById('ck');
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+let g=false;
+function applica(c){const s=v=>v?'granted':'denied';
+gtag('consent','update',{analytics_storage:s(c.stat),ad_storage:s(c.pub),ad_user_data:s(c.pub),ad_personalization:s(c.pub)});
+if((c.stat&&C.GA||c.pub&&C.ADS)&&!g){g=true;const t=document.createElement('script');t.async=true;t.src='https://www.googletagmanager.com/gtag/js?id='+(C.GA||C.ADS);document.head.appendChild(t);gtag('js',new Date());if(C.GA)gtag('config',C.GA);if(C.ADS)gtag('config',C.ADS)}
+if((c.stat||c.pub)&&C.GTM&&!window.ckGtm){window.ckGtm=1;dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});const t=document.createElement('script');t.async=true;t.src='https://www.googletagmanager.com/gtm.js?id='+C.GTM;document.head.appendChild(t)}
+if(c.stat&&C.CLARITY&&!window.clarity){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script',C.CLARITY)}
+if(window.clarity)window.clarity('consentv2',{ad_Storage:s(c.pub),analytics_Storage:s(c.stat)})}
+function salva(stat,pub){const c={stat,pub,t:Date.now()};try{localStorage.setItem(K,JSON.stringify(c))}catch(e){}applica(c);B.hidden=true}
+let c=null;try{c=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(c&&Date.now()-c.t<MAX)applica(c);else B.hidden=false;
+document.getElementById('ck-si').onclick=()=>salva(true,true);
+document.getElementById('ck-no').onclick=()=>salva(false,false);
+document.getElementById('ck-scegli').onclick=()=>{const p=document.getElementById('ck-pref');p.hidden=!p.hidden};
+document.getElementById('ck-salva').onclick=()=>salva(document.getElementById('ck-stat').checked,document.getElementById('ck-pub').checked);
+document.getElementById('ck-apri').onclick=e=>{e.preventDefault();if(c){document.getElementById('ck-stat').checked=!!c.stat;document.getElementById('ck-pub').checked=!!c.pub}B.hidden=false}})();</script>
+<!-- cookie:fine -->
+</body>
+</html>
