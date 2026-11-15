@@ -97,7 +97,7 @@ svg.disegno{width:100%;height:auto;display:block}
 @media (max-width:600px){.marca{order:-2}.su-cel{order:-1}body{padding:8px}.griglia{gap:8px}.c4,.c5,.c6,.c7,.c8,.c12{grid-column:span 12}.modulo form{grid-template-columns:1fr}.t{padding:18px}.operai{grid-template-columns:1fr}}
 </style>
 <style>/* sfondi fantasma: grandi opere (foto Wikimedia Commons, crediti in fondo) */.titolo-sez{background:linear-gradient(90deg,rgba(22,24,29,.85) 0%,rgba(22,24,29,.35) 60%,rgba(22,24,29,.2) 100%),url(ghost-colosseo.jpg) center 45%/cover no-repeat,var(--inchiostro)}.scuro{background:linear-gradient(90deg,rgba(34,36,42,.85) 0%,rgba(34,36,42,.35) 65%,rgba(34,36,42,.15) 100%),url(ghost-firenze.jpg) center 55%/cover no-repeat,#22242a}.fila-tel{background:linear-gradient(rgba(20,21,24,.25),rgba(20,21,24,.45)),url(ghost-pisa.jpg) center/cover no-repeat,var(--fondo)}.marca{background:linear-gradient(180deg,rgba(15,42,68,.55) 0%,rgba(15,42,68,0) 25%,rgba(15,42,68,.1) 55%,rgba(15,42,68,.92) 82%),url(ghost-operai.jpg) 50% 30%/cover no-repeat,var(--navy)}@media(max-width:700px){.marca{background:linear-gradient(90deg,rgba(15,42,68,.95) 0%,rgba(15,42,68,.8) 50%,rgba(15,42,68,.1) 100%),url(ghost-operai.jpg) 100% 35%/60% auto no-repeat,var(--navy)}}.crediti-foto{font-size:11px;opacity:.55}.crediti-foto a{color:inherit}</style>
-<style>.pb{display:flex;flex-direction:column;gap:6px}.pb-n{font:900 44px/1 Archivo,Arial;color:#16181d33}.pb-p{font-size:20px;font-style:italic;font-weight:700;margin:0}.pb h3,.pb-largo h3,.plan-vero h3{margin:6px 0 0}.pb-img{padding:10px!important;display:flex;align-items:center}.pb-img img{width:100%;height:auto;border-radius:10px;display:block}.pb-largo img{width:100%;height:auto;border-radius:10px;margin-top:10px;display:block}.cor-chiaro{background:#ffd9d9}.pb-pallino{margin-top:10px;background:#ff7a6b;border-radius:12px;padding:16px;position:relative;font-weight:800}.pb-pallino i{position:absolute;right:18px;top:14px;width:30px;height:30px;border-radius:50%;background:#ffe600;border:3px solid #111;animation:pbl 1s infinite}.pb-pallino span{display:block;margin-top:8px;font-weight:600}@keyframes pbl{50%{opacity:.25;transform:scale(.75)}}</style>
+<style>.pb-tels{display:flex;gap:18px;justify-content:center;align-items:flex-start;padding:22px!important;background:#16181d!important}.pb-tel{flex:0 1 240px;border:10px solid #111;border-radius:34px;overflow:hidden;box-shadow:0 10px 30px #0006;background:#111}.pb-tel img{width:100%;height:auto;display:block}.pb-uno{align-items:center}.pb-uno .pb-tel{flex-basis:200px}.pb-uno .pb-foto{flex:1;min-width:0;width:50%;height:auto;border-radius:10px}.pb-largo10 .pb-pallino{max-width:520px}.pb .pb-p{font-size:24px}.pb h3{font-size:26px}@media(max-width:600px){.pb-tels{flex-wrap:wrap}.pb-tel{flex-basis:45%}.pb-uno .pb-foto{width:100%}}.pb{display:flex;flex-direction:column;gap:6px}.pb-n{font:900 44px/1 Archivo,Arial;color:#16181d33}.pb-p{font-size:20px;font-style:italic;font-weight:700;margin:0}.pb h3,.pb-largo h3,.plan-vero h3{margin:6px 0 0}.pb-img{padding:10px!important;display:flex;align-items:center}.pb-img img{width:100%;height:auto;border-radius:10px;display:block}.pb-largo img{width:100%;height:auto;border-radius:10px;margin-top:10px;display:block}.cor-chiaro{background:#ffd9d9}.pb-pallino{margin-top:10px;background:#ff7a6b;border-radius:12px;padding:16px;position:relative;font-weight:800}.pb-pallino i{position:absolute;right:18px;top:14px;width:30px;height:30px;border-radius:50%;background:#ffe600;border:3px solid #111;animation:pbl 1s infinite}.pb-pallino span{display:block;margin-top:8px;font-weight:600}@keyframes pbl{50%{opacity:.25;transform:scale(.75)}}</style>
 </head>
 <body>
 <main class="griglia">
@@ -115,6 +115,8 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="nota">Fatto da un capocantiere, dopo 43 anni di cantiere.</p>
   </section>
 
+  <section class="t c12 carta pb-tels"><div class="pb-tel"><img src="tel-cantiere.jpg" width="1170" height="1992" loading="lazy" alt="Il cantiere in ceck sul telefono"></div><div class="pb-tel"><img src="tel-ore.jpg" width="1170" height="1992" loading="lazy" alt="Le ore della squadra con i mestieri"></div><div class="pb-tel"><img src="tel-sopralluogo.jpg" width="1170" height="1992" loading="lazy" alt="Un’osservazione del sopralluogo con foto e piantina"></div></section>
+
   <div class="t c12 titolo-sez"><h2>Riconosci qualcuno di questi?</h2><p>Per ognuno, la schermata vera di ceck.</p></div>
 
   <section class="t c5 funz giallo pb">
@@ -122,7 +124,6 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="pb-p">«Il listino è in un Excel e ogni preventivo lo riscrivo da capo.»</p>
     <h3>Il preventivo nasce dal tuo listino.</h3>
     <p>Importi il tuo Excel così com’è. Ogni voce ha la sua composizione: posa e materiale, colla, primer, piastrelle.</p>
-    <p>Spunti i locali e le quantità arrivano dalle misure. Il preventivo diventa il contratto, senza riscrivere niente.</p>
   </section>
   <section class="t c7 carta pb-img"><img src="super-sub.jpg" width="2360" height="944" loading="lazy" alt="Schermata vera: il preventivo con le voci, i locali spuntati, posa e materiale e il totale di 100.000 euro."></section>
   <section class="t c7 carta pb-img"><img src="super-soldi.jpg" width="1748" height="576" loading="lazy" alt="Schermata vera: il posato al 3% e le ore consumate al 4%, in rosso."></section>
@@ -131,14 +132,12 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="pb-p">«Mi accorgo a fine cantiere che ci ho rimesso.»</p>
     <h3>Lo vedi mentre lavori, non a cantiere chiuso.</h3>
     <p>Le ore previste sono solo quelle di posa. Accanto al posato c’è l’anello delle ore consumate: se usi più ore di quanto hai posato diventa rosso.</p>
-    <p>Al prossimo preventivo sai quanto chiedere.</p>
   </section>
   <section class="t c5 funz lilla pb">
     <span class="pb-n">03</span>
     <p class="pb-p">«Il planning lo faccio una volta e poi non lo guardo più.»</p>
     <h3>Vedi il futuro del cantiere. E il futuro vale soldi.</h3>
     <p>Il planning nasce dal preventivo, con le persone vere: un solo idraulico non fa due lavori insieme. Colleghi le lavorazioni con due tocchi.</p>
-    <p>La linea rossa è oggi, la viola è quando finisci davvero. Vedi gli intoppi prima che arrivino.</p>
   </section>
   <section class="t c7 carta yt-video" aria-label="Video: il planning del cantiere in ceck">
     <button type="button" class="yt-play" data-id="MH5v8g8WMWE" aria-label="Guarda il video: il planning del cantiere in ceck">
@@ -157,13 +156,8 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="pb-p">«Le ore della squadra le ricopio la sera dai fogli e dai messaggi.»</p>
     <h3>Trenta secondi per tutta la squadra.</h3>
     <p>Spunti chi c’era, scrivi le ore, fatto. Ogni nome ha sotto il suo mestiere.</p>
-    <p>Le ore vanno da sole sulla lavorazione giusta del planning e del contratto.</p>
   </section>
-  <section class="t c7 carta fumetto" aria-label="Schermata di ceck: le ore della squadra registrate in una volta">
-    <img src="ore-squadra-it.jpg" width="1400" height="460" loading="lazy" alt="Schermata di ceck: quattro operai di Brenta Costruzioni spuntati, ognuno con il suo lavoro e 9 ore. 4 persone, 36 ore.">
-    <div class="fumetto-piede"><span class="fumetto-logo"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck</span><b>La squadra cambia lavoro. Le ore restano <u>in ordine</u>.</b></div>
-    <small>Schermata vera di ceck, cantiere di esempio con dati dimostrativi.</small>
-  </section>
+  <section class="t c7 carta pb-tels pb-uno"><div class="pb-tel"><img src="tel-ore.jpg" width="1170" height="1992" loading="lazy" alt="Le ore della squadra: spunti chi c’era e scrivi le ore"></div><img class="pb-foto" src="ore-squadra-it.jpg" width="1400" height="460" loading="lazy" alt="Le ore della squadra"></section>
   <section class="t c7 carta su-cel" aria-label="Piantina di un appartamento con i lavori da sistemare">
     <span class="etichetta">Ristrutturazione appartamento 75 m² · Via Roma 12, Verona · 2° piano</span>
     <svg class="disegno piantina-vera" viewBox="0 0 1280 965" role="img" aria-label="Piantina vera dell’appartamento con sei punti: rossi da sistemare subito, gialli in corso, verdi sistemati">
@@ -190,14 +184,12 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="pb-p">«Le cose da sistemare si perdono tra foto e messaggi.»</p>
     <h3>Ogni difetto è un punto sulla piantina.</h3>
     <p>Una foto, il punto preciso, a chi tocca. Rosso da fare, giallo in corso, verde sistemato.</p>
-    <p>Alla consegna giri con il cliente e chiudi tutto.</p>
   </section>
   <section class="t c5 funz giallo pb">
     <span class="pb-n">07</span>
     <p class="pb-p">«Il sopralluogo: foto sparse, appunti sul quaderno, il resoconto la sera.»</p>
     <h3>Giri il cantiere. Il resoconto è già fatto.</h3>
     <p>Foto, segno col dito su cosa non va, punto e cono di vista sulla piantina. Ogni osservazione la dai a qualcuno.</p>
-    <p>Il PDF parte con una mail scritta da ceck.</p>
   </section>
   <section class="t c7 carta yt-video" aria-label="Video: il sopralluogo in ceck">
     <button type="button" class="yt-play" data-id="TTd0CenIS7Q" aria-label="Guarda il video: il sopralluogo in ceck">
@@ -214,7 +206,6 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="pb-p">«Devo scrivere due misure in cantiere e non so dove.»</p>
     <h3>Ti basta un dito.</h3>
     <p>Fotografi il vano, tieni premuto da un capo all’altro e scrivi la misura. La misura resta sulla foto.</p>
-    <p>Il PDF va al fornitore.</p>
   </section>
   <section class="t c12 funz azzurro pb-largo">
     <span class="pb-n">09</span>
@@ -228,13 +219,15 @@ svg.disegno{width:100%;height:auto;display:block}
       <div><span>Viti fosfatate 25 mm</span><span>2 scatole</span></div>
     </div>
   </section>
-  <section class="t c5 funz cor-chiaro pb">
+  <section class="t c12 funz cor-chiaro pb pb-largo10">
     <span class="pb-n">10</span>
     <p class="pb-p">«Il contratto di un operaio scade e nessuno se ne accorge.»</p>
     <h3>Trenta giorni prima, un pallino giallo.</h3>
     <p>Sul riquadro delle Priorità si accende un pallino che lampeggia: dentro trovi chi è in scadenza.</p>
-    <p>Nella scheda di ognuno: mestiere, contratto, badge, PDF del contratto.</p>
     <div class="pb-pallino"><b>⚠ Priorità</b><i></i><span>Karim Benali: il contratto scade tra 25 giorni</span></div>
+  </section>
+  <section class="t c7 carta video-lingua" aria-label="Video: si sceglie la lingua e ceck si traduce">
+    <video src="lingua-landing.mp4" poster="lingua-landing.jpg" autoplay muted loop playsinline preload="metadata" width="860" height="700"></video>
   </section>
   <section class="t c5 funz menta pb">
     <span class="pb-n">11</span>
