@@ -24,7 +24,7 @@ p{margin:.4em 0;max-width:60ch}
 a{color:inherit}
 .griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;max-width:1240px;margin:0 auto}
 .t{border-radius:4px;padding:24px;position:relative;min-width:0}
-.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.piantina-vera{background:#fff;border-radius:10px}.piantina-vera .pin text{fill:#16181d}.piantina-vera .alone{transform-box:fill-box;transform-origin:center;animation:alone 2.2s ease-out infinite;animation-delay:inherit}.piantina-vera .pin-r .alone{animation-duration:1.4s}.piantina-vera .pin-v .alone{animation-duration:3s;opacity:.6}.piantina-vera .pin{animation:compare .6s ease-out both}.piantina-vera .scheda-pin{animation:compare .6s ease-out 1.2s both}@keyframes alone{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.1);opacity:0}}@keyframes compare{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.piantina-vera .alone,.piantina-vera .pin,.piantina-vera .scheda-pin{animation:none}}.plan-vero img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid #16181d22;margin-top:10px}.yt-video{padding:10px!important;background:#16181d!important;display:flex;align-items:center}.yt-play{all:unset;cursor:pointer;position:relative;display:block;width:100%;border-radius:14px;overflow:hidden}.yt-play img{width:100%;height:auto;display:block}.yt-tasto{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:68px;border-radius:18px;background:#ff0033;color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.35)}.yt-play:hover .yt-tasto{transform:translate(-50%,-50%) scale(1.08)}.yt-video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block}.rosso-yt{background:#ffd9d9!important}.video-lingua{padding:10px!important;display:flex;align-items:center;justify-content:center;background:#16181d!important}.video-lingua video{width:100%;height:auto;border-radius:14px;display:block}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
 .etichetta{display:inline-block;background:var(--inchiostro);color:var(--crema);font-weight:700;font-size:13px;border-radius:7px;padding:3px 9px;margin-bottom:12px}
 .giallo{background:var(--giallo)}.menta{background:var(--menta)}.rosa{background:var(--rosa)}.lilla{background:var(--lilla)}.azzurro{background:var(--azzurro)}.carta{background:var(--carta)}.arancio{background:var(--arancio)}.scuro{background:#22242a;color:var(--crema)}
 .grande{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.05}
@@ -77,7 +77,7 @@ svg.disegno{width:100%;height:auto;display:block}
 .buono div:first-child{border-top:0;background:var(--inchiostro);color:var(--crema);font-weight:800}
 .coppia{background:#fff;border-radius:6px;padding:10px 14px;margin-top:8px;font-weight:700}
 .coppia small{display:block;font-weight:600;opacity:.6;font-size:.8em}
-.scheda{background:rgba(255,255,255,.55);border-radius:10px;padding:10px 12px;line-height:1.5}.vai{font-weight:800;color:inherit}.fumetto img{display:block;width:100%;height:auto;border-radius:12px}.fumetto-piede{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin:14px 4px 6px}.fumetto-piede b{font-size:clamp(18px,2.2vw,28px);font-weight:900;line-height:1.15}.fumetto-piede u{text-decoration-color:#2bb5a0;text-decoration-thickness:4px;text-underline-offset:6px}.fumetto-logo{display:flex;align-items:center;gap:10px;font-size:34px;font-weight:900;color:#0F2A44;padding-right:22px;border-right:2px solid #0F2A44}.fumetto-logo svg{width:46px;height:46px}.fumetto small{opacity:.7}@media (max-width:600px){.fumetto-logo{border:0;padding:0}}
+.scheda{background:rgba(255,255,255,.55);border-radius:10px;padding:10px 12px;line-height:1.5}.vai{font-weight:800;color:inherit}.fumetto img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #d8dee6}.fumetto-piede{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin:14px 4px 6px}.fumetto-piede b{font-size:clamp(18px,2.2vw,28px);font-weight:900;line-height:1.15}.fumetto-piede u{text-decoration-color:#2bb5a0;text-decoration-thickness:4px;text-underline-offset:6px}.fumetto-logo{display:flex;align-items:center;gap:10px;font-size:34px;font-weight:900;color:#0F2A44;padding-right:22px;border-right:2px solid #0F2A44}.fumetto-logo svg{width:46px;height:46px}.fumetto small{opacity:.7}@media (max-width:600px){.fumetto-logo{border:0;padding:0}}
 /* prezzi */
 .prezzo .chi{font-family:var(--display);font-weight:900;font-size:24px}
 .prezzo table{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums}
@@ -114,6 +114,18 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="nota">Créé par un chef de chantier, après 43 ans de chantier.</p>
   </section>
 
+  <section class="t c7 carta video-lingua" aria-label="Video: si sceglie la lingua e ceck si traduce">
+    <video src="lingua-landing.mp4" poster="lingua-landing.jpg" autoplay muted loop playsinline preload="metadata" width="860" height="700"></video>
+  </section>
+  <section class="t c5 funz giallo">
+    <span class="etichetta">Les langues</span>
+    <h3>Chaque ouvrier lit dans sa langue</h3>
+    <p>Français, italien, roumain, espagnol, anglais, allemand, polonais. Sous chaque texte, la deuxième langue.</p>
+    <div class="coppia">Reboucher la fissure au-dessus de la fenêtre<small>Chituiți fisura de deasupra ferestrei</small></div>
+    <div class="coppia">Fin des travaux vendredi<small>Sfârșitul lucrărilor vineri</small></div>
+    <p style="margin-top:14px"><b>Al primo accesso</b> ognuno sceglie la sua lingua e una seconda lingua: da lì tutta l’app gli parla così.</p>
+  </section>
+
   <section class="t c5 fila-tel" aria-label="Écran de ceck sur le téléphone">
     <div class="tel"><div class="schermo">
       <div class="x testa"><svg viewBox="0 0 100 100" aria-hidden="true"><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>42 rue Paradis</div>
@@ -135,6 +147,18 @@ svg.disegno{width:100%;height:auto;display:block}
   </section>
 
   <div class="t c12 titolo-sez"><h2>Voyez comment ça marche.</h2><p>Trois écrans que vous utilisez chaque jour.</p></div>
+
+  <section class="t c7 carta yt-video" aria-label="Vidéo YouTube : le planning du chantier dans ceck">
+    <button type="button" class="yt-play" data-id="MH5v8g8WMWE" aria-label="Regarder la vidéo : le planning du chantier dans ceck">
+      <img src="yt-2.9.jpg" alt="Vidéo : le planning du chantier dans ceck" width="960" height="540" loading="lazy"><span class="yt-tasto">▶</span>
+    </button>
+  </section>
+  <section class="t c5 funz rosso-yt">
+    <span class="etichetta">Les vidéos</span>
+    <h3>Apprenez ceck 30 secondes à la fois</h3>
+    <p>Des vidéos courtes, sur un vrai chantier : créer le chantier, saisir les heures, marquer une reprise sur le plan. Une à la fois, sans se presser.</p>
+    <a class="cta" href="https://www.youtube.com/@ceckme" target="_blank" rel="noopener">Voir les vidéos sur YouTube →</a>
+  </section>
 
   <section class="t c7 carta" aria-label="Graphique des heures par semaine">
     <span class="etichetta">Heures de l'équipe · 6 dernières semaines</span>
@@ -174,31 +198,19 @@ svg.disegno{width:100%;height:auto;display:block}
   </section>
 
   <section class="t c7 carta su-cel" aria-label="Plan d'un appartement avec les reprises">
-    <span class="etichetta">Appartement · 42 rue Paradis · 3e étage</span>
-    <svg class="disegno" viewBox="0 0 640 330" role="img" aria-label="Plan avec six points : rouges à reprendre tout de suite, jaunes en cours, verts repris">
-      <rect x="10" y="10" width="620" height="290" fill="#fff" stroke="#16181d" stroke-width="4"/>
-      <path d="M250 10 V180 M250 230 V300 M10 170 H120 M170 170 H250 M250 140 H400 M450 140 H630 M420 140 V300" fill="none" stroke="#16181d" stroke-width="3"/>
-      <g font-family="Figtree,Arial" font-size="15" font-weight="700" fill="#16181d77">
-        <text x="30" y="150">Séjour</text><text x="30" y="200">Cuisine</text><text x="270" y="40">Chambre</text><text x="270" y="170">Couloir</text><text x="440" y="170">Salle de bain</text><text x="440" y="40">Chambre 2</text>
-      </g>
-      <g fill="none" stroke="#16181d33" stroke-width="2"><rect x="40" y="220" width="160" height="30"/><rect x="460" y="230" width="60" height="50" rx="10"/><rect x="560" y="200" width="50" height="80"/><rect x="300" y="50" width="90" height="70"/></g>
-      <g font-family="Archivo,Arial" font-weight="900" font-size="12" text-anchor="middle" dominant-baseline="central">
-        <circle class="batte" cx="215" cy="140" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="215" y="140">R1</text>
-        <circle class="batte" cx="500" cy="210" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="500" y="210">R4</text>
-        <circle cx="200" cy="260" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="200" y="260">R2</text>
-        <circle cx="560" cy="80" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="560" y="80">R6</text>
-        <circle cx="330" cy="200" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="330" y="200">R3</text>
-        <circle cx="360" cy="90" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="360" y="90">R5</text>
-      </g>
-      <g transform="translate(24 22)">
-        <path d="M150 60 L176 106" stroke="#16181d" stroke-width="2"/>
-        <rect x="0" y="0" width="172" height="76" rx="6" fill="#16181d"/>
-        <rect x="8" y="8" width="60" height="60" rx="3" fill="#c9b9a0"/>
-        <path d="M14 58 L40 30 L50 44 L62 22" stroke="#7a5f3d" stroke-width="3" fill="none"/>
-        <text x="76" y="24" font-family="Archivo,Arial" font-weight="900" font-size="13" fill="#fdffc9">R1 · Fissure</text>
-        <text x="76" y="42" font-family="Figtree,Arial" font-size="11" fill="#fdffc9cc">angle de fenêtre</text>
-        <text x="76" y="60" font-family="Figtree,Arial" font-size="11" font-weight="700" fill="#ff8a7e">● Urgent · Marco</text>
-      </g>
+    <span class="etichetta">Rénovation appartement 75 m² · 12 rue de la République, Lyon · 2e étage</span>
+    <svg class="disegno piantina-vera" viewBox="0 0 1280 965" role="img" aria-label="Vrai plan de l’appartement avec six points : rouges à reprendre tout de suite, jaunes en cours, verts terminés">
+      <image href="piantina-a01.jpg" width="1280" height="965"/>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="20" text-anchor="middle" dominant-baseline="central"><g class="pin pin-r" style="animation-delay:0.00s"><circle class="alone" cx="258" cy="67" r="30" fill="none" stroke="#ff5a4a" stroke-width="5"/><circle cx="258" cy="67" r="26" fill="#ff5a4a" stroke="#16181d" stroke-width="4"/><text x="258" y="67">R1</text></g><g class="pin pin-r" style="animation-delay:0.35s"><circle class="alone" cx="802" cy="831" r="30" fill="none" stroke="#ff5a4a" stroke-width="5"/><circle cx="802" cy="831" r="26" fill="#ff5a4a" stroke="#16181d" stroke-width="4"/><text x="802" y="831">R4</text></g><g class="pin pin-g" style="animation-delay:0.70s"><circle class="alone" cx="1041" cy="286" r="30" fill="none" stroke="#ffd43b" stroke-width="5"/><circle cx="1041" cy="286" r="26" fill="#ffd43b" stroke="#16181d" stroke-width="4"/><text x="1041" y="286">R2</text></g><g class="pin pin-g" style="animation-delay:1.05s"><circle class="alone" cx="162" cy="754" r="30" fill="none" stroke="#ffd43b" stroke-width="5"/><circle cx="162" cy="754" r="26" fill="#ffd43b" stroke="#16181d" stroke-width="4"/><text x="162" y="754">R6</text></g><g class="pin pin-v" style="animation-delay:1.40s"><circle class="alone" cx="535" cy="783" r="30" fill="none" stroke="#3fbf7f" stroke-width="5"/><circle cx="535" cy="783" r="26" fill="#3fbf7f" stroke="#16181d" stroke-width="4"/><text x="535" y="783">R3</text></g><g class="pin pin-v" style="animation-delay:1.75s"><circle class="alone" cx="1089" cy="802" r="30" fill="none" stroke="#3fbf7f" stroke-width="5"/><circle cx="1089" cy="802" r="26" fill="#3fbf7f" stroke="#16181d" stroke-width="4"/><text x="1089" y="802">R5</text></g></g>
+      <g transform="translate(560 170)"><g class="scheda-pin">
+        <path d="M0 20 L-270 -60" stroke="#16181d" stroke-width="3"/>
+        <rect x="0" y="-30" width="300" height="118" rx="10" fill="#16181d"/>
+        <rect x="12" y="-18" width="94" height="94" rx="6" fill="#c9b9a0"/>
+        <path d="M22 66 L60 24 L74 46 L94 12" stroke="#7a5f3d" stroke-width="5" fill="none"/>
+        <text x="120" y="6" font-family="Archivo,Arial" font-weight="900" font-size="22" fill="#fdffc9">R1 · Fissure</text>
+        <text x="120" y="36" font-family="Figtree,Arial" font-size="18" fill="#fdffc9cc">angle de fenêtre</text>
+        <text x="120" y="66" font-family="Figtree,Arial" font-size="18" font-weight="700" fill="#ff8a7e">● Urgent · Marco</text>
+      </g></g>
     </svg>
     <div class="leggenda">
       <span><i style="background:#ff5a4a"></i>À reprendre</span>
@@ -238,8 +250,48 @@ svg.disegno{width:100%;height:auto;display:block}
     <p>Entrez les heures du devis pour chaque travail. ceck les compare aux heures réelles, reprises et travaux refaits compris.</p>
     <p>Vous le voyez pendant le chantier, pas à la fin. Et au prochain devis, vous savez combien demander.</p>
   </section>
+  <section class="t c5 funz giallo">
+    <span class="etichetta">La visite de chantier</span>
+    <h3 class="grande">Vous mesurez une fois. La cote reste sur la photo.</h3>
+    <p>Vous photographiez l’ouverture, tracez la ligne au doigt et écrivez la cote. Une loupe vous aide à viser le point exact.</p>
+    <p>Sur le plan, vous marquez où vous étiez et dans quelle direction vous regardiez. Le PDF avec photos, cotes et plan part chez le fournisseur ou le client.</p>
+  </section>
+  <section class="t c7 carta" aria-label="Relevé de cotes : photo de l’ouverture avec les cotes et plan avec le point de vue">
+    <span class="etichetta">📏 Relevé de cotes · Séjour</span>
+    <svg class="disegno" viewBox="0 0 640 270" role="img" aria-label="Photo d’une baie avec trois cotes en jaune : largeur 1200 mm, hauteur 1450 mm, allège à 900 mm du sol. À côté, le plan avec le point et le cône de vue vers le mur.">
+      <defs><clipPath id="sl-foto"><rect x="12" y="10" width="380" height="250" rx="10"/></clipPath></defs>
+      <g clip-path="url(#sl-foto)">
+        <rect x="12" y="10" width="380" height="250" fill="#c8735a"/>
+        <g fill="#d4836a"><rect x="12" y="20" width="42" height="16" rx="1"/><rect x="44" y="20" width="42" height="16" rx="1"/><rect x="88" y="20" width="42" height="16" rx="1"/><rect x="132" y="20" width="42" height="16" rx="1"/><rect x="176" y="20" width="42" height="16" rx="1"/><rect x="220" y="20" width="42" height="16" rx="1"/><rect x="264" y="20" width="42" height="16" rx="1"/><rect x="308" y="20" width="42" height="16" rx="1"/><rect x="352" y="20" width="40" height="16" rx="1"/><rect x="12" y="38" width="42" height="16" rx="1"/><rect x="22" y="38" width="42" height="16" rx="1"/><rect x="66" y="38" width="42" height="16" rx="1"/><rect x="110" y="38" width="42" height="16" rx="1"/><rect x="154" y="38" width="42" height="16" rx="1"/><rect x="198" y="38" width="42" height="16" rx="1"/><rect x="242" y="38" width="42" height="16" rx="1"/><rect x="286" y="38" width="42" height="16" rx="1"/><rect x="330" y="38" width="42" height="16" rx="1"/><rect x="374" y="38" width="18" height="16" rx="1"/><rect x="12" y="56" width="42" height="16" rx="1"/><rect x="44" y="56" width="42" height="16" rx="1"/><rect x="88" y="56" width="42" height="16" rx="1"/><rect x="132" y="56" width="42" height="16" rx="1"/><rect x="176" y="56" width="42" height="16" rx="1"/><rect x="220" y="56" width="42" height="16" rx="1"/><rect x="264" y="56" width="42" height="16" rx="1"/><rect x="308" y="56" width="42" height="16" rx="1"/><rect x="352" y="56" width="40" height="16" rx="1"/><rect x="12" y="74" width="42" height="16" rx="1"/><rect x="22" y="74" width="42" height="16" rx="1"/><rect x="66" y="74" width="42" height="16" rx="1"/><rect x="110" y="74" width="42" height="16" rx="1"/><rect x="154" y="74" width="42" height="16" rx="1"/><rect x="198" y="74" width="42" height="16" rx="1"/><rect x="242" y="74" width="42" height="16" rx="1"/><rect x="286" y="74" width="42" height="16" rx="1"/><rect x="330" y="74" width="42" height="16" rx="1"/><rect x="374" y="74" width="18" height="16" rx="1"/><rect x="12" y="92" width="42" height="16" rx="1"/><rect x="44" y="92" width="42" height="16" rx="1"/><rect x="88" y="92" width="42" height="16" rx="1"/><rect x="132" y="92" width="42" height="16" rx="1"/><rect x="176" y="92" width="42" height="16" rx="1"/><rect x="220" y="92" width="42" height="16" rx="1"/><rect x="264" y="92" width="42" height="16" rx="1"/><rect x="308" y="92" width="42" height="16" rx="1"/><rect x="352" y="92" width="40" height="16" rx="1"/><rect x="12" y="110" width="42" height="16" rx="1"/><rect x="22" y="110" width="42" height="16" rx="1"/><rect x="66" y="110" width="42" height="16" rx="1"/><rect x="110" y="110" width="42" height="16" rx="1"/><rect x="154" y="110" width="42" height="16" rx="1"/><rect x="198" y="110" width="42" height="16" rx="1"/><rect x="242" y="110" width="42" height="16" rx="1"/><rect x="286" y="110" width="42" height="16" rx="1"/><rect x="330" y="110" width="42" height="16" rx="1"/><rect x="374" y="110" width="18" height="16" rx="1"/><rect x="12" y="128" width="42" height="16" rx="1"/><rect x="44" y="128" width="42" height="16" rx="1"/><rect x="88" y="128" width="42" height="16" rx="1"/><rect x="132" y="128" width="42" height="16" rx="1"/><rect x="176" y="128" width="42" height="16" rx="1"/><rect x="220" y="128" width="42" height="16" rx="1"/><rect x="264" y="128" width="42" height="16" rx="1"/><rect x="308" y="128" width="42" height="16" rx="1"/><rect x="352" y="128" width="40" height="16" rx="1"/><rect x="12" y="146" width="42" height="16" rx="1"/><rect x="22" y="146" width="42" height="16" rx="1"/><rect x="66" y="146" width="42" height="16" rx="1"/><rect x="110" y="146" width="42" height="16" rx="1"/><rect x="154" y="146" width="42" height="16" rx="1"/><rect x="198" y="146" width="42" height="16" rx="1"/><rect x="242" y="146" width="42" height="16" rx="1"/><rect x="286" y="146" width="42" height="16" rx="1"/><rect x="330" y="146" width="42" height="16" rx="1"/><rect x="374" y="146" width="18" height="16" rx="1"/><rect x="12" y="164" width="42" height="16" rx="1"/><rect x="44" y="164" width="42" height="16" rx="1"/><rect x="88" y="164" width="42" height="16" rx="1"/><rect x="132" y="164" width="42" height="16" rx="1"/><rect x="176" y="164" width="42" height="16" rx="1"/><rect x="220" y="164" width="42" height="16" rx="1"/><rect x="264" y="164" width="42" height="16" rx="1"/><rect x="308" y="164" width="42" height="16" rx="1"/><rect x="352" y="164" width="40" height="16" rx="1"/><rect x="12" y="182" width="42" height="16" rx="1"/><rect x="22" y="182" width="42" height="16" rx="1"/><rect x="66" y="182" width="42" height="16" rx="1"/><rect x="110" y="182" width="42" height="16" rx="1"/><rect x="154" y="182" width="42" height="16" rx="1"/><rect x="198" y="182" width="42" height="16" rx="1"/><rect x="242" y="182" width="42" height="16" rx="1"/><rect x="286" y="182" width="42" height="16" rx="1"/><rect x="330" y="182" width="42" height="16" rx="1"/><rect x="374" y="182" width="18" height="16" rx="1"/><rect x="12" y="200" width="42" height="16" rx="1"/><rect x="44" y="200" width="42" height="16" rx="1"/><rect x="88" y="200" width="42" height="16" rx="1"/><rect x="132" y="200" width="42" height="16" rx="1"/><rect x="176" y="200" width="42" height="16" rx="1"/><rect x="220" y="200" width="42" height="16" rx="1"/><rect x="264" y="200" width="42" height="16" rx="1"/><rect x="308" y="200" width="42" height="16" rx="1"/><rect x="352" y="200" width="40" height="16" rx="1"/><rect x="12" y="218" width="42" height="16" rx="1"/><rect x="22" y="218" width="42" height="16" rx="1"/><rect x="66" y="218" width="42" height="16" rx="1"/><rect x="110" y="218" width="42" height="16" rx="1"/><rect x="154" y="218" width="42" height="16" rx="1"/><rect x="198" y="218" width="42" height="16" rx="1"/><rect x="242" y="218" width="42" height="16" rx="1"/><rect x="286" y="218" width="42" height="16" rx="1"/><rect x="330" y="218" width="42" height="16" rx="1"/><rect x="374" y="218" width="18" height="16" rx="1"/><rect x="12" y="236" width="42" height="16" rx="1"/><rect x="44" y="236" width="42" height="16" rx="1"/><rect x="88" y="236" width="42" height="16" rx="1"/><rect x="132" y="236" width="42" height="16" rx="1"/><rect x="176" y="236" width="42" height="16" rx="1"/><rect x="220" y="236" width="42" height="16" rx="1"/><rect x="264" y="236" width="42" height="16" rx="1"/><rect x="308" y="236" width="42" height="16" rx="1"/><rect x="352" y="236" width="40" height="16" rx="1"/></g>
+        <rect x="12" y="232" width="380" height="28" fill="#9b968e"/>
+        <rect x="120" y="44" width="170" height="142" fill="#2b3440"/>
+        <rect x="112" y="186" width="186" height="10" fill="#b9b4aa"/>
+      </g>
+      <rect x="12" y="10" width="380" height="250" rx="10" fill="none" stroke="#16181d" stroke-width="2"/>
+      <g stroke="#ffe600" stroke-width="4" fill="#ffe600">
+        <line x1="124" y1="62" x2="286" y2="62"/><path d="M124 62l12-7v14z M286 62l-12-7v14z" stroke="none"/>
+        <line x1="306" y1="46" x2="306" y2="184"/><path d="M306 46l-7 12h14z M306 184l-7-12h14z" stroke="none"/>
+        <line x1="90" y1="194" x2="90" y2="230"/><path d="M90 194l-7 12h14z M90 230l-7-12h14z" stroke="none"/>
+      </g>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="15" fill="#ffe600">
+        <rect x="168" y="51" width="76" height="22" fill="#111114"/><text x="175" y="68">1200 mm</text>
+        <rect x="316" y="104" width="76" height="22" fill="#111114"/><text x="323" y="121">1450 mm</text>
+        <rect x="22" y="201" width="64" height="22" fill="#111114"/><text x="28" y="218">900 mm</text>
+      </g>
+      <g transform="translate(418 30)">
+        <rect width="210" height="200" rx="8" fill="#fff" stroke="#16181d33"/>
+        <g fill="none" stroke="#16181d" stroke-width="5"><rect x="16" y="16" width="178" height="168"/><line x1="110" y1="16" x2="110" y2="110"/><line x1="16" y1="110" x2="150" y2="110"/></g>
+        <g stroke="#fff" stroke-width="7"><line x1="40" y1="16" x2="90" y2="16"/><line x1="130" y1="110" x2="150" y2="110"/></g>
+        <g stroke="#16181d" stroke-width="2"><line x1="40" y1="13" x2="90" y2="13"/><line x1="40" y1="19" x2="90" y2="19"/></g>
+        <path d="M65 78 L35 30 A58 58 0 0 1 95 30 Z" fill="#f28c2866" stroke="#f28c28" stroke-width="2"/>
+        <circle cx="65" cy="78" r="8" fill="#0F2A44" stroke="#fff" stroke-width="3"/>
+        <g font-family="Figtree,Arial" font-weight="700" font-size="13" fill="#16181d"><text x="30" y="98">Séjour</text><text x="122" y="150">Cuisine</text></g>
+      </g>
+      <text x="418" y="256" font-family="Figtree,Arial" font-size="13" font-weight="700" fill="#16181d">Où vous étiez, où vous regardiez</text>
+    </svg>
+  </section>
 
-  <section class="t c4 funz azzurro">
+  <section class="t c6 funz azzurro">
     <span class="etichetta">Le matériel</span>
     <h3>La commande au fournisseur en une minute</h3>
     <p>Tapez les quantités, ceck envoie le PDF au fournisseur et vous en garde une copie.</p>
@@ -250,27 +302,13 @@ svg.disegno{width:100%;height:auto;display:block}
       <div><span>Vis TTPC 25 mm</span><span>2 boîtes</span></div>
     </div>
   </section>
-  <section class="t c4 funz carta">
-    <span class="etichetta">Le client</span>
-    <h3>Le client voit le planning, pas vos comptes</h3>
-    <p>Vous l'invitez gratuitement : il voit où vous en êtes et quand vous finissez. Ni heures ni prix. Moins d'appels.</p>
-    <svg class="disegno" viewBox="0 0 300 120" role="img" aria-label="Planning avec quatre travaux">
-      <g font-family="Figtree,Arial" font-size="12" font-weight="700" fill="#16181d">
-        <text x="0" y="20">Démolition</text><text x="0" y="48">Réseaux</text><text x="0" y="76">Placo</text><text x="0" y="104">Peinture</text>
-      </g>
-      <rect x="90" y="9" width="50" height="16" rx="3" fill="#2f7d5b"/><rect x="125" y="37" width="80" height="16" rx="3" fill="#2f7d5b"/>
-      <rect x="180" y="65" width="70" height="16" rx="3" fill="#ffd43b" stroke="#16181d"/><rect x="240" y="93" width="58" height="16" rx="3" fill="#fff" stroke="#16181d"/>
-      <line x1="215" x2="215" y1="0" y2="120" stroke="#ff5a4a" stroke-width="2"/>
-    </svg>
+  <section class="t c12 funz carta plan-vero">
+    <span class="etichetta">Le planning · écran réel</span>
+    <h3>Voyez l’avenir du chantier. Et l’avenir, c’est de l’argent.</h3>
+    <p>Le planning naît du devis : une ligne par travail, avec les dates. La ligne rouge, c’est aujourd’hui ; la violette, c’est quand vous finirez vraiment. Vous voyez les imprévus avant qu’ils arrivent et vous avancez ce qui peut l’être : chaque jour gagné, c’est de l’argent gagné.</p>
+    <p><b>Le client voit le planning, pas vos comptes.</b> Vous l'invitez gratuitement : il voit où vous en êtes et quand vous finissez. Ni heures ni prix. Moins d'appels.</p>
+    <img src="planning-vero.jpg" width="1400" height="526" loading="lazy" alt="Écran réel du planning de ceck : les travaux du chantier avec les dates, la ligne rouge d’aujourd’hui et la ligne violette de la fin prévue.">
   </section>
-  <section class="t c4 funz giallo">
-    <span class="etichetta">Les langues</span>
-    <h3>Chaque ouvrier lit dans sa langue</h3>
-    <p>Français, italien, roumain, espagnol, anglais, allemand, polonais. Sous chaque texte, la deuxième langue.</p>
-    <div class="coppia">Reboucher la fissure au-dessus de la fenêtre<small>Chituiți fisura de deasupra ferestrei</small></div>
-    <div class="coppia">Fin des travaux vendredi<small>Sfârșitul lucrărilor vineri</small></div>
-  </section>
-
   <section class="t c12 scuro" style="display:flex;flex-direction:column;justify-content:center;gap:12px">
     <span class="etichetta" style="background:var(--giallo);color:var(--inchiostro);align-self:flex-start">Pourquoi ça marche</span>
     <h2 style="font-size:clamp(26px,3vw,40px);font-weight:900;line-height:1.05">Ce n'est pas un logiciel de bureau. C'est fait pour ceux qui sont sur le chantier.</h2>
@@ -300,8 +338,8 @@ svg.disegno{width:100%;height:auto;display:block}
     <span><a href="privacy-fr.html" class="ck-link">Confidentialité et mentions légales</a></span>
     <span>ceck.me · l'appli de chantier pour artisans</span>
     <span>100 tak · SIRET 921 049 946 00038 · TVA non applicable, art. 293 B du CGI</span>
-                                                                  <span><a href="#" id="ck-apri" class="ck-link">Cookies</a></span>
-    <span class="crediti-foto">Foto: <a href="https://commons.wikimedia.org/wiki/File:Rom_(IT),_Kolosseum_--_2024_--_0610.jpg" rel="noopener" target="_blank">Colosseo, Anil Öztas</a>, CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Florence_Cathedral_seen_from_Piazzale_Michelangelo_night_dllu.jpg" rel="noopener" target="_blank">Duomo di Firenze, Dllu</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:The_Duomo_and_Tower_of_Pisa_at_sunrise.jpg" rel="noopener" target="_blank">Piazza dei Miracoli, MHoser</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Ebing_Br%C3%BCcke_Arbeiter-20160907-RM-114411.jpg" rel="noopener" target="_blank">Operai al lavoro, Reinhold Möller</a>, CC BY-SA 4.0 · Wikimedia Commons, colori e sfumature modificati</span>
+                                                                  <span class="crediti-foto">Foto: <a href="https://commons.wikimedia.org/wiki/File:Rom_(IT),_Kolosseum_--_2024_--_0610.jpg" rel="noopener" target="_blank">Colosseo, Anil Öztas</a>, CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Florence_Cathedral_seen_from_Piazzale_Michelangelo_night_dllu.jpg" rel="noopener" target="_blank">Duomo di Firenze, Dllu</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:The_Duomo_and_Tower_of_Pisa_at_sunrise.jpg" rel="noopener" target="_blank">Piazza dei Miracoli, MHoser</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Ebing_Br%C3%BCcke_Arbeiter-20160907-RM-114411.jpg" rel="noopener" target="_blank">Operai al lavoro, Reinhold Möller</a>, CC BY-SA 4.0 · Wikimedia Commons, colori e sfumature modificati</span>
+    <span><a href="#" id="ck-apri" class="ck-link">Cookies</a></span>
   </footer>
 </main>
 <script>
@@ -312,6 +350,7 @@ d.append('email_address_check','');d.append('locale',f.lingua.value);await fetch
 document.getElementById('grazie').hidden=false;document.getElementById('errore').hidden=true;if(window.gtag)gtag('event','generate_lead',{lead_source:'ceck.me',tipo:f.tipo.value,lingua:f.lingua.value});if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD});f.querySelectorAll('input,select').forEach(x=>x.disabled=true)}
 catch(err){document.getElementById('errore').hidden=false;b.disabled=false}});
 </script>
+<script>document.querySelectorAll(".yt-play").forEach(b=>b.onclick=()=>{const f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.id+"?autoplay=1&rel=0&cc_load_policy=1&hl=fr&cc_lang_pref=fr";f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;f.referrerPolicy="strict-origin-when-cross-origin";f.title="Video ceck";b.replaceWith(f)})</script>
 <!-- cookie:inizio -->
 <style>
 #ck{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:720px;margin:0 auto;background:#16181d;color:#fdffc9;padding:18px 20px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35);font:15px/1.45 system-ui,sans-serif}
@@ -340,7 +379,7 @@ document.getElementById('ck-si').onclick=()=>salva(true,true);
 document.getElementById('ck-no').onclick=()=>salva(false,false);
 document.getElementById('ck-scegli').onclick=()=>{const p=document.getElementById('ck-pref');p.hidden=!p.hidden};
 document.getElementById('ck-salva').onclick=()=>salva(document.getElementById('ck-stat').checked,document.getElementById('ck-pub').checked);
-document.getElementById('ck-apri').onclick=e=>{e.preventDefault();if(c){document.getElementById('ck-stat').checked=!!c.stat;document.getElementById('ck-pub').checked=!!c.pub}B.hidden=false}})();</script>
+const ckA=document.getElementById('ck-apri');if(ckA)ckA.onclick=e=>{e.preventDefault();if(c){document.getElementById('ck-stat').checked=!!c.stat;document.getElementById('ck-pub').checked=!!c.pub}B.hidden=false}})();</script>
 <!-- cookie:fine -->
 </body>
 </html>
