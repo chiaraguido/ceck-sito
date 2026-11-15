@@ -24,7 +24,7 @@ p{margin:.4em 0;max-width:60ch}
 a{color:inherit}
 .griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;max-width:1240px;margin:0 auto}
 .t{border-radius:4px;padding:24px;position:relative;min-width:0}
-.yt-video{padding:10px!important;background:#16181d!important;display:flex;align-items:center}.yt-play{all:unset;cursor:pointer;position:relative;display:block;width:100%;border-radius:14px;overflow:hidden}.yt-play img{width:100%;height:auto;display:block}.yt-tasto{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:68px;border-radius:18px;background:#ff0033;color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.35)}.yt-play:hover .yt-tasto{transform:translate(-50%,-50%) scale(1.08)}.yt-video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block}.rosso-yt{background:#ffd9d9!important}.video-lingua{padding:10px!important;display:flex;align-items:center;justify-content:center;background:#16181d!important}.video-lingua video{width:100%;height:auto;border-radius:14px;display:block}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.piantina-vera{background:#fff;border-radius:10px}.piantina-vera .pin text{fill:#16181d}.piantina-vera .alone{transform-box:fill-box;transform-origin:center;animation:alone 2.2s ease-out infinite;animation-delay:inherit}.piantina-vera .pin-r .alone{animation-duration:1.4s}.piantina-vera .pin-v .alone{animation-duration:3s;opacity:.6}.piantina-vera .pin{animation:compare .6s ease-out both}.piantina-vera .scheda-pin{animation:compare .6s ease-out 1.2s both}@keyframes alone{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.1);opacity:0}}@keyframes compare{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.piantina-vera .alone,.piantina-vera .pin,.piantina-vera .scheda-pin{animation:none}}.plan-vero img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid #16181d22;margin-top:10px}.yt-video{padding:10px!important;background:#16181d!important;display:flex;align-items:center}.yt-play{all:unset;cursor:pointer;position:relative;display:block;width:100%;border-radius:14px;overflow:hidden}.yt-play img{width:100%;height:auto;display:block}.yt-tasto{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:68px;border-radius:18px;background:#ff0033;color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.35)}.yt-play:hover .yt-tasto{transform:translate(-50%,-50%) scale(1.08)}.yt-video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block}.rosso-yt{background:#ffd9d9!important}.video-lingua{padding:10px!important;display:flex;align-items:center;justify-content:center;background:#16181d!important}.video-lingua video{width:100%;height:auto;border-radius:14px;display:block}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
 .etichetta{display:inline-block;background:var(--inchiostro);color:var(--crema);font-weight:700;font-size:13px;border-radius:7px;padding:3px 9px;margin-bottom:12px}
 .giallo{background:var(--giallo)}.menta{background:var(--menta)}.rosa{background:var(--rosa)}.lilla{background:var(--lilla)}.azzurro{background:var(--azzurro)}.carta{background:var(--carta)}.arancio{background:var(--arancio)}.scuro{background:#22242a;color:var(--crema)}
 .grande{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.05}
@@ -205,31 +205,19 @@ svg.disegno{width:100%;height:auto;display:block}
 <!-- fumetto:fine -->
 
   <section class="t c7 carta su-cel" aria-label="Piantina di un appartamento con i lavori da sistemare">
-    <span class="etichetta">Appartamento · Via Assarotti 14 · 3° piano</span>
-    <svg class="disegno" viewBox="0 0 640 330" role="img" aria-label="Piantina con sei punti: rossi da sistemare subito, gialli in corso, verdi sistemati">
-      <rect x="10" y="10" width="620" height="290" fill="#fff" stroke="#16181d" stroke-width="4"/>
-      <path d="M250 10 V180 M250 230 V300 M10 170 H120 M170 170 H250 M250 140 H400 M450 140 H630 M420 140 V300" fill="none" stroke="#16181d" stroke-width="3"/>
-      <g font-family="Figtree,Arial" font-size="15" font-weight="700" fill="#16181d77">
-        <text x="30" y="150">Soggiorno</text><text x="30" y="200">Cucina</text><text x="270" y="40">Camera</text><text x="270" y="170">Corridoio</text><text x="440" y="170">Bagno</text><text x="440" y="40">Camera 2</text>
-      </g>
-      <g fill="none" stroke="#16181d33" stroke-width="2"><rect x="40" y="220" width="160" height="30"/><rect x="460" y="230" width="60" height="50" rx="10"/><rect x="560" y="200" width="50" height="80"/><rect x="300" y="50" width="90" height="70"/></g>
-      <g font-family="Archivo,Arial" font-weight="900" font-size="12" text-anchor="middle" dominant-baseline="central">
-        <circle class="batte" cx="215" cy="140" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="215" y="140">R1</text>
-        <circle class="batte" cx="500" cy="210" r="17" fill="#ff5a4a" stroke="#16181d" stroke-width="2.5"/><text x="500" y="210">R4</text>
-        <circle cx="200" cy="260" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="200" y="260">R2</text>
-        <circle cx="560" cy="80" r="17" fill="#ffd43b" stroke="#16181d" stroke-width="2.5"/><text x="560" y="80">R6</text>
-        <circle cx="330" cy="200" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="330" y="200">R3</text>
-        <circle cx="360" cy="90" r="17" fill="#3fbf7f" stroke="#16181d" stroke-width="2.5"/><text x="360" y="90">R5</text>
-      </g>
-      <g transform="translate(24 22)">
-        <path d="M150 60 L176 106" stroke="#16181d" stroke-width="2"/>
-        <rect x="0" y="0" width="172" height="76" rx="6" fill="#16181d"/>
-        <rect x="8" y="8" width="60" height="60" rx="3" fill="#c9b9a0"/>
-        <path d="M14 58 L40 30 L50 44 L62 22" stroke="#7a5f3d" stroke-width="3" fill="none"/>
-        <text x="76" y="24" font-family="Archivo,Arial" font-weight="900" font-size="13" fill="#fdffc9">R1 · Crepa</text>
-        <text x="76" y="42" font-family="Figtree,Arial" font-size="11" fill="#fdffc9cc">angolo finestra</text>
-        <text x="76" y="60" font-family="Figtree,Arial" font-size="11" font-weight="700" fill="#ff8a7e">● Subito · Marco</text>
-      </g>
+    <span class="etichetta">Ristrutturazione appartamento 75 m² · Via Roma 12, Verona · 2° piano</span>
+    <svg class="disegno piantina-vera" viewBox="0 0 1280 965" role="img" aria-label="Piantina vera dell’appartamento con sei punti: rossi da sistemare subito, gialli in corso, verdi sistemati">
+      <image href="piantina-a01.jpg" width="1280" height="965"/>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="20" text-anchor="middle" dominant-baseline="central"><g class="pin pin-r" style="animation-delay:0.00s"><circle class="alone" cx="258" cy="67" r="30" fill="none" stroke="#ff5a4a" stroke-width="5"/><circle cx="258" cy="67" r="26" fill="#ff5a4a" stroke="#16181d" stroke-width="4"/><text x="258" y="67">R1</text></g><g class="pin pin-r" style="animation-delay:0.35s"><circle class="alone" cx="802" cy="831" r="30" fill="none" stroke="#ff5a4a" stroke-width="5"/><circle cx="802" cy="831" r="26" fill="#ff5a4a" stroke="#16181d" stroke-width="4"/><text x="802" y="831">R4</text></g><g class="pin pin-g" style="animation-delay:0.70s"><circle class="alone" cx="1041" cy="286" r="30" fill="none" stroke="#ffd43b" stroke-width="5"/><circle cx="1041" cy="286" r="26" fill="#ffd43b" stroke="#16181d" stroke-width="4"/><text x="1041" y="286">R2</text></g><g class="pin pin-g" style="animation-delay:1.05s"><circle class="alone" cx="162" cy="754" r="30" fill="none" stroke="#ffd43b" stroke-width="5"/><circle cx="162" cy="754" r="26" fill="#ffd43b" stroke="#16181d" stroke-width="4"/><text x="162" y="754">R6</text></g><g class="pin pin-v" style="animation-delay:1.40s"><circle class="alone" cx="535" cy="783" r="30" fill="none" stroke="#3fbf7f" stroke-width="5"/><circle cx="535" cy="783" r="26" fill="#3fbf7f" stroke="#16181d" stroke-width="4"/><text x="535" y="783">R3</text></g><g class="pin pin-v" style="animation-delay:1.75s"><circle class="alone" cx="1089" cy="802" r="30" fill="none" stroke="#3fbf7f" stroke-width="5"/><circle cx="1089" cy="802" r="26" fill="#3fbf7f" stroke="#16181d" stroke-width="4"/><text x="1089" y="802">R5</text></g></g>
+      <g transform="translate(560 170)"><g class="scheda-pin">
+        <path d="M0 20 L-270 -60" stroke="#16181d" stroke-width="3"/>
+        <rect x="0" y="-30" width="300" height="118" rx="10" fill="#16181d"/>
+        <rect x="12" y="-18" width="94" height="94" rx="6" fill="#c9b9a0"/>
+        <path d="M22 66 L60 24 L74 46 L94 12" stroke="#7a5f3d" stroke-width="5" fill="none"/>
+        <text x="120" y="6" font-family="Archivo,Arial" font-weight="900" font-size="22" fill="#fdffc9">R1 · Crepa</text>
+        <text x="120" y="36" font-family="Figtree,Arial" font-size="18" fill="#fdffc9cc">angolo finestra</text>
+        <text x="120" y="66" font-family="Figtree,Arial" font-size="18" font-weight="700" fill="#ff8a7e">● Subito · Marco</text>
+      </g></g>
     </svg>
     <div class="leggenda">
       <span><i style="background:#ff5a4a"></i>Da sistemare</span>
@@ -321,18 +309,11 @@ svg.disegno{width:100%;height:auto;display:block}
       <div><span>Viti fosfatate 25 mm</span><span>2 scatole</span></div>
     </div>
   </section>
-  <section class="t c6 funz carta">
-    <span class="etichetta">Il cliente</span>
+  <section class="t c12 funz carta plan-vero">
+    <span class="etichetta">Il planning · schermata vera</span>
     <h3>Il cliente vede il planning, non i tuoi conti</h3>
-    <p>Lo inviti gratis: vede a che punto sei e quando finisci. Niente ore, niente prezzi. Meno telefonate.</p>
-    <svg class="disegno" viewBox="0 0 300 120" role="img" aria-label="Planning con quattro lavori">
-      <g font-family="Figtree,Arial" font-size="12" font-weight="700" fill="#16181d">
-        <text x="0" y="20">Demolizioni</text><text x="0" y="48">Impianti</text><text x="0" y="76">Cartongesso</text><text x="0" y="104">Pittura</text>
-      </g>
-      <rect x="90" y="9" width="50" height="16" rx="3" fill="#2f7d5b"/><rect x="125" y="37" width="80" height="16" rx="3" fill="#2f7d5b"/>
-      <rect x="180" y="65" width="70" height="16" rx="3" fill="#ffd43b" stroke="#16181d"/><rect x="240" y="93" width="58" height="16" rx="3" fill="#fff" stroke="#16181d"/>
-      <line x1="215" x2="215" y1="0" y2="120" stroke="#ff5a4a" stroke-width="2"/>
-    </svg>
+    <p>Il planning nasce dal preventivo: una riga per lavoro, con le date. La linea rossa è oggi, la viola è quando finisci davvero. Lo inviti gratis: vede a che punto sei e quando finisci. Niente ore, niente prezzi. Meno telefonate.</p>
+    <img src="planning-vero.jpg" width="1400" height="526" loading="lazy" alt="Schermata vera del planning di ceck: le lavorazioni del cantiere con le date, la linea rossa di oggi e la linea viola della fine prevista.">
   </section>
   <section class="t c12 scuro" style="display:flex;flex-direction:column;justify-content:center;gap:12px">
     <span class="etichetta" style="background:var(--giallo);color:var(--inchiostro);align-self:flex-start">Perché funziona</span>
