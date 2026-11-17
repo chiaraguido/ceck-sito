@@ -107,6 +107,7 @@ svg.disegno{width:100%;height:auto;display:block}
 .firme div{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;padding:6px 8px;font-size:13px;font-weight:700;text-align:center}
 .firme svg{width:100%;height:40px;display:block}
 </style>
+<style>/* prova:css */.ck-entra{position:fixed;top:12px;right:14px;z-index:50;background:#0F2A44;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:9px 16px;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.18)}.prova-box .cta{font-size:22px;padding:18px 30px}.prova-box .gia{margin-top:14px}.prova-box .gia a{color:inherit;font-weight:800}</style>
 <!-- seo:inizio -->
 <link rel="canonical" href="https://ceck.me/navale-en.html">
 <link rel="alternate" hreflang="it" href="https://ceck.me/navale-it.html">
@@ -129,6 +130,7 @@ svg.disegno{width:100%;height:auto;display:block}
 <!-- seo:fine -->
 </head>
 <body>
+<a class="ck-entra" href="https://app.ceck.me/accedi?lang=en">Log in</a>
 <main class="griglia">
 
   <header class="t c4 marca">
@@ -137,10 +139,10 @@ svg.disegno{width:100%;height:auto;display:block}
   </header>
 
   <section class="t c8 eroe giallo">
-    <span class="etichetta">Coming soon</span>
+    <span class="etichetta">Open now · free</span>
     <h1>Your crew on board. <em>Every snag closed.</em></h1>
     <p class="sotto">Hours by deck and by space, the owner's snags on the plan, signed extra work, materials from the store. Everyone reads in their own language.</p>
-    <a class="cta" href="#prova">Tell me when it opens →</a>
+    <a class="cta ck-prova" href="https://app.ceck.me/iscriviti?lang=en">Try it free →</a>
     <p class="nota">Made by a ship outfitting site manager with 43 years on the job.</p>
   </section>
 
@@ -296,23 +298,12 @@ svg.disegno{width:100%;height:auto;display:block}
     <p style="color:#c9cbd3">Big buttons, little text, the deck and the space always in view. If you don't know how, ask the help: it answers in your language.</p>
   </section>
 
-  <section class="t c12 modulo arancio" id="prova">
-    <span class="etichetta">Try ceck</span>
-    <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Interested?</h2>
-    <p>We send you the link and a sample ship project already set up, so you see straight away how it works.</p>
-    <form id="form-prova" novalidate>
-      <label for="f-nome">Full name<input id="f-nome" name="nome" required autocomplete="name"></label>
-      <label for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
-      <label for="f-ditta">Company name<input id="f-ditta" name="ditta" autocomplete="organization"></label>
-      <label for="f-citta">City<input id="f-citta" name="citta" required autocomplete="address-level2"></label>
-      <label for="f-persone">How many of you<select id="f-persone" name="persone"><option>Just me</option><option selected>2–5</option><option>6–10</option><option>More than 10</option></select></label>
-      <label for="f-lavoro">What work you do on board<select id="f-lavoro" name="lavoro"><option>Joinery and furniture</option><option>Drywall and panels</option><option>Painting and varnishing</option><option>Insulation</option><option>Electrical</option><option>Plumbing and air conditioning</option><option>Other</option></select></label>
-      <input type="hidden" name="lingua" value="en"><input type="hidden" name="tipo" value="navale">
-      <label class="consenso"><input type="checkbox" name="consenso" required> <span>I want an email when ceck opens. I have read the <a href="privacy-en.html">privacy notice</a>.</span></label>
-      <button type="submit">Tell me when it opens</button>
-      <p class="grazie" id="grazie" hidden>Thanks! We have sent you an email: confirm your sign-up and we will tell you as soon as ceck opens.</p>
-      <p class="grazie errore" id="errore" hidden>It did not go through: check your connection and try again.</p>
-    </form>
+  <section class="t c12 modulo arancio prova-box" id="prova">
+    <span class="etichetta">Open now · free</span>
+    <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Try ceck now</h2>
+    <p>Create your account in a minute and get straight in. Free, no credit card.</p>
+    <a class="cta ck-prova" href="https://app.ceck.me/iscriviti?lang=en">Try it free →</a>
+    <p class="gia">Already have an account? <a href="https://app.ceck.me/accedi?lang=en">Log in</a></p>
   </section>
 
   <footer class="t c12 piede">
@@ -322,14 +313,6 @@ svg.disegno{width:100%;height:auto;display:block}
                                                                   <span><a href="#" id="ck-apri" class="ck-link">Cookies</a></span>
   </footer>
 </main>
-<script>
-document.getElementById('form-prova').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity&&f.reportValidity();return}
-const C=window.CECK_STRUMENTI||{},M=C.CAMPI||{},b=f.querySelector('button[type=submit]');b.disabled=true;
-try{if(!C.ISCRIZIONE)throw Error('modulo non collegato');{const d=new FormData();for(const [k,v] of new FormData(f)){if(M[k])d.append(M[k],v)}if(M.consenso)d.set(M.consenso,'1');
-d.append('email_address_check','');d.append('locale',f.lingua.value);await fetch(C.ISCRIZIONE,{method:'POST',mode:'no-cors',body:d})}
-document.getElementById('grazie').hidden=false;document.getElementById('errore').hidden=true;if(window.gtag)gtag('event','generate_lead',{lead_source:'ceck.me',tipo:f.tipo.value,lingua:f.lingua.value});if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD});f.querySelectorAll('input,select').forEach(x=>x.disabled=true)}
-catch(err){document.getElementById('errore').hidden=false;b.disabled=false}});
-</script>
 <!-- cookie:inizio -->
 <style>
 #ck{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:720px;margin:0 auto;background:#16181d;color:#fdffc9;padding:18px 20px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35);font:15px/1.45 system-ui,sans-serif}
@@ -361,5 +344,6 @@ document.getElementById('ck-salva').onclick=()=>salva(document.getElementById('c
 document.getElementById('ck-apri').onclick=e=>{e.preventDefault();if(c){document.getElementById('ck-stat').checked=!!c.stat;document.getElementById('ck-pub').checked=!!c.pub}B.hidden=false}})();</script>
 <script>/* codice di chi ti ha portato: ceck.me/...?c=CODICE, ricordato e mandato con l'iscrizione (Guido, 17/11/2026) */(function(){try{var q=new URLSearchParams(location.search).get('c');if(q&&/^[A-Za-z0-9]{4,12}$/.test(q))localStorage.setItem('ceck_codice',q.toUpperCase());var c=localStorage.getItem('ceck_codice');if(!c)return;document.querySelectorAll('form').forEach(function(f){if(f.querySelector('[name=email]')&&!f.querySelector('[name=codice]')){var i=document.createElement('input');i.type='hidden';i.name='codice';i.value=c;f.appendChild(i)}})}catch(e){}})();</script>
 <!-- cookie:fine -->
+<script>/* prova:js · codice invito e conversione Ads sul tasto (18/11/2026) */(function(){var c='';try{c=localStorage.getItem('ceck_codice')||''}catch(e){}document.querySelectorAll('a.ck-prova').forEach(function(a){if(c&&a.href.indexOf('&c=')<0)a.href+='&c='+encodeURIComponent(c);a.addEventListener('click',function(){var C=window.CECK_STRUMENTI||{};try{if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD})}catch(e){}})})})();</script>
 </body>
 </html>

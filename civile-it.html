@@ -97,6 +97,7 @@ svg.disegno{width:100%;height:auto;display:block}
 @media (max-width:600px){.marca{order:-2}.su-cel{order:-1}body{padding:8px}.griglia{gap:8px}.c4,.c5,.c6,.c7,.c8,.c12{grid-column:span 12}.modulo form{grid-template-columns:1fr}.t{padding:18px}.operai{grid-template-columns:1fr}}
 </style>
 <style>/* sfondi fantasma: grandi opere (foto Wikimedia Commons, crediti in fondo) */.titolo-sez{background:linear-gradient(90deg,rgba(22,24,29,.85) 0%,rgba(22,24,29,.35) 60%,rgba(22,24,29,.2) 100%),url(ghost-colosseo.jpg) center 45%/cover no-repeat,var(--inchiostro)}.scuro{background:linear-gradient(90deg,rgba(34,36,42,.85) 0%,rgba(34,36,42,.35) 65%,rgba(34,36,42,.15) 100%),url(ghost-firenze.jpg) center 55%/cover no-repeat,#22242a}.fila-tel{background:linear-gradient(rgba(20,21,24,.25),rgba(20,21,24,.45)),url(ghost-pisa.jpg) center/cover no-repeat,var(--fondo)}.marca{background:linear-gradient(180deg,rgba(15,42,68,.55) 0%,rgba(15,42,68,0) 25%,rgba(15,42,68,.1) 55%,rgba(15,42,68,.92) 82%),url(ghost-operai.jpg) 50% 30%/cover no-repeat,var(--navy)}@media(max-width:700px){.marca{background:linear-gradient(90deg,rgba(15,42,68,.95) 0%,rgba(15,42,68,.8) 50%,rgba(15,42,68,.1) 100%),url(ghost-operai.jpg) 100% 35%/60% auto no-repeat,var(--navy)}}.crediti-foto{font-size:11px;opacity:.55}.crediti-foto a{color:inherit}</style>
+<style>/* prova:css */.ck-entra{position:fixed;top:12px;right:14px;z-index:50;background:#0F2A44;color:#fff;font-weight:800;text-decoration:none;border-radius:10px;padding:9px 16px;font-size:16px;box-shadow:0 2px 8px rgba(0,0,0,.18)}.prova-box .cta{font-size:22px;padding:18px 30px}.prova-box .gia{margin-top:14px}.prova-box .gia a{color:inherit;font-weight:800}</style>
 <!-- seo:inizio -->
 <link rel="canonical" href="https://ceck.me/civile-it.html">
 <link rel="alternate" hreflang="it" href="https://ceck.me/civile-it.html">
@@ -119,6 +120,7 @@ svg.disegno{width:100%;height:auto;display:block}
 <!-- seo:fine -->
 </head>
 <body>
+<a class="ck-entra" href="https://app.ceck.me/accedi?lang=it">Entra</a>
 <main class="griglia">
 
   <header class="t c4 marca">
@@ -127,10 +129,10 @@ svg.disegno{width:100%;height:auto;display:block}
   </header>
 
   <section class="t c8 eroe giallo">
-    <span class="etichetta">Presto disponibile</span>
+    <span class="etichetta">Già aperto · gratis</span>
     <h1>La tua squadra e i tuoi cantieri. <em>Nel telefono.</em></h1>
     <p class="sotto">Le ore di ogni operaio, le foto dei lavori da sistemare, il materiale da ordinare. Un minuto al giorno, direttamente dal cantiere. Niente più fogli e messaggi persi.</p>
-    <a class="cta" href="#prova">Avvisami quando apre →</a>
+    <a class="cta ck-prova" href="https://app.ceck.me/iscriviti?lang=it">Prova gratis →</a>
     <p class="nota">Fatto da un capocantiere, dopo 43 anni di cantiere.</p>
   </section>
 
@@ -229,7 +231,7 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="scheda"><b>Cantiere dimostrativo:</b> Appartamento Via Assarotti<br><b>Locale:</b> Soggiorno<br><b>Lavorazione:</b> Posa della struttura primaria del soffitto<br><b>Tipo:</b> Prima esecuzione</p>
     <p>Selezioni i sette operai, inserisci <b>9 ore per ciascuno</b> e confermi.</p>
     <p>ceck registra <b>63 ore complessive</b>, associate al locale, alla lavorazione e ai singoli operai.</p>
-    <p><a class="vai" href="#prova">Lascia la tua email: ti avvisiamo quando ceck apre.</a></p>
+    <p><a class="vai" href="https://app.ceck.me/iscriviti?lang=it">Prova gratis: crei il tuo account ed entri subito.</a></p>
   </section>
 <!-- fumetto:inizio -->
   <section class="t c12 carta fumetto" aria-label="Schermata di ceck: le ore della squadra registrate in una volta">
@@ -339,23 +341,12 @@ svg.disegno{width:100%;height:auto;display:block}
     <p style="color:#c9cbd3">Tasti grandi, poche scritte, funziona anche con i guanti appena tolti. Se non sai come si fa, chiedi all'aiuto: ti risponde nella tua lingua.</p>
   </section>
 
-  <section class="t c12 modulo arancio" id="prova">
-    <span class="etichetta">Prova ceck</span>
-    <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Ti interessa?</h2>
-    <p>Ti mandiamo il link e il cantiere di prova già pronto, così vedi subito come funziona.</p>
-    <form id="form-prova" novalidate>
-      <label for="f-nome">Nome e cognome<input id="f-nome" name="nome" required autocomplete="name"></label>
-      <label for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
-      <label for="f-ditta">Nome della ditta<input id="f-ditta" name="ditta" autocomplete="organization"></label>
-      <label for="f-citta">Città<input id="f-citta" name="citta" required autocomplete="address-level2"></label>
-      <label for="f-persone">Quanti siete<select id="f-persone" name="persone"><option>Solo io</option><option selected>2–5</option><option>6–10</option><option>Più di 10</option></select></label>
-      <label for="f-lavoro">Che lavori fate<select id="f-lavoro" name="lavoro"><option>Edilizia e ristrutturazioni</option><option>Cartongesso e controsoffitti</option><option>Piastrelle e pavimenti</option><option>Pittura</option><option>Impianti</option><option>Altro</option></select></label>
-      <input type="hidden" name="lingua" value="it"><input type="hidden" name="tipo" value="civile">
-      <label class="consenso"><input type="checkbox" name="consenso" required> <span>Voglio ricevere una mail quando ceck apre. Ho letto la <a href="privacy-it.html">privacy</a>.</span></label>
-      <button type="submit">Avvisami quando apre</button>
-      <p class="grazie" id="grazie" hidden>Grazie! Ti abbiamo mandato una mail: conferma l'iscrizione e ti avvisiamo appena ceck apre.</p>
-      <p class="grazie errore" id="errore" hidden>Non è partito: controlla la connessione e riprova.</p>
-    </form>
+  <section class="t c12 modulo arancio prova-box" id="prova">
+    <span class="etichetta">Già aperto · gratis</span>
+    <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Prova ceck adesso</h2>
+    <p>Crei il tuo account in un minuto ed entri subito. Gratis, senza carta di credito.</p>
+    <a class="cta ck-prova" href="https://app.ceck.me/iscriviti?lang=it">Prova gratis →</a>
+    <p class="gia">Hai già un account? <a href="https://app.ceck.me/accedi?lang=it">Entra</a></p>
   </section>
 
   <footer class="t c12 piede">
@@ -366,14 +357,6 @@ svg.disegno{width:100%;height:auto;display:block}
     <span class="crediti-foto">Foto: <a href="https://commons.wikimedia.org/wiki/File:Rom_(IT),_Kolosseum_--_2024_--_0610.jpg" rel="noopener" target="_blank">Colosseo, Anil Öztas</a>, CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Florence_Cathedral_seen_from_Piazzale_Michelangelo_night_dllu.jpg" rel="noopener" target="_blank">Duomo di Firenze, Dllu</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:The_Duomo_and_Tower_of_Pisa_at_sunrise.jpg" rel="noopener" target="_blank">Piazza dei Miracoli, MHoser</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Ebing_Br%C3%BCcke_Arbeiter-20160907-RM-114411.jpg" rel="noopener" target="_blank">Operai al lavoro, Reinhold Möller</a>, CC BY-SA 4.0 · Wikimedia Commons, colori e sfumature modificati</span>
   </footer>
 </main>
-<script>
-document.getElementById('form-prova').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity&&f.reportValidity();return}
-const C=window.CECK_STRUMENTI||{},M=C.CAMPI||{},b=f.querySelector('button[type=submit]');b.disabled=true;
-try{if(!C.ISCRIZIONE)throw Error('modulo non collegato');{const d=new FormData();for(const [k,v] of new FormData(f)){if(M[k])d.append(M[k],v)}if(M.consenso)d.set(M.consenso,'1');
-d.append('email_address_check','');d.append('locale',f.lingua.value);await fetch(C.ISCRIZIONE,{method:'POST',mode:'no-cors',body:d})}
-document.getElementById('grazie').hidden=false;document.getElementById('errore').hidden=true;if(window.gtag)gtag('event','generate_lead',{lead_source:'ceck.me',tipo:f.tipo.value,lingua:f.lingua.value});if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD});f.querySelectorAll('input,select').forEach(x=>x.disabled=true)}
-catch(err){document.getElementById('errore').hidden=false;b.disabled=false}});
-</script>
 <!-- cookie:inizio -->
 <style>
 #ck{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:720px;margin:0 auto;background:#16181d;color:#fdffc9;padding:18px 20px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35);font:15px/1.45 system-ui,sans-serif}
@@ -406,5 +389,6 @@ document.getElementById('ck-apri').onclick=e=>{e.preventDefault();if(c){document
 <script>/* codice di chi ti ha portato: ceck.me/...?c=CODICE, ricordato e mandato con l'iscrizione (Guido, 17/11/2026) */(function(){try{var q=new URLSearchParams(location.search).get('c');if(q&&/^[A-Za-z0-9]{4,12}$/.test(q))localStorage.setItem('ceck_codice',q.toUpperCase());var c=localStorage.getItem('ceck_codice');if(!c)return;document.querySelectorAll('form').forEach(function(f){if(f.querySelector('[name=email]')&&!f.querySelector('[name=codice]')){var i=document.createElement('input');i.type='hidden';i.name='codice';i.value=c;f.appendChild(i)}})}catch(e){}})();</script>
 <!-- cookie:fine -->
 <script>document.querySelectorAll(".yt-play").forEach(b=>b.onclick=()=>{const f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.id+"?autoplay=1&rel=0&cc_load_policy=1&hl=it";f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;f.referrerPolicy="strict-origin-when-cross-origin";f.title="Video ceck";b.replaceWith(f)})</script>
+<script>/* prova:js · codice invito e conversione Ads sul tasto (18/11/2026) */(function(){var c='';try{c=localStorage.getItem('ceck_codice')||''}catch(e){}document.querySelectorAll('a.ck-prova').forEach(function(a){if(c&&a.href.indexOf('&c=')<0)a.href+='&c='+encodeURIComponent(c);a.addEventListener('click',function(){var C=window.CECK_STRUMENTI||{};try{if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD})}catch(e){}})})})();</script>
 </body>
 </html>
