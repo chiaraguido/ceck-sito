@@ -169,6 +169,10 @@ svg.disegno{width:100%;height:auto;display:block}
     <details><summary>Cos’è il rapportino di cantiere?</summary><p>È il foglio che si compila ogni giorno in cantiere: chi ha lavorato, quante ore, cosa si è fatto, che materiale è arrivato e cosa non va. Serve per pagare le ore giuste, fatturare i lavori e ricordare cosa è successo.</p></details><details><summary>Chi lo compila?</summary><p>Il capocantiere o il titolare, a fine giornata. Con ceck registri le ore della squadra una volta sola: finiscono da sole nel rapportino, nel controllo del contratto e nel planning.</p></details><details><summary>È la stessa cosa del giornale dei lavori?</summary><p>No. Il giornale dei lavori è il registro ufficiale tenuto dal direttore dei lavori. Il rapportino è il foglio interno dell’impresa: più semplice, ma è quello che usi ogni giorno per ore, materiale e problemi.</p></details><details><summary>Il modello è davvero gratis?</summary><p>Sì. Lo scarichi senza lasciare la mail, lo stampi e lo copi quante volte vuoi.</p></details>
   </section>
 
+  <script>/* conta i download del PDF, per lingua: solo un numero, niente cookie né dati della persona (Guido, 17/11/2026) */
+  document.addEventListener('click',function(ev){var a=ev.target.closest('a[href^="rapportino-di-cantiere"][href$=".pdf"]');if(!a)return;
+  var m=a.getAttribute('href').match(/-(ro|fr|en|es|de|pl)\.pdf$/);try{fetch('https://abacus.jasoncameron.dev/hit/ceckme-rapportino/pdf-'+(m?m[1]:'it'),{keepalive:true,mode:'no-cors'})}catch(e){}});</script>
+
   <section class="t c12 modulo arancio" id="prova">
     <span class="etichetta">Prova ceck</span>
     <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Vuoi il rapportino digitale?</h2>
