@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ceck · dodici problemi del cantiere, una app</title>
+<meta name="description" content="Preventivo, planning, ore, soldi, sopralluoghi, misure, materiale, contratti: ceck risolve i problemi di ogni giorno del cantiere, dal telefono.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;700;900&family=Figtree:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+/* Un solo mondo, scuro: tessere di colore pieno come nell'app, telefoni e disegni al posto dei paragrafi. */
+:root{
+  --fondo:#141518; --navy:#0F2A44; --arancio:#F28C28; --carta:#fbfaf6; --inchiostro:#16181d; --crema:#fdffc9;
+  --giallo:#f4f99c; --azzurro:#a8cdfb; --menta:#86e0c6; --rosa:#f6cfe9; --lilla:#cdbcff; --rosso:#ff6b5b; --verde:#2f7d5b;
+  --display:"Archivo","Helvetica Neue",Arial,sans-serif; --testo:"Figtree","Helvetica Neue",Arial,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fondo);color:var(--inchiostro);font-family:var(--testo);font-size:17px;line-height:1.5}
+body{padding:14px}
+h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.02em}
+p{margin:.4em 0;max-width:60ch}
+a{color:inherit}
+.griglia{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;max-width:1240px;margin:0 auto}
+.t{border-radius:4px;padding:24px;position:relative;min-width:0}
+.piantina-vera{background:#fff;border-radius:10px}.piantina-vera .pin text{fill:#16181d}.piantina-vera .alone{transform-box:fill-box;transform-origin:center;animation:alone 2.2s ease-out infinite;animation-delay:inherit}.piantina-vera .pin-r .alone{animation-duration:1.4s}.piantina-vera .pin-v .alone{animation-duration:3s;opacity:.6}.piantina-vera .pin{animation:compare .6s ease-out both}.piantina-vera .scheda-pin{animation:compare .6s ease-out 1.2s both}@keyframes alone{0%{transform:scale(1);opacity:.9}100%{transform:scale(2.1);opacity:0}}@keyframes compare{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}@media (prefers-reduced-motion:reduce){.piantina-vera .alone,.piantina-vera .pin,.piantina-vera .scheda-pin{animation:none}}.plan-vero img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid #16181d22;margin-top:10px}.yt-video{padding:10px!important;background:#16181d!important;display:flex;align-items:center}.yt-play{all:unset;cursor:pointer;position:relative;display:block;width:100%;border-radius:14px;overflow:hidden}.yt-play img{width:100%;height:auto;display:block}.yt-tasto{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:96px;height:68px;border-radius:18px;background:#ff0033;color:#fff;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:0 6px 24px rgba(0,0,0,.35)}.yt-play:hover .yt-tasto{transform:translate(-50%,-50%) scale(1.08)}.yt-video iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:14px;display:block}.rosso-yt{background:#ffd9d9!important}.video-lingua{padding:10px!important;display:flex;align-items:center;justify-content:center;background:#16181d!important}.video-lingua video{width:100%;height:auto;border-radius:14px;display:block}.c4{grid-column:span 4}.c5{grid-column:span 5}.c6{grid-column:span 6}.c7{grid-column:span 7}.c8{grid-column:span 8}.c12{grid-column:span 12}
+.etichetta{display:inline-block;background:var(--inchiostro);color:var(--crema);font-weight:700;font-size:13px;border-radius:7px;padding:3px 9px;margin-bottom:12px}
+.giallo{background:var(--giallo)}.menta{background:var(--menta)}.rosa{background:var(--rosa)}.lilla{background:var(--lilla)}.azzurro{background:var(--azzurro)}.carta{background:var(--carta)}.arancio{background:var(--arancio)}.scuro{background:#22242a;color:var(--crema)}
+.grande{font-size:clamp(26px,3vw,38px);font-weight:900;line-height:1.05}
+/* testata */
+.marca{background:var(--navy);color:#fff;display:flex;flex-direction:column;justify-content:space-between;gap:26px}
+.logo{display:flex;align-items:center;gap:12px;font-family:var(--display);font-weight:900;font-size:30px;letter-spacing:-.03em}
+.logo svg{width:52px;height:52px}
+.marca .per{font-size:15px;color:#cfe0f5}
+.marca .per b{display:block;color:#fff;font-family:var(--display);font-size:22px;line-height:1.15;margin-bottom:4px}
+.eroe h1{font-size:clamp(36px,5.4vw,70px);line-height:.98;font-weight:900}
+.eroe h1 em{font-style:normal;background:var(--inchiostro);color:var(--giallo);padding:0 .15em;border-radius:4px}
+.eroe .sotto{font-size:19px;margin-top:16px}
+.cta{display:inline-flex;align-items:center;gap:10px;margin-top:18px;background:var(--inchiostro);color:var(--crema);font-weight:800;text-decoration:none;border-radius:10px;padding:14px 22px;font-size:18px}
+.cta:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--arancio);outline-offset:2px}
+.nota{font-size:14px;opacity:.75;margin-top:10px}
+/* telefono */
+.tel{width:min(300px,100%);margin:0 auto;background:#0b0c0e;border-radius:34px;padding:12px;box-shadow:0 0 0 2px #2c2f36,0 18px 40px #0008}
+.schermo{background:#141518;border-radius:24px;overflow:hidden;padding:8px;display:grid;grid-template-columns:1fr 1fr;gap:6px;font-size:12px}
+.schermo .x{border-radius:3px;padding:9px 10px;font-weight:800;color:var(--inchiostro);min-height:58px;display:flex;flex-direction:column;justify-content:space-between}
+.schermo .x small{font-weight:600;opacity:.7;font-size:10px}
+.schermo .x .n{font-family:var(--display);font-size:28px;line-height:1}
+.schermo .lungo{grid-column:span 2}
+.schermo .testa{grid-column:span 2;background:var(--navy);color:#fff;display:flex;align-items:center;gap:8px;font-family:var(--display);font-size:16px;min-height:44px}
+.schermo .testa svg{width:24px;height:24px}
+.palla{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:4px;vertical-align:middle}
+.fila-tel{display:flex;align-items:center;justify-content:center;background:#1c1e23}
+/* numeri grandi */
+.tre{display:grid;gap:10px;align-content:center}
+.tre div{background:#ffffffb8;border-radius:6px;padding:14px 16px;display:grid;grid-template-columns:auto 1fr;gap:4px 14px;align-items:center}
+.tre .num{font-family:var(--display);font-weight:900;font-size:44px;line-height:1;grid-row:span 2;font-variant-numeric:tabular-nums}
+.tre b{font-size:18px}.tre span{font-size:14px;opacity:.75}
+/* grafici */
+svg.disegno{width:100%;height:auto;display:block}
+.operai{list-style:none;margin:12px 0 0;padding:0;display:grid;grid-template-columns:repeat(2,1fr);gap:6px}
+.operai li{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;padding:7px 10px;display:flex;justify-content:space-between;font-weight:700;font-size:15px;font-variant-numeric:tabular-nums}
+.operai li::before{content:"";width:16px;height:16px;border-radius:3px;background:var(--verde);margin-right:8px;flex:none;align-self:center}
+.operai li span{margin-right:auto}
+.leggenda{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:14px;font-weight:700;margin-top:10px}
+.leggenda span{display:inline-flex;align-items:center;gap:6px}
+.leggenda i{width:14px;height:14px;border-radius:50%;display:inline-block;border:2px solid var(--inchiostro)}
+@media (prefers-reduced-motion:no-preference){.batte{animation:batte 1.8s ease-in-out infinite;transform-box:fill-box;transform-origin:center}}
+@keyframes batte{50%{transform:scale(1.22)}}
+.titolo-sez{background:var(--inchiostro);color:#fff;padding:28px 24px 20px}
+.titolo-sez h2{font-size:clamp(28px,3.6vw,46px);font-weight:900}
+.titolo-sez p{color:#c9cbd3;font-size:18px}
+/* tessere piccole */
+.funz h3{font-size:24px;margin-bottom:8px;line-height:1.1}
+.buono{background:#fff;border:2px solid var(--inchiostro);border-radius:6px;margin-top:12px;font-size:14px;font-variant-numeric:tabular-nums}
+.buono div{display:flex;justify-content:space-between;padding:7px 12px;border-top:1px solid #16181d22}
+.buono div:first-child{border-top:0;background:var(--inchiostro);color:var(--crema);font-weight:800}
+.coppia{background:#fff;border-radius:6px;padding:10px 14px;margin-top:8px;font-weight:700}
+.coppia small{display:block;font-weight:600;opacity:.6;font-size:.8em}
+.scheda{background:rgba(255,255,255,.55);border-radius:10px;padding:10px 12px;line-height:1.5}.vai{font-weight:800;color:inherit}.fumetto img{display:block;width:100%;height:auto;border-radius:12px;border:1px solid #d8dee6}.fumetto-piede{display:flex;align-items:center;gap:14px 22px;flex-wrap:wrap;margin:14px 4px 6px}.fumetto-piede b{font-size:clamp(18px,2.2vw,28px);font-weight:900;line-height:1.15}.fumetto-piede u{text-decoration-color:#2bb5a0;text-decoration-thickness:4px;text-underline-offset:6px}.fumetto-logo{display:flex;align-items:center;gap:10px;font-size:34px;font-weight:900;color:#0F2A44;padding-right:22px;border-right:2px solid #0F2A44}.fumetto-logo svg{width:46px;height:46px}.fumetto small{opacity:.7}@media (max-width:600px){.fumetto-logo{border:0;padding:0}}
+/* prezzi */
+.prezzo .chi{font-family:var(--display);font-weight:900;font-size:24px}
+.prezzo table{width:100%;border-collapse:collapse;margin-top:10px;font-variant-numeric:tabular-nums}
+.prezzo td{padding:9px 0;border-top:1px solid #16181d22}
+.prezzo td:last-child{text-align:right;font-family:var(--display);font-weight:900;font-size:24px}
+.prezzo .evid td{background:var(--giallo)}
+.prezzo .evid td:first-child{padding-left:8px;font-weight:800}.prezzo .evid td:last-child{padding-right:8px}
+/* modulo */
+.modulo form{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.modulo label{display:flex;flex-direction:column;gap:4px;font-weight:700;font-size:14px}
+.modulo input,.modulo select{font:inherit;font-size:16px;border:2px solid var(--inchiostro);border-radius:8px;padding:11px 12px;background:#fff;color:var(--inchiostro);min-height:48px}
+.modulo button{grid-column:1/-1;font:inherit;font-weight:800;font-size:19px;border:0;border-radius:10px;padding:16px;background:var(--inchiostro);color:var(--crema);cursor:pointer}
+.consenso{grid-column:1/-1;display:flex!important;flex-direction:row!important;gap:10px;align-items:flex-start;font-weight:600}.consenso input{width:22px;height:22px;flex:none;margin-top:2px}.consenso a{color:inherit}.errore{background:#ff6b5b!important;color:#16181d!important}
+.grazie{grid-column:1/-1;background:var(--inchiostro);color:var(--crema);border-radius:10px;padding:16px;font-weight:700;margin:0;max-width:none}
+.piede{background:var(--navy);color:#cfe0f5;font-size:14px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px}
+@media (max-width:900px){.c4,.c5{grid-column:span 6}.c6,.c7,.c8{grid-column:span 12}.modulo form{grid-template-columns:1fr 1fr}}
+@media (max-width:600px){.marca{order:-2}.su-cel{order:-1}body{padding:8px}.griglia{gap:8px}.c4,.c5,.c6,.c7,.c8,.c12{grid-column:span 12}.modulo form{grid-template-columns:1fr}.t{padding:18px}.operai{grid-template-columns:1fr}}
+</style>
+<style>/* sfondi fantasma: grandi opere (foto Wikimedia Commons, crediti in fondo) */.titolo-sez{background:linear-gradient(90deg,rgba(22,24,29,.85) 0%,rgba(22,24,29,.35) 60%,rgba(22,24,29,.2) 100%),url(ghost-colosseo.jpg) center 45%/cover no-repeat,var(--inchiostro)}.scuro{background:linear-gradient(90deg,rgba(34,36,42,.85) 0%,rgba(34,36,42,.35) 65%,rgba(34,36,42,.15) 100%),url(ghost-firenze.jpg) center 55%/cover no-repeat,#22242a}.fila-tel{background:linear-gradient(rgba(20,21,24,.25),rgba(20,21,24,.45)),url(ghost-pisa.jpg) center/cover no-repeat,var(--fondo)}.marca{background:linear-gradient(180deg,rgba(15,42,68,.55) 0%,rgba(15,42,68,0) 25%,rgba(15,42,68,.1) 55%,rgba(15,42,68,.92) 82%),url(ghost-operai.jpg) 50% 30%/cover no-repeat,var(--navy)}@media(max-width:700px){.marca{background:linear-gradient(90deg,rgba(15,42,68,.95) 0%,rgba(15,42,68,.8) 50%,rgba(15,42,68,.1) 100%),url(ghost-operai.jpg) 100% 35%/60% auto no-repeat,var(--navy)}}.crediti-foto{font-size:11px;opacity:.55}.crediti-foto a{color:inherit}</style>
+<style>.pb-tels{display:flex;gap:18px;justify-content:center;align-items:flex-start;padding:22px!important;background:#16181d!important}.pb-tel{flex:0 1 240px;border:10px solid #111;border-radius:34px;overflow:hidden;box-shadow:0 10px 30px #0006;background:#111}.pb-tel img{width:100%;height:auto;display:block}.pb-uno{align-items:center}.pb-uno .pb-tel{flex-basis:200px}.pb-uno .pb-foto{flex:1;min-width:0;width:50%;height:auto;border-radius:10px}.pb-largo10{display:grid!important;grid-template-columns:1fr 1fr;column-gap:30px;align-content:center}.pb-largo10>*{grid-column:1}.pb-largo10 .pb-pallino{grid-column:2;grid-row:1/span 4;align-self:center;font-size:26px;padding:34px}.pb-largo10 .pb-pallino i{width:56px;height:56px;right:28px;top:26px}@media(max-width:900px){.pb-largo10{grid-template-columns:1fr}.pb-largo10 .pb-pallino{grid-column:1;grid-row:auto}}.pb .pb-p{font-size:24px}.pb h3{font-size:26px}@media(max-width:600px){.pb-tels{flex-wrap:wrap}.pb-tel{flex-basis:45%}.pb-uno .pb-foto{width:100%}}.pb{display:flex;flex-direction:column;gap:6px}.pb-n{font:900 44px/1 Archivo,Arial;color:#16181d33}.pb-p{font-size:20px;font-style:italic;font-weight:700;margin:0}.pb h3,.pb-largo h3,.plan-vero h3{margin:6px 0 0}.pb-img{padding:10px!important;display:flex;align-items:center}.pb-img img{width:100%;height:auto;border-radius:10px;display:block}.pb-largo img{width:100%;height:auto;border-radius:10px;margin-top:10px;display:block}.cor-chiaro{background:#ffd9d9}.pb-pallino{margin-top:10px;background:#ff7a6b;border-radius:12px;padding:16px;position:relative;font-weight:800}.pb-pallino i{position:absolute;right:18px;top:14px;width:30px;height:30px;border-radius:50%;background:#ffe600;border:3px solid #111;animation:pbl 1s infinite}.pb-pallino span{display:block;margin-top:8px;font-weight:600}@keyframes pbl{50%{opacity:.25;transform:scale(.75)}}</style>
+</head>
+<body>
+<main class="griglia">
+
+  <header class="t c4 marca">
+    <div class="logo"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck.me</div>
+    <p class="per"><b>Per artigiani e piccole imprese edili</b>Da 1 a 10 operai. Muratori, cartongessisti, piastrellisti, pittori, impiantisti.</p>
+  </header>
+
+  <section class="t c8 eroe giallo">
+    <span class="etichetta">Dal preventivo alla consegna</span>
+    <h1>Dodici problemi del cantiere. <em>Una app.</em></h1>
+    <p class="sotto">Preventivo, planning, ore, soldi, sopralluoghi, misure, materiale, contratti. ceck li tiene insieme, dal telefono, mentre lavori. E ti dice prima quello che di solito scopri dopo.</p>
+    <a class="cta" href="#prova">Avvisami quando apre →</a>
+    <p class="nota">Fatto da un capocantiere, dopo 43 anni di cantiere.</p>
+  </section>
+
+  <section class="t c12 carta pb-tels"><div class="pb-tel"><img src="tel-cantiere.jpg" width="1170" height="1992" loading="lazy" alt="Il cantiere in ceck sul telefono"></div><div class="pb-tel"><img src="tel-ore.jpg" width="1170" height="1992" loading="lazy" alt="Le ore della squadra con i mestieri"></div><div class="pb-tel"><img src="tel-sopralluogo.jpg" width="1170" height="1992" loading="lazy" alt="Un’osservazione del sopralluogo con foto e piantina"></div></section>
+
+  <div class="t c12 titolo-sez"><h2>Riconosci qualcuno di questi?</h2><p>Per ognuno, la schermata vera di ceck.</p></div>
+
+  <section class="t c5 funz giallo pb">
+    <span class="pb-n">01</span>
+    <p class="pb-p">«Il listino è in un Excel e ogni preventivo lo riscrivo da capo.»</p>
+    <h3>Il preventivo nasce dal tuo listino.</h3>
+    <p>Importi il tuo Excel così com’è. Ogni voce ha la sua composizione: posa e materiale, colla, primer, piastrelle.</p>
+  </section>
+  <section class="t c7 carta pb-img"><img src="super-sub.jpg" width="2360" height="944" loading="lazy" alt="Schermata vera: il preventivo con le voci, i locali spuntati, posa e materiale e il totale di 100.000 euro."></section>
+  <section class="t c7 carta pb-img"><img src="super-soldi.jpg" width="1748" height="576" loading="lazy" alt="Schermata vera: il posato al 3% e le ore consumate al 4%, in rosso."></section>
+  <section class="t c5 funz rosa pb">
+    <span class="pb-n">02</span>
+    <p class="pb-p">«Mi accorgo a fine cantiere che ci ho rimesso.»</p>
+    <h3>Lo vedi mentre lavori, non a cantiere chiuso.</h3>
+    <p>Le ore previste sono solo quelle di posa. Accanto al posato c’è l’anello delle ore consumate: se usi più ore di quanto hai posato diventa rosso.</p>
+  </section>
+  <section class="t c5 funz lilla pb">
+    <span class="pb-n">03</span>
+    <p class="pb-p">«Il planning lo faccio una volta e poi non lo guardo più.»</p>
+    <h3>Vedi il futuro del cantiere. E il futuro vale soldi.</h3>
+    <p>Il planning nasce dal preventivo, con le persone vere: un solo idraulico non fa due lavori insieme. Colleghi le lavorazioni con due tocchi.</p>
+  </section>
+  <section class="t c7 carta yt-video" aria-label="Video: il planning del cantiere in ceck">
+    <button type="button" class="yt-play" data-id="MH5v8g8WMWE" aria-label="Guarda il video: il planning del cantiere in ceck">
+      <img src="yt-2.9.jpg" alt="Video: il planning del cantiere in ceck" width="960" height="540" loading="lazy"><span class="yt-tasto">▶</span>
+    </button>
+  </section>
+  <section class="t c12 funz azzurro pb-largo">
+    <span class="pb-n">04</span>
+    <p class="pb-p">«Non so quanto guadagno su quello che fanno i subappaltatori.»</p>
+    <h3>Ogni prodotto del fornitore ha il suo ricarico.</h3>
+    <p>Il fornitore ha il suo listino. Su ogni voce vedi quanto lo paghi, quanto lo vendi al cliente e quanto ci guadagni. Il contratto del subappaltatore lo calcola ceck.</p>
+    <img src="super-listino.jpg" width="2280" height="190" loading="lazy" alt="Schermata vera: serramenti esterni, Falegnameria Brunetti, costo 1.050 euro, guadagno 450 euro, ricarico 43 per cento.">
+  </section>
+  <section class="t c5 funz menta pb">
+    <span class="pb-n">05</span>
+    <p class="pb-p">«Le ore della squadra le ricopio la sera dai fogli e dai messaggi.»</p>
+    <h3>Trenta secondi per tutta la squadra.</h3>
+    <p>Spunti chi c’era, scrivi le ore, fatto. Ogni nome ha sotto il suo mestiere.</p>
+  </section>
+  <section class="t c7 carta pb-tels pb-uno"><div class="pb-tel"><img src="tel-ore.jpg" width="1170" height="1992" loading="lazy" alt="Le ore della squadra: spunti chi c’era e scrivi le ore"></div><img class="pb-foto" src="ore-squadra-it.jpg" width="1400" height="460" loading="lazy" alt="Le ore della squadra"></section>
+  <section class="t c7 carta su-cel" aria-label="Piantina di un appartamento con i lavori da sistemare">
+    <span class="etichetta">Ristrutturazione appartamento 75 m² · Via Roma 12, Verona · 2° piano</span>
+    <svg class="disegno piantina-vera" viewBox="0 0 1280 965" role="img" aria-label="Piantina vera dell’appartamento con sei punti: rossi da sistemare subito, gialli in corso, verdi sistemati">
+      <image href="piantina-a01.jpg" width="1280" height="965"/>
+      <g font-family="Archivo,Arial" font-weight="900" font-size="20" text-anchor="middle" dominant-baseline="central"><g class="pin pin-r" style="animation-delay:0.00s"><circle class="alone" cx="258" cy="67" r="30" fill="none" stroke="#ff5a4a" stroke-width="5"/><circle cx="258" cy="67" r="26" fill="#ff5a4a" stroke="#16181d" stroke-width="4"/><text x="258" y="67">R1</text></g><g class="pin pin-r" style="animation-delay:0.35s"><circle class="alone" cx="802" cy="831" r="30" fill="none" stroke="#ff5a4a" stroke-width="5"/><circle cx="802" cy="831" r="26" fill="#ff5a4a" stroke="#16181d" stroke-width="4"/><text x="802" y="831">R4</text></g><g class="pin pin-g" style="animation-delay:0.70s"><circle class="alone" cx="1041" cy="286" r="30" fill="none" stroke="#ffd43b" stroke-width="5"/><circle cx="1041" cy="286" r="26" fill="#ffd43b" stroke="#16181d" stroke-width="4"/><text x="1041" y="286">R2</text></g><g class="pin pin-g" style="animation-delay:1.05s"><circle class="alone" cx="162" cy="754" r="30" fill="none" stroke="#ffd43b" stroke-width="5"/><circle cx="162" cy="754" r="26" fill="#ffd43b" stroke="#16181d" stroke-width="4"/><text x="162" y="754">R6</text></g><g class="pin pin-v" style="animation-delay:1.40s"><circle class="alone" cx="535" cy="783" r="30" fill="none" stroke="#3fbf7f" stroke-width="5"/><circle cx="535" cy="783" r="26" fill="#3fbf7f" stroke="#16181d" stroke-width="4"/><text x="535" y="783">R3</text></g><g class="pin pin-v" style="animation-delay:1.75s"><circle class="alone" cx="1089" cy="802" r="30" fill="none" stroke="#3fbf7f" stroke-width="5"/><circle cx="1089" cy="802" r="26" fill="#3fbf7f" stroke="#16181d" stroke-width="4"/><text x="1089" y="802">R5</text></g></g>
+      <g transform="translate(560 170)"><g class="scheda-pin">
+        <path d="M0 20 L-270 -60" stroke="#16181d" stroke-width="3"/>
+        <rect x="0" y="-30" width="300" height="118" rx="10" fill="#16181d"/>
+        <rect x="12" y="-18" width="94" height="94" rx="6" fill="#c9b9a0"/>
+        <path d="M22 66 L60 24 L74 46 L94 12" stroke="#7a5f3d" stroke-width="5" fill="none"/>
+        <text x="120" y="6" font-family="Archivo,Arial" font-weight="900" font-size="22" fill="#fdffc9">R1 · Crepa</text>
+        <text x="120" y="36" font-family="Figtree,Arial" font-size="18" fill="#fdffc9cc">angolo finestra</text>
+        <text x="120" y="66" font-family="Figtree,Arial" font-size="18" font-weight="700" fill="#ff8a7e">● Subito · Marco</text>
+      </g></g>
+    </svg>
+    <div class="leggenda">
+      <span><i style="background:#ff5a4a"></i>Da sistemare</span>
+      <span><i style="background:#ffd43b"></i>In corso</span>
+      <span><i style="background:#3fbf7f"></i>Sistemato, pronto per il cliente</span>
+    </div>
+  </section>
+  <section class="t c5 funz rosa pb">
+    <span class="pb-n">06</span>
+    <p class="pb-p">«Le cose da sistemare si perdono tra foto e messaggi.»</p>
+    <h3>Ogni difetto è un punto sulla piantina.</h3>
+    <p>Una foto, il punto preciso, a chi tocca. Rosso da fare, giallo in corso, verde sistemato.</p>
+  </section>
+  <section class="t c5 funz giallo pb">
+    <span class="pb-n">07</span>
+    <p class="pb-p">«Il sopralluogo: foto sparse, appunti sul quaderno, il resoconto la sera.»</p>
+    <h3>Giri il cantiere. Il resoconto è già fatto.</h3>
+    <p>Foto, segno col dito su cosa non va, punto e cono di vista sulla piantina. Ogni osservazione la dai a qualcuno.</p>
+  </section>
+  <section class="t c7 carta yt-video" aria-label="Video: il sopralluogo in ceck">
+    <button type="button" class="yt-play" data-id="TTd0CenIS7Q" aria-label="Guarda il video: il sopralluogo in ceck">
+      <img src="yt-2.10.jpg" alt="Video: il sopralluogo in ceck" width="960" height="540" loading="lazy"><span class="yt-tasto">▶</span>
+    </button>
+  </section>
+  <section class="t c7 carta yt-video" aria-label="Video: il rilievo misura in ceck">
+    <button type="button" class="yt-play" data-id="w_s7wC_Lay0" aria-label="Guarda il video: il rilievo misura in ceck">
+      <img src="yt-2.11.jpg" alt="Video: il rilievo misura in ceck" width="960" height="540" loading="lazy"><span class="yt-tasto">▶</span>
+    </button>
+  </section>
+  <section class="t c5 funz giallo pb">
+    <span class="pb-n">08</span>
+    <p class="pb-p">«Devo scrivere due misure in cantiere e non so dove.»</p>
+    <h3>Ti basta un dito.</h3>
+    <p>Fotografi il vano, tieni premuto da un capo all’altro e scrivi la misura. La misura resta sulla foto.</p>
+  </section>
+  <section class="t c12 funz azzurro pb-largo">
+    <span class="pb-n">09</span>
+    <p class="pb-p">«Il materiale lo ordino al telefono e poi nessuno si ricorda cosa.»</p>
+    <h3>L’ordine al fornitore in un minuto.</h3>
+    <p>Scrivi le quantità, ceck manda il PDF al fornitore e te ne tiene una copia.</p>
+    <div class="buono" aria-label="Esempio di buono d'ordine">
+      <div><span>Buono · Via Assarotti 14</span><span>Q.tà</span></div>
+      <div><span>Colla piastrelle C2</span><span>6 sacchi</span></div>
+      <div><span>Lastre cartongesso 13 mm</span><span>24</span></div>
+      <div><span>Viti fosfatate 25 mm</span><span>2 scatole</span></div>
+    </div>
+  </section>
+  <section class="t c12 funz cor-chiaro pb pb-largo10">
+    <span class="pb-n">10</span>
+    <p class="pb-p">«Il contratto di un operaio scade e nessuno se ne accorge.»</p>
+    <h3>Trenta giorni prima, un pallino giallo.</h3>
+    <p>Sul riquadro delle Priorità si accende un pallino che lampeggia: dentro trovi chi è in scadenza.</p>
+    <div class="pb-pallino"><b>⚠ Priorità</b><i></i><span>Karim Benali: il contratto scade tra 25 giorni</span></div>
+  </section>
+  <section class="t c7 carta video-lingua" aria-label="Video: si sceglie la lingua e ceck si traduce">
+    <video src="lingua-landing.mp4" poster="lingua-landing.jpg" autoplay muted loop playsinline preload="metadata" width="860" height="700"></video>
+  </section>
+  <section class="t c5 funz menta pb">
+    <span class="pb-n">11</span>
+    <p class="pb-p">«In squadra si parlano cinque lingue.»</p>
+    <h3>Ognuno legge nella sua lingua.</h3>
+    <p>Italiano, rumeno, francese, spagnolo, inglese, tedesco, polacco. Sotto ogni testo, la seconda lingua.</p>
+  </section>
+  <section class="t c12 funz carta plan-vero">
+    <span class="pb-n">12</span>
+    <p class="pb-p">«Il cliente chiama ogni giorno per sapere quando finisco.»</p>
+    <h3>Il cliente vede il planning, non i tuoi conti.</h3>
+    <p>Lo inviti gratis: vede a che punto sei e quando finisci. Niente ore, niente prezzi. Meno telefonate.</p>
+    <img src="planning-vero.jpg" width="1400" height="526" loading="lazy" alt="Schermata vera del planning di ceck.">
+  </section>
+
+  <section class="t c12 scuro" style="display:flex;flex-direction:column;justify-content:center;gap:12px">
+    <span class="etichetta" style="background:var(--giallo);color:var(--inchiostro);align-self:flex-start">Perché funziona</span>
+    <h2 style="font-size:clamp(26px,3vw,40px);font-weight:900;line-height:1.05">Non è un programma per l'ufficio. È fatto per chi sta in cantiere.</h2>
+    <p style="color:#c9cbd3">Tasti grandi, poche scritte, funziona anche con i guanti appena tolti. Se non sai come si fa, chiedi all'aiuto: ti risponde nella tua lingua.</p>
+  </section>
+
+  <section class="t c12 modulo arancio" id="prova">
+    <span class="etichetta">Prova ceck</span>
+    <h2 style="font-size:clamp(28px,3.4vw,44px);font-weight:900">Ti interessa?</h2>
+    <p>Ti mandiamo il link e il cantiere di prova già pronto, così vedi subito come funziona.</p>
+    <form id="form-prova" novalidate>
+      <label for="f-nome">Nome e cognome<input id="f-nome" name="nome" required autocomplete="name"></label>
+      <label for="f-email">Email<input id="f-email" name="email" type="email" required autocomplete="email"></label>
+      <label for="f-ditta">Nome della ditta<input id="f-ditta" name="ditta" autocomplete="organization"></label>
+      <label for="f-citta">Città<input id="f-citta" name="citta" required autocomplete="address-level2"></label>
+      <label for="f-persone">Quanti siete<select id="f-persone" name="persone"><option>Solo io</option><option selected>2–5</option><option>6–10</option><option>Più di 10</option></select></label>
+      <label for="f-lavoro">Che lavori fate<select id="f-lavoro" name="lavoro"><option>Edilizia e ristrutturazioni</option><option>Cartongesso e controsoffitti</option><option>Piastrelle e pavimenti</option><option>Pittura</option><option>Impianti</option><option>Altro</option></select></label>
+      <input type="hidden" name="lingua" value="it"><input type="hidden" name="tipo" value="civile">
+      <label class="consenso"><input type="checkbox" name="consenso" required> <span>Voglio ricevere una mail quando ceck apre. Ho letto la <a href="privacy-it.html">privacy</a>.</span></label>
+      <button type="submit">Avvisami quando apre</button>
+      <p class="grazie" id="grazie" hidden>Grazie! Ti abbiamo mandato una mail: conferma l'iscrizione e ti avvisiamo appena ceck apre.</p>
+      <p class="grazie errore" id="errore" hidden>Non è partito: controlla la connessione e riprova.</p>
+    </form>
+  </section>
+
+  <footer class="t c12 piede">
+    <span><a href="privacy-it.html" class="ck-link">Privacy e note legali</a></span>
+    <span>ceck.me · l'app di cantiere per artigiani</span>
+    <span>100 tak · SIRET 921 049 946 00038 · TVA non applicable, art. 293 B du CGI</span>
+                                                                  <span><a href="#" id="ck-apri" class="ck-link">Cookie</a></span>
+    <span class="crediti-foto">Foto: <a href="https://commons.wikimedia.org/wiki/File:Rom_(IT),_Kolosseum_--_2024_--_0610.jpg" rel="noopener" target="_blank">Colosseo, Anil Öztas</a>, CC BY 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Florence_Cathedral_seen_from_Piazzale_Michelangelo_night_dllu.jpg" rel="noopener" target="_blank">Duomo di Firenze, Dllu</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:The_Duomo_and_Tower_of_Pisa_at_sunrise.jpg" rel="noopener" target="_blank">Piazza dei Miracoli, MHoser</a>, CC BY-SA 4.0 · <a href="https://commons.wikimedia.org/wiki/File:Ebing_Br%C3%BCcke_Arbeiter-20160907-RM-114411.jpg" rel="noopener" target="_blank">Operai al lavoro, Reinhold Möller</a>, CC BY-SA 4.0 · Wikimedia Commons, colori e sfumature modificati</span>
+  </footer>
+</main>
+<script>
+document.getElementById('form-prova').addEventListener('submit',async e=>{e.preventDefault();const f=e.target;if(!f.checkValidity()){f.reportValidity&&f.reportValidity();return}
+const C=window.CECK_STRUMENTI||{},M=C.CAMPI||{},b=f.querySelector('button[type=submit]');b.disabled=true;
+try{if(!C.ISCRIZIONE)throw Error('modulo non collegato');{const d=new FormData();for(const [k,v] of new FormData(f)){if(M[k])d.append(M[k],v)}if(M.consenso)d.set(M.consenso,'1');
+d.append('email_address_check','');d.append('locale',f.lingua.value);await fetch(C.ISCRIZIONE,{method:'POST',mode:'no-cors',body:d})}
+document.getElementById('grazie').hidden=false;document.getElementById('errore').hidden=true;if(window.gtag)gtag('event','generate_lead',{lead_source:'ceck.me',tipo:f.tipo.value,lingua:f.lingua.value});if(window.gtag&&C.ADS_LEAD)gtag('event','conversion',{send_to:C.ADS_LEAD});f.querySelectorAll('input,select').forEach(x=>x.disabled=true)}
+catch(err){document.getElementById('errore').hidden=false;b.disabled=false}});
+</script>
+<!-- cookie:inizio -->
+<style>
+#ck{position:fixed;left:12px;right:12px;bottom:12px;z-index:50;max-width:720px;margin:0 auto;background:#16181d;color:#fdffc9;padding:18px 20px;border-radius:14px;box-shadow:0 8px 30px rgba(0,0,0,.35);font:15px/1.45 system-ui,sans-serif}
+#ck[hidden],#ck-pref[hidden]{display:none}#ck b{display:block;font-size:17px;margin-bottom:4px}#ck p{margin:0 0 12px}
+#ck .ck-tasti{display:flex;flex-wrap:wrap;gap:8px}#ck button{font:800 15px system-ui,sans-serif;border:0;border-radius:9px;padding:11px 16px;cursor:pointer}
+#ck-si,#ck-no,#ck-salva{background:#f4f99c;color:#16181d}#ck-scegli{background:none;color:#fdffc9;text-decoration:underline}
+#ck-pref{margin:0 0 12px}#ck-pref label{display:flex;gap:8px;align-items:center;margin:6px 0}#ck-pref input{width:20px;height:20px}
+.ck-link{color:inherit;text-decoration:underline;cursor:pointer;background:none;border:0;font:inherit;padding:0}
+</style>
+<div id="ck" role="dialog" aria-live="polite" aria-label="Cookie" hidden><b>Cookie</b><p>Usiamo i cookie per capire cosa migliorare in ceck e in questa pagina, e per misurare la pubblicità. Li attiviamo solo se accetti. Puoi cambiare idea quando vuoi da «Cookie» in fondo alla pagina.</p><div id="ck-pref" hidden><label><input type="checkbox" checked disabled> <span>ceck (necessari)</span></label><label><input type="checkbox" id="ck-stat"> <span>Statistiche (Google Analytics, Microsoft Clarity)</span></label><label><input type="checkbox" id="ck-pub"> <span>Pubblicità (Google Ads)</span></label><button type="button" id="ck-salva">Salva</button></div><div class="ck-tasti"><button type="button" id="ck-si">Accetta tutti</button><button type="button" id="ck-no">Rifiuta tutti</button><button type="button" id="ck-scegli">Scegli</button></div></div>
+<script>window.CECK_STRUMENTI={"GTM": "GTM-P9596T24", "GA": "", "ADS": "AW-18568911684", "CLARITY": "zc0w3xbqeo", "ISCRIZIONE": "https://8b6cb7dd.sibforms.com/serve/MUIFAMC5ZbaR1JMBwxaNW9eqUDl4E-7PiF0sJ2EMeZx-0ny4QEcK322Ls6FwqEb1a7sYpotYZI1GWwbp8TFUt3TzEcMc6Uh7tudpAABzewjDN7QimaiQCM2ushLLLx7kzof2Jsrfw29anw9p2kbRLH4xjoO_YGpq8uLy0MGsuVjj422LHsNIAendOdwGsoDDqvjGRS9ag5UzczcqQA==", "CAMPI": {"email": "EMAIL", "nome": "NOME", "citta": "CITTA", "ditta": "DITTA", "persone": "PERSONE", "lavoro": "LAVORO", "lingua": "LINGUA", "tipo": "TIPO"}, "ADS_LEAD": "AW-18568911684/cD00CNDMhrgdEMS2rJZF"};</script>
+<script>(()=>{const C=window.CECK_STRUMENTI||{},K='ceck_consenso',MAX=182*864e5,B=document.getElementById('ck');
+window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;
+gtag('consent','default',{ad_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',analytics_storage:'denied'});
+let g=false;
+function applica(c){const s=v=>v?'granted':'denied';
+gtag('consent','update',{analytics_storage:s(c.stat),ad_storage:s(c.pub),ad_user_data:s(c.pub),ad_personalization:s(c.pub)});
+if((c.stat&&C.GA||c.pub&&C.ADS)&&!g){g=true;const t=document.createElement('script');t.async=true;t.src='https://www.googletagmanager.com/gtag/js?id='+(C.GA||C.ADS);document.head.appendChild(t);gtag('js',new Date());if(C.GA)gtag('config',C.GA);if(C.ADS)gtag('config',C.ADS)}
+if((c.stat||c.pub)&&C.GTM&&!window.ckGtm){window.ckGtm=1;dataLayer.push({'gtm.start':Date.now(),event:'gtm.js'});const t=document.createElement('script');t.async=true;t.src='https://www.googletagmanager.com/gtm.js?id='+C.GTM;document.head.appendChild(t)}
+if(c.stat&&C.CLARITY&&!window.clarity){(function(c,l,a,r,i,t,y){c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};t=l.createElement(r);t.async=1;t.src='https://www.clarity.ms/tag/'+i;y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y)})(window,document,'clarity','script',C.CLARITY)}
+if(window.clarity)window.clarity('consentv2',{ad_Storage:s(c.pub),analytics_Storage:s(c.stat)})}
+function salva(stat,pub){const c={stat,pub,t:Date.now()};try{localStorage.setItem(K,JSON.stringify(c))}catch(e){}applica(c);B.hidden=true}
+let c=null;try{c=JSON.parse(localStorage.getItem(K))}catch(e){}
+if(c&&Date.now()-c.t<MAX)applica(c);else B.hidden=false;
+document.getElementById('ck-si').onclick=()=>salva(true,true);
+document.getElementById('ck-no').onclick=()=>salva(false,false);
+document.getElementById('ck-scegli').onclick=()=>{const p=document.getElementById('ck-pref');p.hidden=!p.hidden};
+document.getElementById('ck-salva').onclick=()=>salva(document.getElementById('ck-stat').checked,document.getElementById('ck-pub').checked);
+document.getElementById('ck-apri').onclick=e=>{e.preventDefault();if(c){document.getElementById('ck-stat').checked=!!c.stat;document.getElementById('ck-pub').checked=!!c.pub}B.hidden=false}})();</script>
+<!-- cookie:fine -->
+<script>document.querySelectorAll(".yt-play").forEach(b=>b.onclick=()=>{const f=document.createElement("iframe");f.src="https://www.youtube-nocookie.com/embed/"+b.dataset.id+"?autoplay=1&rel=0&cc_load_policy=1&hl=it";f.allow="autoplay; encrypted-media; picture-in-picture";f.allowFullscreen=true;f.referrerPolicy="strict-origin-when-cross-origin";f.title="Video ceck";b.replaceWith(f)})</script>
+</body>
+</html>
