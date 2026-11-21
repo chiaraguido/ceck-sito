@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ceck per il cartongesso · Misure con una foto, preventivo a metro quadro</title>
+<meta name="description" content="L'app per imprese di cartongesso: misure sulla foto, preventivo a metro quadro dal tuo listino, ore della squadra e rapportino dal telefono. Prova gratis.">
+<style>
+:root{--blu:#0F2A44;--blu2:#173b5f;--arancio:#F28C28;--legno:#c8935a;--crema:#fbf6ee;--testo:#16212c;--grigio:#5d6875;--verde:#2f9a5f;--rosso:#d0453a}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--testo);background:#fff;font-size:19px;line-height:1.55}
+a{color:inherit}
+.wrap{max-width:1160px;margin:0 auto;padding:0 22px}
+/* barra */
+.top{position:sticky;top:0;z-index:10;background:#0F2A44f2;backdrop-filter:blur(8px);color:#fff}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.marchio{display:flex;align-items:center;gap:10px;font-weight:800;font-size:26px;text-decoration:none}
+.marchio svg{width:36px;height:36px}
+.btn{display:inline-block;background:var(--arancio);color:#fff;text-decoration:none;font-weight:800;border-radius:14px;padding:14px 26px;font-size:19px;box-shadow:0 8px 22px #F28C2855;transition:transform .15s}
+.btn:hover{transform:translateY(-2px)}
+.btn.small{padding:9px 18px;font-size:16px;box-shadow:none}
+/* hero */
+.hero{background:radial-gradient(1200px 600px at 80% -10%,#24527f 0,transparent 60%),linear-gradient(160deg,var(--blu) 0,#0b2036 100%);color:#fff;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:40px;align-items:center;padding-top:64px;padding-bottom:80px}
+.etichetta{display:inline-flex;gap:8px;align-items:center;background:#ffffff14;border:1px solid #ffffff2a;border-radius:999px;padding:6px 14px;font-size:15px;font-weight:700;color:#ffd9b0}
+.hero h1{font-size:58px;line-height:1.05;margin:18px 0 18px;letter-spacing:-.025em}
+.hero h1 em{font-style:normal;color:var(--arancio)}
+.hero p.sub{font-size:22px;color:#cddbe8;margin:0 0 28px;max-width:560px}
+.garanzie{display:flex;flex-wrap:wrap;gap:18px;margin-top:22px;font-size:16px;color:#cddbe8}
+.garanzie span::before{content:"✓ ";color:var(--arancio);font-weight:800}
+/* telefono */
+.telefono{position:relative;width:min(420px,100%);margin:0 auto;aspect-ratio:9/17;background:#0a0f15;border-radius:46px;padding:14px;box-shadow:0 40px 80px #0008,0 0 0 2px #2c3e52 inset}
+.schermo{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:#fff;color:var(--testo)}
+.barra-app{position:absolute;top:0;left:0;right:0;height:52px;background:var(--blu);color:#fff;display:flex;align-items:center;gap:8px;padding:0 16px;font-weight:700;font-size:15px;z-index:3}
+.barra-app i{font-style:normal;margin-left:auto;background:var(--arancio);border-radius:8px;padding:2px 8px;font-size:12px}
+.foto{position:absolute;top:52px;left:0;right:0;overflow:hidden}
+.foto img{display:block;width:100%;height:auto}
+.misure{position:absolute;left:0;right:0;top:calc(52px + 75vw);padding:12px 14px;font-size:14px}
+.misure div{display:flex;justify-content:space-between;padding:7px 0;border-bottom:1px solid #eee;opacity:0;animation:appare .4s ease forwards}
+.misure div:nth-child(1){animation-delay:1s}.misure div:nth-child(2){animation-delay:2.3s}.misure div:nth-child(3){animation-delay:3.6s}
+.misure b{color:var(--blu)}
+.foto svg{position:absolute;inset:0;width:100%;height:100%}
+.quota{stroke:#F28C28;stroke-width:9;fill:none;stroke-linecap:round;stroke-dasharray:600;stroke-dashoffset:600;animation:disegna 1s ease forwards}
+.q2{animation-delay:1.3s}.q3{animation-delay:2.6s}
+.num{opacity:0;animation:appare .4s ease forwards}
+.n1{animation-delay:1s}.n2{animation-delay:2.3s}.n3{animation-delay:3.6s}
+.dito{position:absolute;font-size:44px;filter:drop-shadow(0 4px 6px #0006);animation:tocca 4s ease-in-out infinite;z-index:4}
+@keyframes disegna{to{stroke-dashoffset:0}}
+@keyframes appare{to{opacity:1}}
+@keyframes tocca{0%{left:14%;top:22%}30%{left:44%;top:20%}35%{left:44%;top:21%}60%{left:50%;top:48%}66%{left:50%;top:49%}100%{left:80%;top:22%}}
+.prev{position:absolute;left:12px;right:12px;bottom:12px;background:#fff;border-radius:18px;box-shadow:0 -6px 30px #0F2A4433;padding:14px 16px;transform:translateY(120%);animation:sale .7s 4.4s cubic-bezier(.2,.9,.3,1.2) forwards;font-size:14px}
+@keyframes sale{to{transform:translateY(0)}}
+.prev h4{margin:0 0 8px;font-size:15px;color:var(--blu);display:flex;justify-content:space-between}
+.prev h4 small{color:var(--verde);font-weight:800}
+.prev .r{display:flex;justify-content:space-between;padding:5px 0;border-bottom:1px dashed #e3e3e3}
+.prev .tot{display:flex;justify-content:space-between;margin-top:8px;font-weight:800;font-size:18px;color:var(--blu)}
+.prev .tot b{color:var(--arancio)}
+.esempio{position:absolute;top:60px;right:10px;background:#000a;color:#fff;font-size:11px;border-radius:6px;padding:2px 7px;z-index:3}
+/* sezioni */
+section{padding:84px 0}
+.titolo{text-align:center;max-width:780px;margin:0 auto 46px}
+.titolo .k{color:var(--arancio);font-weight:800;letter-spacing:.1em;font-size:15px;text-transform:uppercase}
+.titolo h2{font-size:42px;line-height:1.12;margin:10px 0 12px;letter-spacing:-.02em;color:var(--blu)}
+.titolo p{color:var(--grigio);font-size:20px;margin:0}
+/* dolori */
+.dolori{background:var(--crema)}
+.griglia4{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.dolore{background:#fff;border-radius:22px;padding:26px 22px;box-shadow:0 6px 24px #0F2A4412;position:relative;overflow:hidden}
+.dolore .e{font-size:46px}
+.dolore h3{margin:10px 0 6px;font-size:21px;color:var(--blu)}
+.dolore p{margin:0;color:var(--grigio);font-size:17px}
+.dolore.gr::after{background:var(--verde)}
+.dolore::after{content:"";position:absolute;left:0;top:0;bottom:0;width:6px;background:var(--rosso)}
+/* tre tocchi */
+.passi{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;counter-reset:p}
+.passo{text-align:center;padding:10px}
+.cerchio{width:150px;height:150px;border-radius:50%;margin:0 auto 18px;display:grid;place-content:center;font-size:64px;background:linear-gradient(145deg,#e9f1f9,#d6e4f2);position:relative}
+.cerchio::before{counter-increment:p;content:counter(p);position:absolute;top:2px;right:2px;width:46px;height:46px;border-radius:50%;background:var(--arancio);color:#fff;font-weight:800;font-size:22px;display:grid;place-content:center;box-shadow:0 4px 10px #F28C2866}
+.passo h3{font-size:24px;margin:0 0 8px;color:var(--blu)}
+.passo p{margin:0;color:var(--grigio)}
+.freccia{display:none}
+/* sera */
+.sera{background:linear-gradient(160deg,#0b2036,var(--blu2));color:#fff}
+.sera .titolo h2{color:#fff}.sera .titolo p{color:#cddbe8}
+.sera-griglia{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center}
+.notifica{background:#fff;color:var(--testo);border-radius:24px;padding:22px 24px;box-shadow:0 30px 60px #0007;max-width:480px;margin:0 auto}
+.notifica .testa{display:flex;align-items:center;gap:10px;font-size:14px;color:var(--grigio);margin-bottom:10px}
+.notifica .testa b{color:var(--blu)}
+.ico{width:30px;height:30px;border-radius:8px;background:var(--blu);display:grid;place-content:center}
+.notifica h4{margin:0 0 6px;font-size:21px}
+.semaforo{display:flex;height:16px;border-radius:9px;overflow:hidden;margin:14px 0 6px}
+.semaforo i{display:block}
+.notifica .msg{background:#fdeceb;border-radius:12px;padding:12px 14px;font-weight:600;color:#8e2a22}
+.notifica .rap{margin-top:12px;background:#e9f6ef;border-radius:12px;padding:12px 14px;font-weight:600;color:#1f6b42}
+.lista-sera{list-style:none;padding:0;margin:0}
+.lista-sera li{display:flex;gap:14px;align-items:flex-start;margin-bottom:20px;font-size:20px}
+.lista-sera li span{font-size:30px;line-height:1}
+.lista-sera b{color:var(--arancio)}
+/* memoria */
+.memoria{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+.barre{display:flex;align-items:flex-end;gap:22px;height:240px;border-bottom:3px solid #d5dbe2;padding:0 10px;position:relative}
+.barre .c{flex:1;display:flex;gap:6px;align-items:flex-end;height:100%}
+.barre i{flex:1;border-radius:8px 8px 0 0;display:block}
+.barre .p{background:#b9c8d8}.barre .v{background:var(--arancio)}
+.media{position:absolute;left:0;right:0;border-top:3px dashed var(--verde)}
+.media span{position:absolute;right:0;top:-30px;background:var(--verde);color:#fff;border-radius:8px;padding:2px 10px;font-size:15px;font-weight:700}
+.didascalie{display:flex;gap:22px;padding:8px 10px 0;font-size:14px;color:var(--grigio);text-align:center}
+.didascalie span{flex:1}
+.bolla{margin-top:22px;background:#e9f6ef;border:2px solid var(--verde);border-radius:18px;padding:16px 18px;font-weight:700;color:#1f6b42;font-size:19px}
+.porte{background:var(--crema);border-radius:22px;padding:26px}
+.porte .fila{font-size:40px;letter-spacing:4px;margin-bottom:10px}
+/* lavori */
+.lavori{background:var(--crema)}
+.chips{display:flex;flex-wrap:wrap;justify-content:center;gap:14px}
+.chip{background:#fff;border-radius:999px;padding:12px 22px;font-size:20px;font-weight:600;box-shadow:0 4px 14px #0F2A4412}
+/* prima dopo */
+.pd{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.pd>div{border-radius:24px;padding:28px}
+.prima{background:#f4f4f4}
+.dopo{background:linear-gradient(150deg,#eaf3fb,#dbeaf7);border:3px solid var(--blu)}
+.pd h3{margin:0 0 14px;font-size:26px}
+.prima h3{color:#8a8f96}.dopo h3{color:var(--blu)}
+.pd ul{list-style:none;padding:0;margin:0}
+.pd li{padding:9px 0;border-bottom:1px solid #0000000f;font-size:19px}
+.prima li::before{content:"✗  ";color:var(--rosso);font-weight:800}
+.dopo li::before{content:"✓  ";color:var(--verde);font-weight:800}
+/* finale */
+.finale{background:radial-gradient(900px 400px at 50% 0,#24527f,transparent 70%),var(--blu);color:#fff;text-align:center}
+.finale h2{font-size:48px;margin:0 0 14px;letter-spacing:-.02em}
+.finale p{color:#cddbe8;font-size:21px;margin:0 0 30px}
+.finale .btn{font-size:23px;padding:18px 38px}
+footer{background:#081726;color:#8ea2b6;font-size:13px;padding:22px 0;text-align:center}
+@media (max-width:900px){
+.hero .wrap,.sera-griglia,.memoria,.pd{grid-template-columns:1fr}
+.griglia4{grid-template-columns:1fr 1fr}.passi{grid-template-columns:1fr}
+.hero h1{font-size:42px}.titolo h2{font-size:32px}.finale h2{font-size:34px}
+.top .btn.small{display:none}}
+@media (max-width:560px){.griglia4{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <a class="marchio" href="#"><svg viewBox="0 0 64 64"><rect width="64" height="64" rx="14" fill="#fff"/><path d="M44 20a16 16 0 1 0 0 24" fill="none" stroke="#0F2A44" stroke-width="7" stroke-linecap="round"/><path d="M27 32l6 6 13-14" fill="none" stroke="#F28C28" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></svg>ceck</a>
+  <a class="btn small" href="https://app.ceck.me/iscriviti?lang=it">Prova gratis</a>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div>
+    <span class="etichetta">🧱 Per imprese di cartongesso e finiture</span>
+    <h1>Una foto.<br>Le misure con un dito.<br><em>Il preventivo è fatto.</em></h1>
+    <p class="sub">Pareti, contropareti, controsoffitti: con ceck prendi le misure sul telefono, il preventivo a metro quadro esce dal <b>tuo</b> listino e la sera sai se il cantiere ti sta facendo guadagnare.</p>
+    <a class="btn" href="https://app.ceck.me/iscriviti?lang=it">Provalo gratis adesso →</a>
+    <div class="garanzie"><span>Senza carta di credito</span><span>Pronto in 2 minuti</span><span>Sul telefono e sul computer</span></div>
+  </div>
+  <div>
+    <div class="telefono"><div class="schermo">
+      <div class="barra-app">📏 Rilievo · Appartamento Bianchi <i>3 misure</i></div>
+      <span class="esempio">esempio</span>
+      <div class="foto">
+        <img src="parete.jpg" alt="Parete da misurare">
+        <svg viewBox="0 0 1024 768">
+          <path class="quota q1" d="M215 712 H985"/>
+          <path class="quota q2" d="M470 170 V690"/>
+          <path class="quota q3" d="M560 92 H850"/>
+          <g class="num n1"><rect x="640" y="640" width="150" height="52" rx="12" fill="#F28C28"/><text x="715" y="676" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">4,20 m</text></g>
+          <g class="num n2"><rect x="395" y="400" width="150" height="52" rx="12" fill="#0F2A44"/><text x="470" y="436" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">2,70 m</text></g>
+          <g class="num n3"><rect x="630" y="108" width="150" height="52" rx="12" fill="#F28C28"/><text x="705" y="144" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">1,20 m</text></g>
+        </svg>
+        <div class="dito">☝️</div>
+      </div>
+      <div class="misure" id="mis"><div><span>Parete soggiorno · lunghezza</span><b>4,20 m</b></div><div><span>Altezza</span><b>2,70 m</b></div><div><span>Vano porta · larghezza</span><b>1,20 m</b></div></div>
+      <div class="prev">
+        <h4>Preventivo n. 14 <small>dal tuo listino</small></h4>
+        <div class="r"><span>Parete cartongesso, 1 lastra</span><span>8,8 m² × 38 €</span></div>
+        <div class="r"><span>Stuccatura e rasatura</span><span>8,8 m² × 12 €</span></div>
+        <div class="r"><span>Controtelaio vano porta</span><span>1 × 85 €</span></div>
+        <div class="tot"><span>Totale</span><b>525,00 €</b></div>
+      </div>
+    </div></div>
+  </div>
+</div></header>
+
+<section class="dolori"><div class="wrap">
+  <div class="titolo"><div class="k">Ti riconosci?</div><h2>Il lavoro lo sai fare.<br>È tutto il resto che ti mangia la giornata.</h2></div>
+  <div class="griglia4">
+    <div class="dolore"><div class="e">📝</div><h3>Misure sui foglietti</h3><p>Scritte sul cartone, sul muro, sul telefono… e poi non le trovi più.</p></div>
+    <div class="dolore"><div class="e">💬</div><h3>Ore su WhatsApp</h3><p>Le ore della squadra arrivano su messaggi, fogli e telefonate. A fine mese non tornano.</p></div>
+    <div class="dolore"><div class="e">🧱</div><h3>Extra non pagati</h3><p>Il cliente chiede un pezzo in più a voce. Se non è scritto, poi non te lo paga.</p></div>
+    <div class="dolore"><div class="e">❓</div><h3>Ci ho guadagnato?</h3><p>A metro quadro sembrava un buon prezzo. Ma quante ore ci avete messo davvero?</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="titolo"><div class="k">Come funziona</div><h2>Tre tocchi, e hai finito</h2><p>Niente corsi, niente manuali. Se sai usare WhatsApp, sai usare ceck.</p></div>
+  <div class="passi">
+    <div class="passo"><div class="cerchio">📸</div><h3>Foto e misure</h3><p>Fotografi la parete, il soffitto, il vano. Segni le misure con il dito direttamente sulla foto.</p></div>
+    <div class="passo"><div class="cerchio">🧾</div><h3>Preventivo a metro quadro</h3><p>Il tuo listino lo carichi anche da Excel. Scegli le voci: ceck moltiplica i metri, somma e ti dà il totale.</p></div>
+    <div class="passo"><div class="cerchio">📅</div><h3>Planning e ore</h3><p>Il lavoro accettato va nel planning. La sera segni le ore tue e della squadra con un dito, in un attimo.</p></div>
+  </div>
+</div></section>
+
+<section class="sera"><div class="wrap">
+  <div class="titolo"><div class="k">Il momento che cambia tutto</div><h2>Alle 18 segni le ore.<br>ceck ti dice la verità.</h2></div>
+  <div class="sera-griglia">
+    <div class="notifica">
+      <div class="testa"><div class="ico"><svg viewBox="0 0 64 64" width="20" height="20"><path d="M44 20a16 16 0 1 0 0 24" fill="none" stroke="#fff" stroke-width="7" stroke-linecap="round"/><path d="M27 32l6 6 13-14" fill="none" stroke="#F28C28" stroke-width="6" stroke-linecap="round"/></svg></div><b>ceck</b> · adesso</div>
+      <h4>Appartamento Bianchi · 3 persone · 24 ore oggi</h4>
+      <div class="semaforo"><i style="width:60%;background:#2f9a5f"></i><i style="width:20%;background:#F28C28"></i><i style="width:20%;background:#d0453a"></i></div>
+      <div class="msg">🔴 Avevi previsto 48 ore. Siamo a 60.</div>
+      <div class="rap">📄 Il rapportino di oggi si è scritto da solo.</div>
+    </div>
+    <ul class="lista-sera">
+      <li><span>☝️</span><div><b>Un dito, tre secondi.</b> Tocchi il cantiere, scrivi le ore di ognuno, fatto.</div></li>
+      <li><span>🚦</span><div><b>Verde, arancio, rosso.</b> Vedi subito se stai andando oltre il previsto, prima che sia tardi.</div></li>
+      <li><span>📄</span><div><b>Il rapportino si scrive da solo,</b> con data, ore e lavori fatti. Da mandare o da tenere.</div></li>
+    </ul>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="titolo"><div class="k">Da solo o con la squadra</div><h2>ceck cresce con la tua impresa</h2></div>
+  <div class="griglia4" style="grid-template-columns:repeat(3,1fr)">
+    <div class="dolore gr"><div class="e">🧑‍🔧</div><h3>Da solo</h3><p>Foto e misure, preventivo dal tuo listino, ore la sera e rapportino che si scrive da solo. E il planning ti ricorda le cose che nessun altro ti ricorda.</p></div>
+    <div class="dolore gr"><div class="e">🧑‍🔧👷👷</div><h3>Piccola squadra</h3><p>Le ore di tutti in un posto solo. Ogni lavoro extra con foto, nota e data. L'elenco del materiale che manca, a crocette.</p></div>
+    <div class="dolore gr"><div class="e">👷👷👷👷</div><h3>Più cantieri</h3><p>Il planning di tutti i cantieri. I punti bloccanti segnati con foto e data: «non si chiude la parete, manca l'impianto». Ore contro previsto, con il semaforo.</p></div>
+  </div>
+</div></section>
+
+<section class="lavori"><div class="wrap">
+  <div class="titolo"><div class="k">Per ogni lavoro</div><h2>Dalla parete singola al cantiere intero</h2></div>
+  <div class="chips">
+    <span class="chip">🧱 Pareti</span><span class="chip">📐 Contropareti</span><span class="chip">⬜ Controsoffitti</span><span class="chip">🪣 Stuccature e rasature</span><span class="chip">🧊 Isolamento</span><span class="chip">🚪 Vani porta e nicchie</span><span class="chip">🏢 Uffici e negozi</span><span class="chip">🏠 Appartamenti</span><span class="chip">🌍 Squadre in 7 lingue</span>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="titolo"><div class="k">Prima e dopo</div><h2>La stessa settimana, due vite diverse</h2></div>
+  <div class="pd">
+    <div class="prima"><h3>Senza ceck</h3><ul><li>Misure su tre foglietti diversi</li><li>Preventivo la domenica sera</li><li>Ore della squadra sparse su WhatsApp</li><li>Extra fatti e mai pagati</li><li>Prezzi a metro quadro a occhio</li></ul></div>
+    <div class="dopo"><h3>Con ceck</h3><ul><li>Misure sulla foto, sempre con te</li><li>Preventivo in pochi minuti dal tuo listino</li><li>Ore di tutti segnate con un dito, la sera</li><li>Ogni extra con foto e data</li><li>Le ore vere di ogni cantiere, per i prossimi prezzi</li></ul></div>
+  </div>
+</div></section>
+
+<section class="finale"><div class="wrap">
+  <h2>È proprio quello che cercavi.</h2>
+  <p>Provalo sul tuo prossimo cantiere. Gratis, senza carta di credito.</p>
+  <a class="btn" href="https://app.ceck.me/iscriviti?lang=it">Comincia gratis →</a>
+  <p style="font-size:16px;margin:22px 0 0">Nato in cantiere, da un capocantiere. In 7 lingue, per tutta la squadra.</p>
+</div></section>
+
+<footer>© 2026 ceck · ceck.me · Foto: «Baby Room, sanded walls», Qole Pejorian, CC BY 2.0</footer>
+<script>function pos(){const i=document.querySelector(".foto img"),m=document.getElementById("mis");if(i.complete&&i.offsetHeight)m.style.top=(52+i.offsetHeight)+"px"}addEventListener("load",pos);addEventListener("resize",pos);</script>
+</body>
+</html>
