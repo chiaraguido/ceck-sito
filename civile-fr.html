@@ -140,6 +140,18 @@ svg.disegno{width:100%;height:auto;display:block}
     <p class="nota">Créé par un chef de chantier, après 43 ans de chantier.</p>
   </section>
 
+  <!-- presentazione:inizio · video sotto la locandina (Guido, 22/11/2026) -->
+  <section class="t c12 pres-video" aria-label="Vidéo de présentation de ceck">
+    <div class="pres-testo"><span class="etichetta">▶ 2 min</span><h2>Découvre ceck en 2 minutes</h2><p>Ton chantier, enfin sous contrôle. Raconté par un chef de chantier.</p></div>
+    <video src="presentazione-fr.mp4" poster="locandina-fr.jpg" controls playsinline preload="none" width="1280" height="720"></video>
+  </section>
+  <style>.pres-video{background:#0F2A44;color:#fff;padding:22px 24px;display:flex;flex-direction:column;gap:14px}
+  .pres-testo h2{font-family:var(--display);font-size:clamp(26px,3vw,40px);margin:6px 0 2px;color:#fff}.pres-testo p{margin:0;font-size:18px;color:#d6e0ea}
+  .pres-testo .etichetta{background:#F28C28;color:#0F2A44}
+  .pres-video video{width:100%;height:auto;aspect-ratio:16/9;border-radius:14px;background:#000;display:block}
+  @media (max-width:600px){.pres-video{padding:16px}}</style>
+  <!-- presentazione:fine -->
+
   <section class="t c7 carta video-lingua" aria-label="Video: si sceglie la lingua e ceck si traduce">
     <video src="lingua-landing.mp4" poster="lingua-landing.jpg" autoplay muted loop playsinline preload="metadata" width="860" height="700"></video>
   </section>
