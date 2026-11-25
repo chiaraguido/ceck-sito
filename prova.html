@@ -3,4 +3,4 @@
 <script>(function(){var L=['it','fr','en','es','de','ro','pl'],l='en';(navigator.languages||[navigator.language||'en']).some(function(x){var c=(x||'').slice(0,2).toLowerCase();if(L.indexOf(c)>=0){l=c;return true}});
 var q=new URLSearchParams(location.search),c=q.get('c')||'';try{if(c&&/^[A-Za-z0-9]{4,12}$/.test(c))localStorage.setItem('ceck_codice',c.toUpperCase());else c=localStorage.getItem('ceck_codice')||''}catch(e){}
 location.replace('https://app.ceck.me/iscriviti?lang='+(q.get('lang')||l)+(c?'&c='+encodeURIComponent(c):''))})();</script>
-</head><body style="font:20px sans-serif;padding:30px"><a href="https://app.ceck.me/iscriviti">Prova ceck gratis →</a></body></html>
+</head><body style="font:20px sans-serif;padding:30px"><a href="https://app.ceck.me/iscriviti">Prova ceck gratis →</a><script src="/provenienza.js" defer></script></body></html>
