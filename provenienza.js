@@ -26,3 +26,21 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', tutti); else tutti();
   document.addEventListener('click', function (e) { var a = e.target.closest && e.target.closest('a'); if (a) sistema(a); }, true);
 })();
+
+/* Modalità di consenso AVANZATA di Google (27/11/2026, sì di Guido).
+   Il banner resta uguale. Se il visitatore non ha (ancora) accettato la pubblicità, il tag Google Ads parte lo stesso
+   ma con consenso «denied» (già impostato dal banner): niente cookie, solo segnali anonimi, così Google può stimare
+   le conversioni di chi rifiuta. Chi accetta: il banner aggiorna il consenso a «granted» come prima. */
+(function () {
+  try {
+    var C = window.CECK_STRUMENTI || {};
+    if (!C.ADS || !window.gtag || document.querySelector('script[src*="googletagmanager.com/gtag/js"]')) return;
+    window.gtag('set', 'ads_data_redaction', true);
+    window.gtag('set', 'url_passthrough', true);
+    var t = document.createElement('script'); t.async = true;
+    t.src = 'https://www.googletagmanager.com/gtag/js?id=' + C.ADS;
+    document.head.appendChild(t);
+    window.gtag('js', new Date());
+    window.gtag('config', C.ADS);
+  } catch (e) {}
+})();
