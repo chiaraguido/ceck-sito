@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Construction timesheets: track labour hours and see if a job pays · ceck</title>
+<meta name="description" content="Construction timesheets done properly: log labour hours by task and area, work out the real cost and compare hours allowed with hours used before the job goes into the red.">
+<link rel="canonical" href="https://ceck.me/en/guides/construction-timesheets/">
+<link rel="alternate" hreflang="it" href="https://ceck.me/guide/controllo-ore-operai-cantiere/">
+<link rel="alternate" hreflang="fr" href="https://ceck.me/fr/guides/suivi-des-heures-chantier/">
+<link rel="alternate" hreflang="en" href="https://ceck.me/en/guides/construction-timesheets/">
+<link rel="alternate" hreflang="de" href="https://ceck.me/de/ratgeber/arbeitszeiterfassung-baustelle/">
+<link rel="alternate" hreflang="es" href="https://ceck.me/es/guias/control-de-horas-en-obra/">
+<link rel="alternate" hreflang="pl" href="https://ceck.me/pl/poradniki/ewidencja-czasu-pracy-na-budowie/">
+<link rel="alternate" hreflang="ro" href="https://ceck.me/ro/ghiduri/pontaj-muncitori-santier/">
+<link rel="alternate" hreflang="x-default" href="https://ceck.me/guide/controllo-ore-operai-cantiere/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://ceck.me/en/guides/construction-timesheets/">
+<meta property="og:title" content="Construction timesheets: track labour hours and see if a job pays">
+<meta property="og:description" content="Hours allowed and actual hours: spot in time that a job is losing money.">
+<meta property="og:image" content="https://ceck.me/tel-ore.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Construction timesheets: how to track labour hours and see if a job pays","inLanguage":"en","datePublished":"2026-11-28","image":"https://ceck.me/tel-ore.jpg","author":{"@type":"Organization","name":"ceck","url":"https://ceck.me/"},"publisher":{"@type":"Organization","name":"ceck","logo":{"@type":"ImageObject","url":"https://ceck.me/logo-512.png"}}}</script>
+<style>
+:root{--blu:#0F2A44;--arancio:#F28C28;--testo:#16212c;--grigio:#5d6875;--crema:#f7f4ee}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--testo);background:#fff;font-size:19px;line-height:1.65}
+a{color:#1d5c99}
+.top{position:sticky;top:0;z-index:10;background:#0F2A44f2;color:#fff}
+.top .wrap{max-width:1160px;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.marchio{display:flex;align-items:center;gap:10px;font-weight:800;font-size:26px;text-decoration:none;color:#fff}.marchio svg{width:36px;height:36px}
+.btn{display:inline-block;background:var(--arancio);color:#fff;text-decoration:none;font-weight:800;border-radius:14px;padding:14px 26px;font-size:19px}
+.btn.small{padding:9px 18px;font-size:16px}
+article{max-width:760px;margin:0 auto;padding:40px 22px 20px}
+.briciole{font-size:15px;color:var(--grigio)}.briciole a{color:var(--grigio)}
+h1{font-size:42px;line-height:1.15;color:var(--blu);margin:10px 0 14px;letter-spacing:-.02em}
+.attacco{font-size:21px;color:#33414f}
+h2{font-size:28px;color:var(--blu);margin:44px 0 10px}
+figure{margin:22px 0}figure img{width:100%;border-radius:14px;box-shadow:0 10px 30px #0002}figcaption{font-size:15px;color:var(--grigio);margin-top:6px}
+.box{background:var(--crema);border-left:6px solid var(--arancio);border-radius:10px;padding:14px 18px;margin:20px 0}
+.racconto{background:#fff8ec;border:2px dashed var(--arancio);border-radius:12px;padding:16px 18px;margin:24px 0;font-style:italic}
+ul li{margin:6px 0}
+.fine{background:var(--blu);color:#fff;border-radius:18px;padding:28px;margin:44px 0 10px;text-align:center}
+.fine h2{color:#fff;margin-top:0}.fine p{color:#cddbe8}
+.altre{border-top:1px solid #e5e7eb;margin-top:40px;padding-top:16px;font-size:17px}
+footer{text-align:center;color:var(--grigio);font-size:14px;padding:30px 20px}footer a{color:var(--grigio)}
+@media(max-width:640px){h1{font-size:32px}h2{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="marchio" href="/civile-en.html"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck</a>
+  <a class="btn small" href="https://app.ceck.me/iscriviti?lang=en">Try it free</a>
+</div></div>
+
+<article>
+<div class="briciole"><a href="/civile-en.html">ceck</a> › <a href="/en/guides/">Guides</a></div>
+<h1>Construction timesheets: how to track labour hours and see if a job pays</h1>
+<p class="attacco">You priced a job at 200 hours. In the end you used 250. You invoiced what you quoted, but you made far less than you thought. Construction timesheets are there to stop that happening.</p>
+<p>The problem is not just the 50 extra hours. The problem is noticing <b>once the job is finished</b>, when there was nothing left to do. Tracking labour hours on site is for exactly this: noticing while there is still time.</p>
+
+
+<h2>Logging attendance is not enough</h2>
+<p>Knowing that four operatives worked eight hours tells you the gang total: 32 hours. But it does not tell you <b>what each task cost</b>.</p>
+<p>To really control a job, every hour must be tied to two things:</p>
+<ul>
+<li><b>the room</b> or area: ground floor, bathroom 2, north elevation;</li>
+<li><b>the task</b>: framing, boarding, jointing, skimming.</li>
+</ul>
+<p>Only then, halfway through, can you say "first-floor boarding is on track, skimming isn't".</p>
+<figure><img src="/tel-ore.jpg" alt="Labour hours logged by room and task from the phone" loading="lazy"><figcaption>Hours logged by task, for several operatives at once.</figcaption></figure>
+
+<h2>The sum that makes the difference</h2>
+<div class="box"><b>Example with a labour cost of €30 an hour.</b><br>
+Task allowed: 200 hours → <b>€6,000</b><br>
+Hours actually used: 250 hours → <b>€7,500</b><br>
+Difference: <b>€1,500</b> straight off your margin.</div>
+<p>If halfway through you have already used 130 hours out of 200, you know you are heading for 260. That is when you can step in: find out what is slowing things down, move a person, talk to the client if the work has changed.</p>
+
+<h2>Where the extra hours come from</h2>
+<p>It is almost never someone who "can't be bothered". The most common causes are:</p>
+<ul>
+<li>missing materials, with the gang standing idle or sent to the merchant;</li>
+<li>errors or design changes;</li>
+<li>work that has to be redone;</li>
+<li>other trades in the same room;</li>
+<li>changes asked for by the client, often verbally;</li>
+<li>difficulties nobody could see at quoting stage.</li>
+</ul>
+<p>If you log the <b>reason</b> along with the hours, you get two things: you know where to improve, and you have the evidence to claim <b>variations</b> when the cause is not down to you.</p>
+
+<h2>How to fill in timesheets without wasting time</h2>
+<ul>
+<li><b>Every day, not at the end of the week:</b> from memory, hours always get "rounded".</li>
+<li><b>One person logs them</b>, the site manager or the owner, for the whole gang: fewer errors and no operative filling in forms.</li>
+<li><b>The same tasks as the quote</b>, so the comparison is instant.</li>
+</ul>
+<p>The day's hours then go straight into the daily site report. To see how hours fit with the rest of the job, read <a href="/en/guides/construction-site-management/">construction site management</a>.</p>
+
+<h2>In short</h2>
+<ul>
+<li>✅ Hours tied to room and task, not just the person</li>
+<li>✅ Hours allowed / hours used compared during the job, not at the end</li>
+<li>✅ Reason for extra hours written down straight away</li>
+<li>✅ One person logs for the whole gang, every day</li>
+</ul>
+
+<div class="fine">
+<h2>Don't wait for the end of the job to find out what you made</h2>
+<p>With ceck the site manager logs hours by room and task, for several operatives at once, and sees hours used next to hours allowed straight away. The daily site report fills itself in. From €5 a month, 21-day free trial.</p>
+<a class="btn" href="https://app.ceck.me/iscriviti?lang=en">Try ceck free →</a>
+<p class="commerciale" style="margin:16px 0 0"><a href="/civile-en.html" style="color:#fff;font-weight:700">See how ceck works, the construction site management app →</a></p>
+</div>
+
+<div class="altre"><b>You might also need:</b> <a href="/en/guides/losing-money-on-building-jobs/">How to stop losing money on building jobs</a> · <a href="/en/guides/construction-site-management/">Construction site management</a> · <a href="/en/guides/small-building-firm-management/">Running a small building firm</a></div>
+</article>
+
+<footer>© 2026 ceck · ceck.me · <a href="/en/guides/">Guides</a> · <a href="/privacy-en.html">Privacy and legal notice</a> · <a href="/cgu-en.html">Terms and conditions</a></footer>
+<script src="/provenienza.js" defer></script>
+</body>
+</html>
