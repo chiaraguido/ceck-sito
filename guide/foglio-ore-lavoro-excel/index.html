@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Foglio ore lavoro Excel: quanto ti costa veramente una lavorazione? · ceck</title>
+<meta name="description" content="Come utilizzare Excel per calcolare le ore lavorate, controllare la manodopera e confrontare le ore previste con quelle effettive.">
+<link rel="canonical" href="https://ceck.me/guide/foglio-ore-lavoro-excel/">
+<link rel="alternate" hreflang="it" href="https://ceck.me/guide/foglio-ore-lavoro-excel/">
+<link rel="alternate" hreflang="fr" href="https://ceck.me/fr/guides/feuille-d-heures-excel/">
+<link rel="alternate" hreflang="en" href="https://ceck.me/en/guides/timesheet-excel-labour-cost/">
+<link rel="alternate" hreflang="de" href="https://ceck.me/de/ratgeber/stundenzettel-excel/">
+<link rel="alternate" hreflang="es" href="https://ceck.me/es/guias/hoja-de-horas-excel/">
+<link rel="alternate" hreflang="pl" href="https://ceck.me/pl/poradniki/ewidencja-godzin-excel/">
+<link rel="alternate" hreflang="ro" href="https://ceck.me/ro/ghiduri/pontaj-excel/">
+<link rel="alternate" hreflang="x-default" href="https://ceck.me/guide/foglio-ore-lavoro-excel/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Foglio ore lavoro Excel: quanto ti costa veramente una lavorazione?">
+<meta property="og:description" content="40 ore previste, 56 effettive: quanto costa la differenza, e come controllarla con Excel o con ceck.">
+<meta property="og:image" content="https://ceck.me/tel-ore.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Foglio ore lavoro Excel: quanto ti costa veramente una lavorazione?","inLanguage":"it","datePublished":"2026-11-28","image":"https://ceck.me/tel-ore.jpg","author":{"@type":"Organization","name":"ceck","url":"https://ceck.me/"},"publisher":{"@type":"Organization","name":"ceck","logo":{"@type":"ImageObject","url":"https://ceck.me/logo-512.png"}}}</script>
+<style>
+:root{--blu:#0F2A44;--arancio:#F28C28;--testo:#16212c;--grigio:#5d6875;--crema:#f7f4ee}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--testo);background:#fff;font-size:19px;line-height:1.65}
+a{color:#1d5c99}
+.top{position:sticky;top:0;z-index:10;background:#0F2A44f2;color:#fff}
+.top .wrap{max-width:1160px;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.marchio{display:flex;align-items:center;gap:10px;font-weight:800;font-size:26px;text-decoration:none;color:#fff}.marchio svg{width:36px;height:36px}
+.btn{display:inline-block;background:var(--arancio);color:#fff;text-decoration:none;font-weight:800;border-radius:14px;padding:14px 26px;font-size:19px}
+.btn.small{padding:9px 18px;font-size:16px}
+article{max-width:760px;margin:0 auto;padding:40px 22px 20px}
+.briciole{font-size:15px;color:var(--grigio)}.briciole a{color:var(--grigio)}
+h1{font-size:42px;line-height:1.15;color:var(--blu);margin:10px 0 14px;letter-spacing:-.02em}
+.attacco{font-size:21px;color:#33414f}
+h2{font-size:28px;color:var(--blu);margin:44px 0 10px}
+figure{margin:22px 0}figure img{width:100%;border-radius:14px;box-shadow:0 10px 30px #0002}figcaption{font-size:15px;color:var(--grigio);margin-top:6px}
+.box{background:var(--crema);border-left:6px solid var(--arancio);border-radius:10px;padding:14px 18px;margin:20px 0}
+.racconto{background:#fff8ec;border:2px dashed var(--arancio);border-radius:12px;padding:16px 18px;margin:24px 0;font-style:italic}
+ul li{margin:6px 0}
+.fine{background:var(--blu);color:#fff;border-radius:18px;padding:28px;margin:44px 0 10px;text-align:center}
+.fine h2{color:#fff;margin-top:0}.fine p{color:#cddbe8}
+.altre{border-top:1px solid #e5e7eb;margin-top:40px;padding-top:16px;font-size:17px}
+footer{text-align:center;color:var(--grigio);font-size:14px;padding:30px 20px}footer a{color:var(--grigio)}
+@media(max-width:640px){h1{font-size:32px}h2{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="marchio" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck</a>
+  <a class="btn small" href="https://app.ceck.me/iscriviti?lang=it">Prova gratis</a>
+</div></div>
+
+<article>
+<div class="briciole"><a href="/">ceck</a> › <a href="/guide/">Guide</a></div>
+<h1>Foglio ore lavoro Excel: quanto ti costa veramente una lavorazione?</h1>
+<p class="attacco">Hai preventivato 40 ore per montare un controsoffitto.</p>
+<p>Alla fine del lavoro ne hai utilizzate 56.</p>
+<p>Sono soltanto 16 ore in più?</p>
+<p><b>Dipende da quanto ti costa ogni ora di manodopera.</b></p>
+
+<h2>Un esempio concreto</h2>
+<p>Immaginiamo un costo aziendale della manodopera di 30 euro all’ora.</p>
+<p><table style="border-collapse:collapse;min-width:320px;margin:8px 0;font-size:18px;background:#fff;box-shadow:0 1px 4px #0001;border-radius:6px"><tr><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea">Ore preventivate</td><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea;text-align:right">40</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea">Ore effettive</td><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea;text-align:right">56</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea">Differenza</td><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea;text-align:right">16</td></tr><tr><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea">Costo orario</td><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea;text-align:right">30 €</td></tr><tr style="font-weight:800;color:#c0392b"><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea">Costo supplementare</td><td style="padding:8px 12px;border-bottom:1px solid #e3e6ea;text-align:right">480 €</td></tr></table></p>
+<p>Una sola lavorazione ti è costata 480 euro in più rispetto al previsto.</p>
+<p>Se questo succede in diversi cantieri, il margine dell’impresa può <a href="/guide/come-evitare-perdite-cantiere/">ridursi rapidamente</a>.</p>
+
+<h2>Excel può aiutarti a controllare le ore</h2>
+<p>Un foglio di calcolo permette di registrare le ore, sommarle e confrontarle con quelle previste.</p>
+<p>È uno strumento utile, soprattutto quando inizi a organizzare la tua impresa.</p>
+<p><span style="display:flex;flex-wrap:wrap;gap:12px;margin:10px 0"><a class="btn" href="/foglio-ore-operai.xlsx" download>⬇ Foglio ore mensile Excel gratis</a> <a class="btn" style="background:#0F2A44" href="/rapportino-di-cantiere.xlsx" download>⬇ Rapportino giornaliero Excel gratis</a></span></p>
+<p>Il problema nasce quando devi aggiornare continuamente diversi file, raccogliere informazioni dagli operai e controllare più cantieri contemporaneamente.</p>
+
+<h2>Registra le ore per lavorazione</h2>
+<p>Non limitarti a registrare otto ore per un operaio.</p>
+<p>Indica anche dove ha lavorato e quale attività ha svolto.</p>
+<p>Soltanto così puoi capire quali lavorazioni hanno rispettato il preventivo e quali hanno richiesto più tempo.</p>
+
+<h2>Dal foglio Excel al controllo del cantiere</h2>
+<p>Con ceck puoi registrare le ore direttamente dal telefono e associarle alle lavorazioni.</p>
+<p>Puoi <a href="/guide/controllo-ore-operai-cantiere/">confrontare le ore previste con quelle effettivamente utilizzate</a>.</p>
+<p>Queste informazioni diventano preziose quando devi preparare un nuovo preventivo.</p>
+<figure style="max-width:380px;margin:22px auto"><img src="/tel-ore.jpg" alt="Ore della squadra in ceck, legate alla lavorazione" loading="lazy"><figcaption>Le ore di ogni operaio, legate alla lavorazione: il confronto con il previsto è automatico.</figcaption></figure>
+
+<h2>Non lavorare di più per guadagnare di meno</h2>
+<p>Controllare le ore significa conoscere meglio la propria impresa.</p>
+<p>Perché il fatturato ti dice quanto hai venduto. Il controllo dei costi ti aiuta a capire quanto hai guadagnato.</p>
+<p><b><a href="/">ceck</a>. Conosci il tuo lavoro, controlla le tue ore.</b></p>
+
+<div class="fine">
+<h2>Ore previste contro ore vere</h2>
+<p>Con ceck segni le ore dal telefono per lavorazione e vedi subito dove stai sforando il preventivo. . Da 5 € al mese, 21 giorni di prova gratis.</p>
+<a class="btn" href="https://app.ceck.me/iscriviti?lang=it">Prova ceck gratis →</a>
+<p class="commerciale" style="margin:16px 0 0"><a href="/" style="color:#fff;font-weight:700">Scopri come funziona ceck, l’app per gestire il cantiere →</a></p>
+</div>
+
+<div class="altre"><b>Ti può servire anche:</b> <a href="/guide/come-evitare-perdite-cantiere/">Come evitare di perdere soldi in cantiere senza accorgersene</a> · <a href="/guide/controllo-ore-operai-cantiere/">Come controllare le ore degli operai e capire se un cantiere rende</a> · <a href="/guide/foglio-ore-lavoro-gratis/">Foglio ore lavoro da compilare gratis: come tenere sotto controllo le ore degli operai</a></div>
+</article>
+
+<footer>© 2026 ceck · ceck.me · <a href="/guide/">Guide</a> · <a href="/privacy-it.html">Privacy e note legali</a> · <a href="/cgu-it.html">Condizioni generali</a></footer>
+<script src="/provenienza.js" defer></script>
+</body>
+</html>
