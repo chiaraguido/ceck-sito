@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Giornale dei lavori: esempio pratico di compilazione di una giornata in cantiere · ceck</title>
+<meta name="description" content="Esempio pratico di compilazione del giornale operativo di cantiere con personale, attività, materiali, problemi e lavori previsti.">
+<link rel="canonical" href="https://ceck.me/guide/giornale-dei-lavori-esempio/">
+<link rel="alternate" hreflang="it" href="https://ceck.me/guide/giornale-dei-lavori-esempio/">
+<link rel="alternate" hreflang="fr" href="https://ceck.me/fr/guides/exemple-journal-de-chantier/">
+<link rel="alternate" hreflang="en" href="https://ceck.me/en/guides/site-diary-example/">
+<link rel="alternate" hreflang="de" href="https://ceck.me/de/ratgeber/bautagebuch-beispiel/">
+<link rel="alternate" hreflang="es" href="https://ceck.me/es/guias/ejemplo-diario-de-obra/">
+<link rel="alternate" hreflang="pl" href="https://ceck.me/pl/poradniki/dziennik-prac-budowy-przyklad/">
+<link rel="alternate" hreflang="ro" href="https://ceck.me/ro/ghiduri/exemplu-jurnal-de-santier/">
+<link rel="alternate" hreflang="x-default" href="https://ceck.me/guide/giornale-dei-lavori-esempio/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Giornale dei lavori: esempio pratico di compilazione di una giornata in cantiere">
+<meta property="og:description" content="Una giornata vera in cantiere, compilata: personale, ore, lavori, materiale, problemi e lavori di domani.">
+<meta property="og:image" content="https://ceck.me/rapportino-anteprima.jpg">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"Giornale dei lavori: esempio pratico di compilazione di una giornata in cantiere","inLanguage":"it","datePublished":"2026-11-28","image":"https://ceck.me/rapportino-anteprima.jpg","author":{"@type":"Organization","name":"ceck","url":"https://ceck.me/"},"publisher":{"@type":"Organization","name":"ceck","logo":{"@type":"ImageObject","url":"https://ceck.me/logo-512.png"}}}</script>
+<style>
+:root{--blu:#0F2A44;--arancio:#F28C28;--testo:#16212c;--grigio:#5d6875;--crema:#f7f4ee}
+*{box-sizing:border-box}body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;color:var(--testo);background:#fff;font-size:19px;line-height:1.65}
+a{color:#1d5c99}
+.top{position:sticky;top:0;z-index:10;background:#0F2A44f2;color:#fff}
+.top .wrap{max-width:1160px;margin:0 auto;padding:0 22px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.marchio{display:flex;align-items:center;gap:10px;font-weight:800;font-size:26px;text-decoration:none;color:#fff}.marchio svg{width:36px;height:36px}
+.btn{display:inline-block;background:var(--arancio);color:#fff;text-decoration:none;font-weight:800;border-radius:14px;padding:14px 26px;font-size:19px}
+.btn.small{padding:9px 18px;font-size:16px}
+article{max-width:760px;margin:0 auto;padding:40px 22px 20px}
+.briciole{font-size:15px;color:var(--grigio)}.briciole a{color:var(--grigio)}
+h1{font-size:42px;line-height:1.15;color:var(--blu);margin:10px 0 14px;letter-spacing:-.02em}
+.attacco{font-size:21px;color:#33414f}
+h2{font-size:28px;color:var(--blu);margin:44px 0 10px}
+figure{margin:22px 0}figure img{width:100%;border-radius:14px;box-shadow:0 10px 30px #0002}figcaption{font-size:15px;color:var(--grigio);margin-top:6px}
+.box{background:var(--crema);border-left:6px solid var(--arancio);border-radius:10px;padding:14px 18px;margin:20px 0}
+.racconto{background:#fff8ec;border:2px dashed var(--arancio);border-radius:12px;padding:16px 18px;margin:24px 0;font-style:italic}
+ul li{margin:6px 0}
+.fine{background:var(--blu);color:#fff;border-radius:18px;padding:28px;margin:44px 0 10px;text-align:center}
+.fine h2{color:#fff;margin-top:0}.fine p{color:#cddbe8}
+.altre{border-top:1px solid #e5e7eb;margin-top:40px;padding-top:16px;font-size:17px}
+footer{text-align:center;color:var(--grigio);font-size:14px;padding:30px 20px}footer a{color:var(--grigio)}
+@media(max-width:640px){h1{font-size:32px}h2{font-size:24px}}
+</style>
+</head>
+<body>
+<div class="top"><div class="wrap">
+  <a class="marchio" href="/"><svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="22" fill="#0F2A44"/><g transform="translate(14 14) scale(.72)"><path d="M70.6 74.5 A32 32 0 1 1 70.6 25.5" fill="none" stroke="#fff" stroke-width="14" stroke-linecap="round"/><path d="M36 52 L49 65 L88 26" fill="none" stroke="#F28C28" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g></svg>ceck</a>
+  <a class="btn small" href="https://app.ceck.me/iscriviti?lang=it">Prova gratis</a>
+</div></div>
+
+<article>
+<div class="briciole"><a href="/">ceck</a> › <a href="/guide/">Guide</a></div>
+<h1>Giornale dei lavori: esempio pratico di compilazione di una giornata in cantiere</h1>
+<p class="attacco">Come si documenta una giornata di lavoro in cantiere?</p>
+<p>Vediamo un esempio concreto di registro operativo interno, utilizzando una situazione che potrebbe verificarsi durante la ristrutturazione di un appartamento.</p>
+
+<h2>Esempio di giornata lavorativa</h2>
+<p><b>Cantiere:</b> ristrutturazione appartamento.</p>
+<p><b>Personale presente:</b> quattro operai.</p>
+<p><b>Ore lavorate:</b> nove ore per operaio.</p>
+<p><b>Totale manodopera:</b> 36 ore.</p>
+<p><b>Lavorazioni eseguite:</b></p>
+<ul>
+<li>posa del cartongesso nel soggiorno;</li>
+<li>preparazione delle pareti della camera;</li>
+<li>installazione delle strutture del controsoffitto.</li>
+</ul>
+<p><b>Materiale ricevuto:</b></p>
+<ul>
+<li>20 lastre di cartongesso;</li>
+<li>15 profili metallici;</li>
+<li>due confezioni di viti.</li>
+</ul>
+<p><b>Problemi riscontrati:</b></p>
+<ul>
+<li>una presa elettrica non è nella posizione prevista;</li>
+<li>mancano alcune lastre per completare il controsoffitto.</li>
+</ul>
+<p><b>Attività previste per domani:</b></p>
+<ul>
+<li>completamento delle pareti;</li>
+<li>verifica della posizione della presa;</li>
+<li>ordine del materiale mancante.</li>
+</ul>
+
+<h2>Perché queste informazioni sono importanti?</h2>
+<p>Se il giorno successivo il lavoro si ferma, puoi verificare immediatamente se il problema era già stato segnalato.</p>
+<p>Se il cliente chiede spiegazioni sulle ore impiegate, puoi consultare le attività registrate.</p>
+<p>Se devi preparare un altro cantiere simile, hai informazioni utili per organizzarlo meglio.</p>
+
+<h2>Scarica un modello gratuito</h2>
+<p>ceck mette a disposizione un rapportino giornaliero in PDF da stampare e una versione Excel con calcolo automatico delle ore.</p>
+<p>Puoi utilizzarli per organizzare la documentazione quotidiana della tua impresa.</p>
+<p><span style="display:flex;flex-wrap:wrap;gap:12px;margin:10px 0"><a class="btn" href="/rapportino-di-cantiere.xlsx" download>⬇ Scarica il modello Excel gratuito</a> <a class="btn" style="background:#0F2A44" href="/rapportino-di-cantiere.pdf" download>⬇ Scarica il PDF da stampare</a></span></p>
+<figure style="max-width:380px;margin:22px auto"><img src="/rapportino-anteprima.jpg" alt="Il rapportino giornaliero di cantiere gratuito di ceck" loading="lazy"><figcaption>Il modello gratuito: squadra e ore, lavori, materiale, problemi, domani e firme.</figcaption></figure>
+
+<h2>E se il documento si compilasse automaticamente?</h2>
+<p>Con <a href="/">ceck</a> non devi aspettare la sera per ricostruire la giornata.</p>
+<p>Le ore, le lavorazioni e le altre informazioni registrate durante il lavoro contribuiscono alla creazione del <a href="/rapportino-di-cantiere.html">rapportino giornaliero</a>.</p>
+<p><i>Questo esempio riguarda la documentazione operativa interna. Il giornale dei lavori previsto dalla normativa o dal contratto può richiedere contenuti, responsabilità e procedure specifiche.</i></p>
+<p><b>Organizza oggi le informazioni che potrebbero servirti domani.</b></p>
+
+<div class="fine">
+<h2>La giornata, già scritta</h2>
+<p>Con ceck ore, lavori, materiale e problemi si registrano mentre succedono: la sera il rapportino è pronto. . Da 5 € al mese, 21 giorni di prova gratis.</p>
+<a class="btn" href="https://app.ceck.me/iscriviti?lang=it">Prova ceck gratis →</a>
+<p class="commerciale" style="margin:16px 0 0"><a href="/" style="color:#fff;font-weight:700">Scopri come funziona ceck, l’app per gestire il cantiere →</a></p>
+</div>
+
+<div class="altre"><b>Ti può servire anche:</b> <a href="/guide/giornale-di-cantiere-digitale/">Giornale di cantiere digitale: come conservare lo storico dei lavori senza perdere informazioni</a> · <a href="/guide/rapportino-di-lavoro-excel-gratis/">Rapportino di lavoro Excel gratis: scarica il modello con calcolo automatico delle ore</a> · <a href="/guide/gestione-materiali-cantiere/">Materiali mancanti in cantiere: come evitare di fermare gli operai</a></div>
+</article>
+
+<footer>© 2026 ceck · ceck.me · <a href="/guide/">Guide</a> · <a href="/privacy-it.html">Privacy e note legali</a> · <a href="/cgu-it.html">Condizioni generali</a></footer>
+<script src="/provenienza.js" defer></script>
+</body>
+</html>
